@@ -1,0 +1,15 @@
+# Compression pour les fichiers Unity WebGL
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE application/octet-stream
+    AddOutputFilterByType DEFLATE application/wasm
+</IfModule>
+
+# Headers pour Unity WebGL
+<IfModule mod_headers.c>
+    Header set Cross-Origin-Embedder-Policy "require-corp"
+    Header set Cross-Origin-Opener-Policy "same-origin"
+</IfModule>
+
+# MIME types pour WebGL
+AddType application/wasm .wasm
+AddType application/javascript .js
