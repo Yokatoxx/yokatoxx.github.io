@@ -9,41 +9,66 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #F7F5F2; --ink: #1A1916; --mid: #6B6860;
-      --line: #DDD9D3; --accent: #C8541A; --card: #EFECE8; --tag-bg: #E5E1DB;
-    }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.7; }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 4rem; background: rgba(247,245,242,.88); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+    /* ── THEMES ── */
+    :root {
+      --bg: #F2F0EC; --ink: #1A1916; --mid: #6B6860;
+      --line: #D8D4CE; --accent: #C8541A; --card: #EAE7E2; --tag-bg: #DDD9D3;
+      --nav-bg: rgba(242,240,236,.9);
+      --skills-bg: #1A1916; --skills-border: #2E2C29; --skills-item: #252421; --skills-text: #9A9790;
+    }
+    [data-theme="dark"] {
+      --bg: #171614; --ink: #E8E4DE; --mid: #7A7770;
+      --line: #2E2C29; --accent: #D96830; --card: #1F1E1B; --tag-bg: #2A2825;
+      --nav-bg: rgba(23,22,20,.92);
+      --skills-bg: #111110; --skills-border: #252421; --skills-item: #1A1916; --skills-text: #7A7770;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.7; transition: background .3s, color .3s; }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; background: var(--nav-bg); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s, background .3s; }
     nav.scrolled { border-color: var(--line); }
     .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
-    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
-    .nav-links a { text-decoration: none; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); transition: color .2s; position: relative; }
+    .nav-right { display: flex; align-items: center; gap: 2rem; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); transition: color .2s; position: relative; }
     .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; right:0; height:1px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform .25s ease; }
     .nav-links a:hover { color: var(--ink); }
     .nav-links a:hover::after { transform: scaleX(1); }
 
+    /* Language switcher */
+    .lang-switcher { display: flex; gap: 2px; }
+    .lang-btn { background: transparent; border: 1px solid var(--line); color: var(--mid); font-family: 'DM Sans', sans-serif; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; padding: .3rem .55rem; border-radius: 2px; cursor: pointer; transition: all .2s; }
+    .lang-btn.active, .lang-btn:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+    /* Dark mode toggle */
+    .theme-toggle { background: transparent; border: 1px solid var(--line); color: var(--mid); font-size: .85rem; padding: .3rem .6rem; border-radius: 2px; cursor: pointer; transition: all .2s; line-height: 1; }
+    .theme-toggle:hover { border-color: var(--ink); color: var(--ink); }
+
+    /* ── HERO ── */
     #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 4rem 6rem; position: relative; overflow: hidden; }
-    .hero-bg-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-family:'DM Serif Display',serif; font-size:clamp(5rem,14vw,16rem); color:transparent; -webkit-text-stroke:1px var(--line); white-space:nowrap; user-select:none; pointer-events:none; letter-spacing:-.03em; }
-    .hero-tag { font-size:.75rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; opacity:0; animation:fadeUp .7s .2s ease forwards; }
+    .hero-bg-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-family:'DM Serif Display',serif; font-size:clamp(5rem,14vw,16rem); color:transparent; -webkit-text-stroke:1px var(--line); white-space:nowrap; user-select:none; pointer-events:none; letter-spacing:-.03em; transition:color .3s; }
+    .hero-tag { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; opacity:0; animation:fadeUp .7s .2s ease forwards; }
     .hero-title { font-family:'DM Serif Display',serif; font-size:clamp(3rem,7vw,7rem); line-height:1.0; letter-spacing:-.03em; margin-bottom:1.4rem; opacity:0; animation:fadeUp .7s .35s ease forwards; }
     .hero-title em { font-style:italic; color:var(--accent); }
-    .hero-sub { max-width:480px; font-size:1rem; color:var(--mid); margin-bottom:2.8rem; opacity:0; animation:fadeUp .7s .5s ease forwards; }
+    .hero-sub { max-width:500px; font-size:1rem; color:var(--mid); margin-bottom:2.8rem; opacity:0; animation:fadeUp .7s .5s ease forwards; line-height:1.75; }
     .hero-ctas { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; animation:fadeUp .7s .65s ease forwards; }
-    .btn { text-decoration:none; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; padding:.85rem 2rem; border-radius:2px; transition:background .2s,color .2s,transform .15s; display:inline-block; border:none; font-family:'DM Sans',sans-serif; cursor:pointer; }
+    .btn { text-decoration:none; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; padding:.85rem 2rem; border-radius:2px; transition:background .2s,color .2s,transform .15s,border-color .2s; display:inline-block; border:none; font-family:'DM Sans',sans-serif; cursor:pointer; }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary { background:var(--ink); color:var(--bg); }
     .btn-primary:hover { background:var(--accent); }
     .btn-ghost { background:transparent; color:var(--ink); border:1px solid var(--line); }
     .btn-ghost:hover { border-color:var(--ink); background:var(--card); }
 
+    /* ── SECTIONS ── */
     section { padding: 7rem 4rem; }
-    .section-label { font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem; }
+    .section-label { font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem; }
     .section-title { font-family:'DM Serif Display',serif; font-size:clamp(2rem,4vw,3.2rem); letter-spacing:-.025em; margin-bottom:3.5rem; line-height:1.1; }
-    .divider { border:none; border-top:1px solid var(--line); margin:0 4rem; }
+    .divider { border:none; border-top:1px solid var(--line); margin:0 4rem; transition:border-color .3s; }
 
+    /* ── ABOUT ── */
     .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
     .about-text p { color:var(--mid); margin-bottom:1rem; }
     .about-text p strong { color:var(--ink); font-weight:500; }
@@ -52,119 +77,95 @@
     .fact-num { font-family:'DM Serif Display',serif; font-size:2.4rem; color:var(--accent); line-height:1; }
     .fact-label { font-size:.82rem; color:var(--mid); margin-top:.2rem; }
 
-    #skills { background:var(--ink); color:var(--bg); }
-    #skills .section-title { color:var(--bg); }
+    /* ── SKILLS ── */
+    #skills { background:var(--skills-bg); color:var(--ink); transition:background .3s; }
+    #skills .section-title { color: var(--ink); filter: invert(1) brightness(2); }
+    [data-theme="dark"] #skills .section-title { filter: none; color: var(--ink); }
     #skills .section-label { color:var(--accent); }
-    .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid #333; }
-    .skill-group { padding:2.2rem 2rem; border-right:1px solid #333; border-bottom:1px solid #333; }
+    .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--skills-border); }
+    .skill-group { padding:2.2rem 2rem; border-right:1px solid var(--skills-border); border-bottom:1px solid var(--skills-border); }
     .skill-group:nth-child(3n) { border-right:none; }
     .skill-group:nth-last-child(-n+3) { border-bottom:none; }
-    .skill-group-title { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; }
+    .skill-group-title { font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; }
     .skill-list { list-style:none; display:flex; flex-wrap:wrap; gap:.5rem; }
-    .skill-list li { font-size:.82rem; color:#9A9790; background:#252421; padding:.3rem .8rem; border-radius:2px; }
+    .skill-list li { font-size:.82rem; color:var(--skills-text); background:var(--skills-item); padding:.3rem .8rem; border-radius:2px; }
 
+    /* ── PROJECTS ── */
     .project-filter { display:flex; gap:.6rem; flex-wrap:wrap; margin-bottom:3rem; }
-    .filter-btn { font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; padding:.45rem 1.1rem; border-radius:2px; border:1px solid var(--line); background:transparent; color:var(--mid); cursor:pointer; transition:all .2s; font-family:'DM Sans',sans-serif; }
+    .filter-btn { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; padding:.45rem 1.1rem; border-radius:2px; border:1px solid var(--line); background:transparent; color:var(--mid); cursor:pointer; transition:all .2s; font-family:'DM Sans',sans-serif; }
     .filter-btn.active, .filter-btn:hover { background:var(--ink); color:var(--bg); border-color:var(--ink); }
     .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.5rem; }
-
-    .project-card { background:var(--card); border:1px solid var(--line); border-radius:3px; transition:transform .2s,box-shadow .2s; position:relative; overflow:hidden; display:flex; flex-direction:column; cursor:pointer; }
+    .project-card { background:var(--card); border:1px solid var(--line); border-radius:3px; transition:transform .2s,box-shadow .2s,background .3s; position:relative; overflow:hidden; display:flex; flex-direction:column; cursor:pointer; }
     .project-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform .3s ease; z-index:1; }
-    .project-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.08); }
+    .project-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.1); }
     .project-card:hover::before { transform:scaleX(1); }
     .project-card[data-hidden="true"] { display:none; }
-    .card-media { width:100%; aspect-ratio:16/9; overflow:hidden; background:#1A1916; position:relative; }
+    .card-media { width:100%; aspect-ratio:16/9; overflow:hidden; background:#111; position:relative; }
     .card-media img { width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
     .project-card:hover .card-media img { transform:scale(1.04); }
     .card-media iframe { width:100%; height:100%; border:none; }
-    .card-media-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#333; font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; }
+    .card-media-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#444; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; }
     .card-body { padding:1.8rem; flex:1; display:flex; flex-direction:column; }
-    .card-category { font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.8rem; }
+    .card-category { font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.8rem; }
     .card-title { font-family:'DM Serif Display',serif; font-size:1.35rem; margin-bottom:.7rem; line-height:1.2; }
     .card-desc { font-size:.88rem; color:var(--mid); margin-bottom:1.4rem; flex:1; }
     .card-footer { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
     .card-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
-    .tag { font-size:.7rem; background:var(--tag-bg); padding:.2rem .6rem; border-radius:2px; color:var(--mid); }
-    .card-read-more { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); white-space:nowrap; opacity:0; transition:opacity .2s; flex-shrink:0; }
+    .tag { font-size:.68rem; background:var(--tag-bg); padding:.2rem .6rem; border-radius:2px; color:var(--mid); }
+    .card-read-more { font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); white-space:nowrap; opacity:0; transition:opacity .2s; flex-shrink:0; }
     .project-card:hover .card-read-more { opacity:1; }
 
-    /* ══ MODAL ══ */
-    .modal-backdrop {
-      position:fixed; inset:0; background:rgba(20,18,16,.75);
-      backdrop-filter:blur(8px); z-index:500;
-      display:flex; align-items:center; justify-content:center;
-      padding:2rem; opacity:0; pointer-events:none;
-      transition:opacity .3s ease;
-    }
+    /* ── MODAL ── */
+    .modal-backdrop { position:fixed; inset:0; background:rgba(10,9,8,.8); backdrop-filter:blur(8px); z-index:500; display:flex; align-items:center; justify-content:center; padding:2rem; opacity:0; pointer-events:none; transition:opacity .3s ease; }
     .modal-backdrop.open { opacity:1; pointer-events:all; }
-    .modal {
-      background:var(--bg); border:1px solid var(--line); border-radius:4px;
-      width:100%; max-width:880px; max-height:90vh; overflow-y:auto;
-      transform:translateY(28px) scale(.97);
-      transition:transform .38s cubic-bezier(.16,1,.3,1);
-      position:relative; scrollbar-width:thin; scrollbar-color:var(--line) transparent;
-    }
+    .modal { background:var(--bg); border:1px solid var(--line); border-radius:4px; width:100%; max-width:880px; max-height:90vh; overflow-y:auto; transform:translateY(28px) scale(.97); transition:transform .38s cubic-bezier(.16,1,.3,1),background .3s; position:relative; scrollbar-width:thin; scrollbar-color:var(--line) transparent; }
     .modal-backdrop.open .modal { transform:none; }
-
-    .modal-topbar {
-      position:sticky; top:0; z-index:10;
-      display:flex; justify-content:flex-end; padding:.9rem 1.2rem;
-      background:linear-gradient(var(--bg) 55%, transparent);
-      pointer-events:none;
-    }
-    .modal-topbar button {
-      pointer-events:all;
-      background:var(--card); border:1px solid var(--line); color:var(--ink);
-      font-size:.75rem; letter-spacing:.1em; text-transform:uppercase;
-      padding:.45rem 1.1rem; border-radius:2px; cursor:pointer;
-      font-family:'DM Sans',sans-serif; transition:background .2s,color .2s;
-    }
+    .modal-topbar { position:sticky; top:0; z-index:10; display:flex; justify-content:flex-end; padding:.9rem 1.2rem; background:linear-gradient(var(--bg) 55%, transparent); pointer-events:none; transition:background .3s; }
+    .modal-topbar button { pointer-events:all; background:var(--card); border:1px solid var(--line); color:var(--ink); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; padding:.45rem 1.1rem; border-radius:2px; cursor:pointer; font-family:'DM Sans',sans-serif; transition:background .2s,color .2s; }
     .modal-topbar button:hover { background:var(--ink); color:var(--bg); }
-
-    .modal-hero { width:100%; aspect-ratio:16/9; background:#1A1916; overflow:hidden; flex-shrink:0; }
+    .modal-hero { width:100%; aspect-ratio:16/9; background:#111; overflow:hidden; flex-shrink:0; }
     .modal-hero img { width:100%; height:100%; object-fit:cover; }
     .modal-hero iframe { width:100%; height:100%; border:none; }
-    .modal-hero-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#333; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; }
-
+    .modal-hero-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#444; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; }
     .modal-body { padding:2.5rem 3rem 3.5rem; }
     .modal-meta { display:flex; align-items:center; gap:1rem; margin-bottom:1rem; flex-wrap:wrap; }
-    .modal-cat { font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+    .modal-cat { font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
     .modal-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
     .modal-title { font-family:'DM Serif Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); letter-spacing:-.025em; line-height:1.1; margin-bottom:1rem; }
     .modal-desc { font-size:1rem; color:var(--mid); margin-bottom:2rem; max-width:640px; line-height:1.75; }
-
     .modal-links { display:flex; gap:.7rem; flex-wrap:wrap; margin-bottom:2.5rem; }
-    .modal-link { text-decoration:none; font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; padding:.65rem 1.4rem; border-radius:2px; border:1px solid var(--line); color:var(--ink); transition:all .2s; display:inline-block; }
+    .modal-link { text-decoration:none; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; padding:.65rem 1.4rem; border-radius:2px; border:1px solid var(--line); color:var(--ink); transition:all .2s; display:inline-block; }
     .modal-link:hover { background:var(--ink); color:var(--bg); border-color:var(--ink); }
     .modal-link.primary { background:var(--ink); color:var(--bg); border-color:var(--ink); }
     .modal-link.primary:hover { background:var(--accent); border-color:var(--accent); }
-
     .modal-section { border-top:1px solid var(--line); padding-top:2rem; margin-top:2rem; }
     .modal-section h3 { font-family:'DM Serif Display',serif; font-size:1.3rem; margin-bottom:1.2rem; }
     .modal-devlog { font-size:.95rem; color:var(--mid); line-height:1.85; white-space:pre-wrap; }
-
     .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:.8rem; }
     .gallery-img { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:2px; border:1px solid var(--line); transition:transform .2s,box-shadow .2s; cursor:zoom-in; display:block; }
-    .gallery-img:hover { transform:scale(1.03); box-shadow:0 6px 20px rgba(0,0,0,.1); }
+    .gallery-img:hover { transform:scale(1.03); box-shadow:0 6px 20px rgba(0,0,0,.12); }
 
-    #contact { background:var(--card); }
+    /* ── CONTACT ── */
+    #contact { background:var(--card); transition:background .3s; }
     .contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
     .contact-intro { color:var(--mid); font-size:1.05rem; margin-bottom:2rem; }
     .contact-intro strong { color:var(--ink); }
-    .contact-links { display:flex; flex-direction:column; gap:1.2rem; }
-    .contact-link { display:flex; align-items:center; gap:1rem; text-decoration:none; color:var(--ink); padding:1.1rem 1.4rem; background:var(--bg); border:1px solid var(--line); border-radius:3px; transition:border-color .2s,transform .15s; font-size:.9rem; }
+    .contact-links { display:flex; flex-direction:column; gap:1rem; }
+    .contact-link { display:flex; align-items:center; gap:1rem; text-decoration:none; color:var(--ink); padding:1rem 1.4rem; background:var(--bg); border:1px solid var(--line); border-radius:3px; transition:border-color .2s,transform .15s,background .3s; font-size:.9rem; font-weight:500; }
     .contact-link:hover { border-color:var(--ink); transform:translateX(4px); }
-    .link-icon { font-size:1.1rem; }
-    .link-label { font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--mid); display:block; }
+    .link-icon { font-size:1rem; flex-shrink:0; width:1.4rem; text-align:center; }
+    .link-label { font-size:.65rem; text-transform:uppercase; letter-spacing:.1em; color:var(--mid); display:block; font-weight:300; margin-bottom:.1rem; }
     .contact-form { display:flex; flex-direction:column; gap:1rem; }
     .form-group { display:flex; flex-direction:column; gap:.4rem; }
-    .form-group label { font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--mid); }
-    .form-group input, .form-group textarea { background:var(--bg); border:1px solid var(--line); padding:.8rem 1rem; font-family:'DM Sans',sans-serif; font-size:.9rem; color:var(--ink); border-radius:2px; outline:none; transition:border-color .2s; }
-    .form-group input:focus, .form-group textarea:focus { border-color:var(--ink); }
+    .form-group label { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--mid); }
+    .form-group input, .form-group textarea { background:var(--bg); border:1px solid var(--line); padding:.8rem 1rem; font-family:'DM Sans',sans-serif; font-size:.9rem; color:var(--ink); border-radius:2px; outline:none; transition:border-color .2s,background .3s; }
+    .form-group input:focus, .form-group textarea:focus { border-color:var(--accent); }
     .form-group textarea { min-height:130px; resize:vertical; }
 
-    footer { background:var(--ink); color:#6B6860; padding:2.5rem 4rem; display:flex; justify-content:space-between; align-items:center; font-size:.78rem; letter-spacing:.06em; }
+    /* ── FOOTER ── */
+    footer { background:var(--skills-bg); color:var(--mid); padding:2.5rem 4rem; display:flex; justify-content:space-between; align-items:center; font-size:.78rem; letter-spacing:.06em; transition:background .3s; }
     footer span em { color:var(--accent); font-style:normal; }
+
     .empty-state { grid-column:1/-1; text-align:center; padding:4rem 2rem; color:var(--mid); }
     .empty-state a { color:var(--accent); }
 
@@ -173,34 +174,45 @@
     .reveal.visible { opacity:1; transform:none; }
 
     @media(max-width:900px){
-      nav{padding:1.2rem 2rem} section{padding:5rem 2rem} .divider{margin:0 2rem}
+      nav{padding:1rem 1.5rem} .nav-links{gap:1.2rem} section{padding:5rem 2rem} .divider{margin:0 2rem}
       #hero{padding:0 2rem 5rem} .about-grid,.contact-layout{grid-template-columns:1fr;gap:3rem}
       .skills-grid{grid-template-columns:1fr 1fr}
-      footer{flex-direction:column;gap:.8rem;text-align:center}
-      .modal-body{padding:1.8rem 1.5rem 2.5rem}
-      .modal-backdrop{padding:.8rem}
+      footer{flex-direction:column;gap:.8rem;text-align:center;padding:2rem}
+      .modal-body{padding:1.8rem 1.5rem 2.5rem} .modal-backdrop{padding:.8rem}
+    }
+    @media(max-width:600px){
+      .nav-links{display:none} .skills-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
+
   <nav id="navbar">
     <a href="#hero" class="nav-logo">JL</a>
-    <ul class="nav-links">
-      <li><a href="#about">À propos</a></li>
-      <li><a href="#skills">Compétences</a></li>
-      <li><a href="#projects">Projets</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about" data-i18n="nav_about">À propos</a></li>
+        <li><a href="#skills" data-i18n="nav_skills">Compétences</a></li>
+        <li><a href="#projects" data-i18n="nav_projects">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('es')">ES</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Changer le thème">☾</button>
+    </div>
   </nav>
 
   <section id="hero">
     <div class="hero-bg-text">DESIGN</div>
-    <p class="hero-tag">Level Designer Junior · 3ème année ICAN</p>
+    <p class="hero-tag" data-i18n="hero_tag">Level Designer Junior · 3ème année ICAN</p>
     <h1 class="hero-title">Jordan<br><em>Lamour</em></h1>
-    <p class="hero-sub">Je conçois des expériences interactives — niveaux, outils, shaders et systèmes procéduraux.</p>
+    <p class="hero-sub" data-i18n="hero_sub">Je conçois des espaces de jeu pensés pour le joueur — des niveaux où chaque couloir, chaque ouverture raconte quelque chose.</p>
     <div class="hero-ctas">
-      <a href="#projects" class="btn btn-primary">Voir mes projets</a>
-      <a href="#contact" class="btn btn-ghost">Me contacter</a>
+      <a href="#projects" class="btn btn-primary" data-i18n="hero_cta1">Voir mes projets</a>
+      <a href="#contact" class="btn btn-ghost" data-i18n="hero_cta2">Me contacter</a>
     </div>
   </section>
   <hr class="divider">
@@ -208,66 +220,72 @@
   <section id="about">
     <div class="about-grid">
       <div class="about-text reveal">
-        <p class="section-label">À propos</p>
-        <h2 class="section-title">Étudiant en<br>3ème année<br>à l'ICAN</h2>
-        <p>Je m'appelle <strong>Jordan Lamour</strong> et je suis développeur de jeux vidéo spécialisé dans le <strong>level design</strong>.</p>
-        <p>Ce qui m'attire dans le level design, c'est le pouvoir de façonner l'expérience du joueur sans qu'il s'en rende compte. Un niveau bien construit, c'est de la narration spatiale — guider le regard, créer du rythme, récompenser l'exploration. J'aime l'idée que l'espace lui-même devienne un langage, entre <strong>blockout, contraintes de gameplay</strong> et intention artistique.</p>
-        <p>Je cherche actuellement un <strong>stage de level designer</strong> à partir du 1er juin 2026.</p>
+        <p class="section-label" data-i18n="about_label">À propos</p>
+        <h2 class="section-title" data-i18n="about_title">Étudiant en<br>3ème année<br>à l'ICAN</h2>
+        <p data-i18n="about_p1">Je m'appelle <strong>Jordan Lamour</strong> et je suis développeur de jeux vidéo spécialisé dans le <strong>level design</strong>.</p>
+        <p data-i18n="about_p2">Ce qui m'attire dans le level design, c'est le pouvoir de façonner l'expérience du joueur sans qu'il s'en rende compte. Un niveau bien construit, c'est de la narration spatiale : guider le regard, créer du rythme, récompenser l'exploration. J'aime l'idée que l'espace lui-même devienne un langage, entre <strong>blockout, contraintes de gameplay</strong> et intention artistique.</p>
+        <p data-i18n="about_p3">Je cherche actuellement un <strong>stage de level designer</strong> à partir du 1er juin 2026.</p>
       </div>
       <div class="about-facts reveal">
-        <div class="fact"><div class="fact-num">ICAN</div><div class="fact-label">Bachelor Game Design · 3ème année</div></div>
-        <div class="fact"><div class="fact-num">Level</div><div class="fact-label">Blockout · Gameplay flow · Narration spatiale</div></div>
-        <div class="fact"><div class="fact-num">Unity</div><div class="fact-label">HDRP · C# · Compute Shaders</div></div>
-        <div class="fact"><div class="fact-num">3D</div><div class="fact-label">Blender · Modélisation · UV · Textures</div></div>
+        <div class="fact"><div class="fact-num">ICAN</div><div class="fact-label" data-i18n="fact_ican">Bachelor Game Design · 3ème année</div></div>
+        <div class="fact"><div class="fact-num">Level</div><div class="fact-label" data-i18n="fact_level">Blockout · Gameplay flow · Narration spatiale</div></div>
+        <div class="fact"><div class="fact-num">Unity</div><div class="fact-label" data-i18n="fact_unity">C# · Intégrations · HDRP</div></div>
+        <div class="fact"><div class="fact-num">3D</div><div class="fact-label" data-i18n="fact_3d">Blender · Modélisation · UV · Textures</div></div>
       </div>
     </div>
   </section>
   <hr class="divider">
 
   <section id="skills">
-    <p class="section-label reveal">Compétences</p>
-    <h2 class="section-title reveal">Ce que je maîtrise</h2>
+    <p class="section-label reveal" data-i18n="skills_label">Compétences</p>
+    <h2 class="section-title reveal" data-i18n="skills_title">Ce que je maîtrise</h2>
     <div class="skills-grid reveal">
-      <div class="skill-group"><p class="skill-group-title">Design</p><ul class="skill-list"><li>Level Design</li><li>Blockout</li><li>Prototypage</li><li>Gameplay</li><li>UX / HUD</li><li>Gestion de projet</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title">3D & Art</p><ul class="skill-list"><li>Blender</li><li>Modélisation</li><li>UV Mapping</li><li>Textures</li><li>Concept Art</li><li>Photoshop</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title">Game Dev</p><ul class="skill-list"><li>Unity HDRP</li><li>C#</li><li>Unreal Engine</li><li>Compute Shaders</li><li>NavMesh</li><li>Amplify Shader</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title">Environnements</p><ul class="skill-list"><li>Interior Design</li><li>Props</li><li>Substance Painter</li><li>Optimisation 3D</li><li>Model Texture</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title">Web & Outils</p><ul class="skill-list"><li>React</li><li>JavaScript</li><li>HTML / CSS</li><li>GitHub</li><li>n8n</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title">Langues</p><ul class="skill-list"><li>Français (natif)</li><li>Anglais (avancé)</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title" data-i18n="sk_design">Design</p><ul class="skill-list"><li>Level Design</li><li>Blockout</li><li>Prototypage</li><li>Gameplay</li><li>UX / HUD</li><li>Gestion de projet</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title" data-i18n="sk_3d">3D & Art</p><ul class="skill-list"><li>Blender</li><li>Modélisation</li><li>UV Mapping</li><li>Textures</li><li>Concept Art</li><li>Photoshop</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title" data-i18n="sk_gamedev">Game Dev</p><ul class="skill-list"><li>Unity</li><li>C#</li><li>Unreal Engine</li><li>Intégrations</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title" data-i18n="sk_env">Environnements</p><ul class="skill-list"><li>Interior Design</li><li>Props</li><li>Substance Painter</li><li>Optimisation 3D</li><li>Model Texture</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title" data-i18n="sk_web">Web & Outils</p><ul class="skill-list"><li>React</li><li>JavaScript</li><li>HTML / CSS</li><li>GitHub</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title" data-i18n="sk_lang">Langues</p><ul class="skill-list"><li data-i18n="lang_fr">Français (natif)</li><li data-i18n="lang_en">Anglais (avancé)</li></ul></div>
     </div>
   </section>
-  <hr class="divider" style="border-color:#2a2a28;">
+  <hr class="divider" style="border-color:var(--skills-border);">
 
   <section id="projects">
-    <p class="section-label reveal">Projets</p>
-    <h2 class="section-title reveal">Mes réalisations</h2>
+    <p class="section-label reveal" data-i18n="proj_label">Projets</p>
+    <h2 class="section-title reveal" data-i18n="proj_title">Mes réalisations</h2>
     <div class="project-filter reveal" id="filterBar">
-      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Tous</button>
     </div>
     <div class="projects-grid" id="projectsGrid">
-      <div class="empty-state"><p>Chargement…</p></div>
+      <div class="empty-state"><p data-i18n="loading">Chargement…</p></div>
     </div>
   </section>
   <hr class="divider">
 
   <section id="contact">
-    <p class="section-label reveal">Contact</p>
-    <h2 class="section-title reveal">Travaillons<br>ensemble</h2>
+    <p class="section-label reveal" data-i18n="contact_label">Contact</p>
+    <h2 class="section-title reveal" data-i18n="contact_title">Travaillons<br>ensemble</h2>
     <div class="contact-layout">
       <div class="reveal">
-        <p class="contact-intro">Je suis ouvert aux <strong>collaborations</strong>, stages et projets créatifs. N'hésite pas à me contacter !</p>
+        <p class="contact-intro" data-i18n="contact_intro">Je suis ouvert aux <strong>collaborations</strong>, stages et projets créatifs.</p>
         <div class="contact-links">
           <a href="https://www.linkedin.com/in/jordan-lamour-3244a632b/" target="_blank" class="contact-link">
             <span class="link-icon">in</span>
-            <div><span class="link-label">LinkedIn</span>jordan-lamour-3244a632b</div>
+            <div><span class="link-label">LinkedIn</span>LinkedIn</div>
           </a>
           <a href="https://github.com/Yokatoxx" target="_blank" class="contact-link">
-            <span class="link-icon">⌥</span>
-            <div><span class="link-label">GitHub</span>github.com/Yokatoxx</div>
+            <span class="link-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58C20.56 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+            </span>
+            <div><span class="link-label">GitHub</span>GitHub</div>
           </a>
           <a href="https://yokatoxx.itch.io/" target="_blank" class="contact-link">
-            <span class="link-icon">🎮</span>
-            <div><span class="link-label">itch.io</span>yokatoxx.itch.io</div>
+            <span class="link-icon">◈</span>
+            <div><span class="link-label">itch.io</span>itch.io</div>
+          </a>
+          <a href="https://www.artstation.com/yokatoxx" target="_blank" class="contact-link">
+            <span class="link-icon">▲</span>
+            <div><span class="link-label">ArtStation</span>ArtStation</div>
           </a>
           <a href="mailto:jordan.lamour@hotmail.fr" class="contact-link">
             <span class="link-icon">@</span>
@@ -276,107 +294,208 @@
         </div>
       </div>
       <form class="contact-form reveal" onsubmit="return false;">
-        <div class="form-group"><label>Nom</label><input type="text" placeholder="Ton nom"></div>
+        <div class="form-group"><label data-i18n="form_name">Nom</label><input type="text" data-i18n-placeholder="form_name_ph" placeholder="Ton nom"></div>
         <div class="form-group"><label>Email</label><input type="email" placeholder="ton@email.com"></div>
-        <div class="form-group"><label>Message</label><textarea placeholder="Bonjour Jordan…"></textarea></div>
-        <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Envoyer →</button>
+        <div class="form-group"><label data-i18n="form_msg">Message</label><textarea data-i18n-placeholder="form_msg_ph" placeholder="Bonjour Jordan…"></textarea></div>
+        <button type="submit" class="btn btn-primary" style="align-self:flex-start;" data-i18n="form_send">Envoyer</button>
       </form>
     </div>
   </section>
 
   <footer>
     <span>© 2025 <em>Jordan Lamour</em></span>
-    <span>Game Design · Unity · Creative Dev</span>
+    <span data-i18n="footer_sub">Level Designer Junior · ICAN</span>
   </footer>
 
-  <!-- MODAL -->
   <div class="modal-backdrop" id="modalBackdrop">
     <div class="modal" id="modal">
-      <div class="modal-topbar"><button onclick="closeModal()">✕ Fermer</button></div>
+      <div class="modal-topbar"><button onclick="closeModal()" data-i18n="modal_close">✕ Fermer</button></div>
       <div id="modalContent"></div>
     </div>
   </div>
 
   <script>
+    // ── THEME ──
+    const saved = localStorage.getItem('jl_theme');
+    if(saved === 'dark') { document.documentElement.setAttribute('data-theme','dark'); document.getElementById('themeToggle').textContent = '☀'; }
+    function toggleTheme(){
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
+      document.getElementById('themeToggle').textContent = isDark ? '☾' : '☀';
+      localStorage.setItem('jl_theme', isDark ? 'light' : 'dark');
+    }
+
+    // ── I18N ──
+    const TRANSLATIONS = {
+      fr: {
+        nav_about:'À propos', nav_skills:'Compétences', nav_projects:'Projets',
+        hero_tag:'Level Designer Junior · 3ème année ICAN',
+        hero_sub:'Je conçois des espaces de jeu pensés pour le joueur — des niveaux où chaque couloir, chaque ouverture raconte quelque chose.',
+        hero_cta1:'Voir mes projets', hero_cta2:'Me contacter',
+        about_label:'À propos',
+        about_title:'Étudiant en<br>3ème année<br>à l\'ICAN',
+        about_p1:'Je m\'appelle <strong>Jordan Lamour</strong> et je suis développeur de jeux vidéo spécialisé dans le <strong>level design</strong>.',
+        about_p2:'Ce qui m\'attire dans le level design, c\'est le pouvoir de façonner l\'expérience du joueur sans qu\'il s\'en rende compte. Un niveau bien construit, c\'est de la narration spatiale : guider le regard, créer du rythme, récompenser l\'exploration. J\'aime l\'idée que l\'espace lui-même devienne un langage, entre <strong>blockout, contraintes de gameplay</strong> et intention artistique.',
+        about_p3:'Je cherche actuellement un <strong>stage de level designer</strong> à partir du 1er juin 2026.',
+        fact_ican:'Bachelor Game Design · 3ème année', fact_level:'Blockout · Gameplay flow · Narration spatiale',
+        fact_unity:'C# · Intégrations · HDRP', fact_3d:'Blender · Modélisation · UV · Textures',
+        skills_label:'Compétences', skills_title:'Ce que je maîtrise',
+        sk_design:'Design', sk_3d:'3D & Art', sk_gamedev:'Game Dev', sk_env:'Environnements', sk_web:'Web & Outils', sk_lang:'Langues',
+        lang_fr:'Français (natif)', lang_en:'Anglais (avancé)',
+        proj_label:'Projets', proj_title:'Mes réalisations', filter_all:'Tous', loading:'Chargement…',
+        contact_label:'Contact', contact_title:'Travaillons<br>ensemble',
+        contact_intro:'Je suis ouvert aux <strong>collaborations</strong>, stages et projets créatifs.',
+        form_name:'Nom', form_name_ph:'Ton nom', form_msg:'Message', form_msg_ph:'Bonjour Jordan…', form_send:'Envoyer',
+        footer_sub:'Level Designer Junior · ICAN',
+        modal_close:'✕ Fermer',
+        devlog_title:'Ce que j\'ai fait', screenshots_title:'Screenshots', no_media:'Pas de média',
+        card_more:'Voir plus', filter_unity:'Unity / Game Dev', filter_shader:'Shaders & Visuels',
+        filter_web:'Web & Outils', filter_design:'Game Design', filter_other:'Autre',
+      },
+      en: {
+        nav_about:'About', nav_skills:'Skills', nav_projects:'Projects',
+        hero_tag:'Junior Level Designer · 3rd Year ICAN',
+        hero_sub:'I design game spaces built around the player — levels where every corridor, every opening tells a story.',
+        hero_cta1:'See my projects', hero_cta2:'Contact me',
+        about_label:'About',
+        about_title:'3rd Year Student<br>at ICAN',
+        about_p1:'My name is <strong>Jordan Lamour</strong> and I\'m a game developer specializing in <strong>level design</strong>.',
+        about_p2:'What draws me to level design is the power to shape a player\'s experience without them even noticing. A well-crafted level is spatial storytelling: guiding the eye, building rhythm, rewarding exploration. I love the idea that space itself becomes a language, balancing <strong>blockout, gameplay constraints</strong> and artistic intent.',
+        about_p3:'I\'m currently looking for a <strong>level design internship</strong> starting June 1st, 2026.',
+        fact_ican:'Bachelor Game Design · 3rd Year', fact_level:'Blockout · Gameplay flow · Spatial Narrative',
+        fact_unity:'C# · Integration · HDRP', fact_3d:'Blender · Modeling · UV · Textures',
+        skills_label:'Skills', skills_title:'What I know',
+        sk_design:'Design', sk_3d:'3D & Art', sk_gamedev:'Game Dev', sk_env:'Environments', sk_web:'Web & Tools', sk_lang:'Languages',
+        lang_fr:'French (native)', lang_en:'English (advanced)',
+        proj_label:'Projects', proj_title:'My Work', filter_all:'All', loading:'Loading…',
+        contact_label:'Contact', contact_title:'Let\'s work<br>together',
+        contact_intro:'Open to <strong>collaborations</strong>, internships and creative projects.',
+        form_name:'Name', form_name_ph:'Your name', form_msg:'Message', form_msg_ph:'Hello Jordan…', form_send:'Send',
+        footer_sub:'Junior Level Designer · ICAN',
+        modal_close:'✕ Close',
+        devlog_title:'What I did', screenshots_title:'Screenshots', no_media:'No media',
+        card_more:'See more', filter_unity:'Unity / Game Dev', filter_shader:'Shaders & Visuals',
+        filter_web:'Web & Tools', filter_design:'Game Design', filter_other:'Other',
+      },
+      es: {
+        nav_about:'Sobre mí', nav_skills:'Habilidades', nav_projects:'Proyectos',
+        hero_tag:'Level Designer Junior · 3er año ICAN',
+        hero_sub:'Diseño espacios de juego pensados para el jugador — niveles donde cada pasillo, cada abertura cuenta algo.',
+        hero_cta1:'Ver mis proyectos', hero_cta2:'Contactarme',
+        about_label:'Sobre mí',
+        about_title:'Estudiante de<br>3er año<br>en el ICAN',
+        about_p1:'Me llamo <strong>Jordan Lamour</strong> y soy desarrollador de videojuegos especializado en <strong>level design</strong>.',
+        about_p2:'Lo que me atrae del level design es el poder de moldear la experiencia del jugador sin que se dé cuenta. Un nivel bien construido es narrativa espacial: guiar la mirada, crear ritmo, recompensar la exploración. Me gusta la idea de que el espacio mismo se convierta en lenguaje, entre <strong>blockout, restricciones de gameplay</strong> e intención artística.',
+        about_p3:'Actualmente busco unas <strong>prácticas de level design</strong> a partir del 1 de junio de 2026.',
+        fact_ican:'Bachelor Diseño de Juegos · 3er año', fact_level:'Blockout · Flujo de gameplay · Narrativa espacial',
+        fact_unity:'C# · Integraciones · HDRP', fact_3d:'Blender · Modelado · UV · Texturas',
+        skills_label:'Habilidades', skills_title:'Lo que sé hacer',
+        sk_design:'Diseño', sk_3d:'3D & Arte', sk_gamedev:'Game Dev', sk_env:'Entornos', sk_web:'Web & Herramientas', sk_lang:'Idiomas',
+        lang_fr:'Francés (nativo)', lang_en:'Inglés (avanzado)',
+        proj_label:'Proyectos', proj_title:'Mis trabajos', filter_all:'Todos', loading:'Cargando…',
+        contact_label:'Contacto', contact_title:'Trabajemos<br>juntos',
+        contact_intro:'Abierto a <strong>colaboraciones</strong>, prácticas y proyectos creativos.',
+        form_name:'Nombre', form_name_ph:'Tu nombre', form_msg:'Mensaje', form_msg_ph:'Hola Jordan…', form_send:'Enviar',
+        footer_sub:'Level Designer Junior · ICAN',
+        modal_close:'✕ Cerrar',
+        devlog_title:'Lo que hice', screenshots_title:'Capturas', no_media:'Sin media',
+        card_more:'Ver más', filter_unity:'Unity / Game Dev', filter_shader:'Shaders y Visuales',
+        filter_web:'Web y Herramientas', filter_design:'Diseño de Juego', filter_other:'Otro',
+      }
+    };
+
+    let currentLang = localStorage.getItem('jl_lang') || 'fr';
+
+    function t(key){ return TRANSLATIONS[currentLang][key] || TRANSLATIONS['fr'][key] || key; }
+
+    function applyLang(){
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.innerHTML = t(key);
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        el.placeholder = t(el.getAttribute('data-i18n-placeholder'));
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase() === currentLang);
+      });
+      document.documentElement.lang = currentLang;
+      // Re-render project filter labels if projects are loaded
+      if(allProjects.length) buildFilters(allProjects);
+    }
+
+    function setLang(lang){
+      currentLang = lang;
+      localStorage.setItem('jl_lang', lang);
+      applyLang();
+    }
+
+    // ── NAV ──
     window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>20));
 
+    // ── REVEAL ──
     const revealObs=new IntersectionObserver(entries=>entries.forEach((e,i)=>{
       if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);revealObs.unobserve(e.target);}
     }),{threshold:.1});
     document.querySelectorAll('.reveal').forEach(r=>revealObs.observe(r));
 
-    const CATS={unity:'Unity / Game Dev',shader:'Shaders & Visuels',web:'Web & Outils',design:'Game Design',other:'Autre'};
+    // ── PROJECTS ──
     function ytId(url){if(!url)return null;const m=url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&?/]+)/);return m?m[1]:null;}
 
-    // ── Card ──
+    function getCatLabel(cat){ return t('filter_'+cat) || cat; }
+
     function cardMedia(p){
       const id=ytId(p.youtube);
       if(id) return `<div class="card-media"><iframe src="https://www.youtube.com/embed/${id}" allowfullscreen loading="lazy"></iframe></div>`;
       if(p.screenshot) return `<div class="card-media"><img src="${p.screenshot}" alt="${p.title}" loading="lazy"></div>`;
-      return `<div class="card-media"><div class="card-media-placeholder">Pas de média</div></div>`;
+      return `<div class="card-media"><div class="card-media-placeholder">${t('no_media')}</div></div>`;
     }
     function renderCard(p,i){
-      const tags=(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+      const tags=(p.tags||[]).map(tag=>`<span class="tag">${tag}</span>`).join('');
       return `
         <div class="project-card reveal" data-category="${p.category||'other'}" onclick="openModal(${i})">
           ${cardMedia(p)}
           <div class="card-body">
-            <p class="card-category">${CATS[p.category]||p.category||'Projet'}</p>
+            <p class="card-category">${getCatLabel(p.category||'other')}</p>
             <h3 class="card-title">${p.title}</h3>
             <p class="card-desc">${p.description||''}</p>
             <div class="card-footer">
               <div class="card-tags">${tags}</div>
-              <span class="card-read-more">Voir plus →</span>
+              <span class="card-read-more">${t('card_more')} →</span>
             </div>
           </div>
         </div>`;
     }
 
-    // ── Modal ──
     let allProjects=[];
 
     function buildModalHTML(p){
       const id=ytId(p.youtube);
       let hero='';
-      if(id)              hero=`<div class="modal-hero"><iframe src="https://www.youtube.com/embed/${id}" allowfullscreen></iframe></div>`;
+      if(id) hero=`<div class="modal-hero"><iframe src="https://www.youtube.com/embed/${id}" allowfullscreen></iframe></div>`;
       else if(p.screenshot) hero=`<div class="modal-hero"><img src="${p.screenshot}" alt="${p.title}"></div>`;
-      else                hero=`<div class="modal-hero"><div class="modal-hero-placeholder">Pas de média</div></div>`;
-
-      const tags=(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
-
+      else hero=`<div class="modal-hero"><div class="modal-hero-placeholder">${t('no_media')}</div></div>`;
+      const tags=(p.tags||[]).map(tag=>`<span class="tag">${tag}</span>`).join('');
       let links='';
-      if(p.build)   links+=`<a href="${p.build}"   target="_blank" class="modal-link primary">▶ Jouer / Demo</a>`;
+      if(p.build)   links+=`<a href="${p.build}"   target="_blank" class="modal-link primary">▶ Demo</a>`;
       if(p.github)  links+=`<a href="${p.github}"  target="_blank" class="modal-link">GitHub</a>`;
       if(p.itch)    links+=`<a href="${p.itch}"    target="_blank" class="modal-link">itch.io</a>`;
       if(p.website) links+=`<a href="${p.website}" target="_blank" class="modal-link">Site web</a>`;
-
       let devlog='';
       if(p.devlog&&p.devlog.trim()){
-        devlog=`<div class="modal-section">
-          <h3>Ce que j'ai fait</h3>
-          <div class="modal-devlog">${p.devlog.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
-        </div>`;
+        devlog=`<div class="modal-section"><h3>${t('devlog_title')}</h3><div class="modal-devlog">${p.devlog.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div></div>`;
       }
-
       let gallery='';
       if(p.screenshots&&p.screenshots.length){
-        gallery=`<div class="modal-section">
-          <h3>Screenshots</h3>
-          <div class="gallery-grid">${p.screenshots.map(s=>`<img src="${s}" class="gallery-img" loading="lazy">`).join('')}</div>
-        </div>`;
+        gallery=`<div class="modal-section"><h3>${t('screenshots_title')}</h3><div class="gallery-grid">${p.screenshots.map(s=>`<img src="${s}" class="gallery-img" loading="lazy">`).join('')}</div></div>`;
       }
-
       return `${hero}
         <div class="modal-body">
-          <div class="modal-meta">
-            <span class="modal-cat">${CATS[p.category]||p.category||'Projet'}</span>
-            <div class="modal-tags">${tags}</div>
-          </div>
+          <div class="modal-meta"><span class="modal-cat">${getCatLabel(p.category||'other')}</span><div class="modal-tags">${tags}</div></div>
           <h2 class="modal-title">${p.title}</h2>
           ${p.description?`<p class="modal-desc">${p.description}</p>`:''}
           ${links?`<div class="modal-links">${links}</div>`:''}
-          ${devlog}
-          ${gallery}
+          ${devlog}${gallery}
         </div>`;
     }
 
@@ -394,14 +513,14 @@
     document.getElementById('modalBackdrop').addEventListener('click',e=>{
       if(e.target===document.getElementById('modalBackdrop')) closeModal();
     });
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
 
-    // ── Filters ──
     function buildFilters(projects){
       const cats=[...new Set(projects.map(p=>p.category||'other'))];
       const bar=document.getElementById('filterBar');
-      bar.innerHTML=`<button class="filter-btn active" data-filter="all">Tous</button>`
-        +cats.map(c=>`<button class="filter-btn" data-filter="${c}">${CATS[c]||c}</button>`).join('');
+      const active = bar.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+      bar.innerHTML=`<button class="filter-btn${active==='all'?' active':''}" data-filter="all">${t('filter_all')}</button>`
+        +cats.map(c=>`<button class="filter-btn${active===c?' active':''}" data-filter="${c}">${getCatLabel(c)}</button>`).join('');
       bar.querySelectorAll('.filter-btn').forEach(btn=>{
         btn.addEventListener('click',()=>{
           bar.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
@@ -414,21 +533,23 @@
       });
     }
 
-    // ── Load ──
     fetch('projects.json')
       .then(r=>r.ok?r.json():Promise.reject())
       .then(projects=>{
         allProjects=projects;
         const grid=document.getElementById('projectsGrid');
-        if(!projects.length){grid.innerHTML='<div class="empty-state"><p>Aucun projet pour l\'instant.</p></div>';return;}
+        if(!projects.length){grid.innerHTML=`<div class="empty-state"><p>${t('loading')}</p></div>`;return;}
         grid.innerHTML=projects.map((p,i)=>renderCard(p,i)).join('');
         buildFilters(projects);
         document.querySelectorAll('.project-card.reveal').forEach(r=>revealObs.observe(r));
       })
       .catch(()=>{
         document.getElementById('projectsGrid').innerHTML=
-          '<div class="empty-state"><p>Ajoute tes projets depuis <a href="admin.html">le panneau admin</a>.</p></div>';
+          `<div class="empty-state"><p>Ajoute tes projets depuis <a href="admin.html">le panneau admin</a>.</p></div>`;
       });
+
+    // Init lang
+    applyLang();
   </script>
 </body>
 </html>
