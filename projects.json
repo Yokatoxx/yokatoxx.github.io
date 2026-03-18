@@ -5,12 +5,24 @@
     "description": "This game was created for the \"Here we go again\" Epic Game Jam. The theme was a perfect fit for the core of die & retry: that mix of frustration and exhilaration from starting over, again and again, until you achieve perfection. Protocol: Reboot is our interpretation of that concept.",
     "youtube": "https://youtu.be/PoIe25VPFok",
     "screenshot": "https://img.itch.zone/aW1nLzIzNzY0MjUzLnBuZw==/original/BmcoLH.png",
+    "screenshots": [
+      "https://img.itch.zone/aW1hZ2UvMzk4NDMwNS8yMzc2Mjk2Mi5wbmc=/original/kL7JAx.png",
+      "https://img.itch.zone/aW1hZ2UvMzk4NDMwNS8yMzc2MzIyNy5wbmc=/original/04IXCh.png",
+      "https://img.itch.zone/aW1hZ2UvMzk4NDMwNS8yMzc2MzIyOS5wbmc=/original/BDXK9L.png",
+      "https://img.itch.zone/aW1hZ2UvMzk4NDMwNS8yMzc2MzIyOC5wbmc=/original/Lz2fXG.png",
+      "https://img.itch.zone/aW1hZ2UvMzk4NDMwNS8yMzc2MzIyNi5wbmc=/original/XYnS13.png",
+      "https://img.itch.zone/aW1hZ2UvMzk4NDMwNS8yMzc2MzIzMC5wbmc=/original/o4xfHz.png"
+    ],
+    "devlog": "For this project, I was in charge of level design for a fast-paced top-down shooter created during the Epic Games Game Jam 2025, built around the theme \"Here we go again.\" Our team's concept centered on short, intense levels with near-instant respawning a loop designed to keep the player constantly engaged rather than frustrated. From the start, my goal was to make each death feel like a learning moment, not a setback.\nTo ground my design choices, I began by playing through several fast-paced shooters of the same genre, with Hotline Miami as my primary reference. Studying how that game structures its rooms tight corridors, limited sight lines, enemies placed to reward quick decision-making gave me a clear design language to draw from. Rather than copying its aesthetics, I focused on extracting the underlying principles: short engagement distances, high enemy density in contained spaces, and a layout that naturally directs player movement.\nFrom there, I sketched rapid layout drafts on paper. This low-fidelity step was intentional it let me iterate on player flow and enemy placement quickly, without committing to anything in-engine. Each sketch was essentially a hypothesis about how a player would move through the space and where tension would peak.\nOnce I had a solid base, I moved directly into Unreal Engine to prototype the levels. This is where theory met reality. One significant constraint I had to adapt to was our isometric camera: enemies placed in standard positions were nearly impossible for the player to spot. I had to rethink placement entirely, prioritising visibility over tactical challenge, and adjusting angles so that threats were always readable from the player's perspective.\nThe final levels are short and deliberately intense exactly what the concept called for. This project reinforced for me how much camera perspective shapes spatial design decisions, and how essential early paper prototyping is for validating flow before touching an engine.",
     "github": null,
-    "build": "https://akiran.itch.io/0xd34d",
+    "build": null,
+    "itch": "https://akiran.itch.io/0xd34d",
+    "website": null,
     "tags": [
       "Unreal",
       "Level Design",
-      "GameJam"
+      "GameJam",
+      "Fast Paced"
     ]
   }
 ]
