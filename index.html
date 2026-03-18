@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jordan Lamour — Portfolio</title>
+  <title>Jordan Lamour · Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -240,10 +240,10 @@
     <p class="section-label reveal" data-i18n="skills_label">Compétences</p>
     <h2 class="section-title reveal" data-i18n="skills_title">Ce que je maîtrise</h2>
     <div class="skills-grid reveal">
-      <div class="skill-group"><p class="skill-group-title" data-i18n="sk_design">Design</p><ul class="skill-list"><li>Level Design</li><li>Blockout</li><li>Prototypage</li><li>Gameplay</li><li>UX / HUD</li><li>Gestion de projet</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title" data-i18n="sk_3d">3D & Art</p><ul class="skill-list"><li>Blender</li><li>Modélisation</li><li>UV Mapping</li><li>Textures</li><li>Concept Art</li><li>Photoshop</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title" data-i18n="sk_gamedev">Game Dev</p><ul class="skill-list"><li>Unity</li><li>C#</li><li>Unreal Engine</li><li>Intégrations</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title" data-i18n="sk_env">Environnements</p><ul class="skill-list"><li>Interior Design</li><li>Props</li><li>Substance Painter</li><li>Optimisation 3D</li><li>Model Texture</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title" data-i18n="sk_design">Design</p><ul class="skill-list"><li data-i18n="ski_ld">Level Design</li><li data-i18n="ski_bk">Blockout</li><li data-i18n="ski_proto">Prototypage</li><li data-i18n="ski_gp">Gameplay</li><li>UX / HUD</li><li data-i18n="ski_pm">Gestion de projet</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title" data-i18n="sk_3d">3D & Art</p><ul class="skill-list"><li>Blender</li><li data-i18n="ski_model">Modélisation</li><li>UV Mapping</li><li data-i18n="ski_tex">Textures</li><li>Concept Art</li><li>Photoshop</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title" data-i18n="sk_gamedev">Game Dev</p><ul class="skill-list"><li>Unity</li><li>C#</li><li>Unreal Engine</li><li data-i18n="ski_integ">Intégrations</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title" data-i18n="sk_env">Environnements</p><ul class="skill-list"><li data-i18n="ski_interior">Interior Design</li><li>Props</li><li>Substance Painter</li><li data-i18n="ski_optim">Optimisation 3D</li><li data-i18n="ski_modtex">Model Texture</li></ul></div>
       <div class="skill-group"><p class="skill-group-title" data-i18n="sk_web">Web & Outils</p><ul class="skill-list"><li>React</li><li>JavaScript</li><li>HTML / CSS</li><li>GitHub</li></ul></div>
       <div class="skill-group"><p class="skill-group-title" data-i18n="sk_lang">Langues</p><ul class="skill-list"><li data-i18n="lang_fr">Français (natif)</li><li data-i18n="lang_en">Anglais (avancé)</li></ul></div>
     </div>
@@ -316,8 +316,8 @@
 
   <script>
     // ── THEME ──
-    const saved = localStorage.getItem('jl_theme');
-    if(saved === 'dark') { document.documentElement.setAttribute('data-theme','dark'); document.getElementById('themeToggle').textContent = '☀'; }
+    const savedTheme = localStorage.getItem('jl_theme');
+    if(savedTheme === 'dark') { document.documentElement.setAttribute('data-theme','dark'); document.getElementById('themeToggle').textContent = '☀'; }
     function toggleTheme(){
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
@@ -330,7 +330,7 @@
       fr: {
         nav_about:'À propos', nav_skills:'Compétences', nav_projects:'Projets',
         hero_tag:'Level Designer Junior · 3ème année ICAN',
-        hero_sub:'Je conçois des espaces de jeu pensés pour le joueur — des niveaux où chaque couloir, chaque ouverture raconte quelque chose.',
+        hero_sub:'Je conçois des espaces de jeu pensés pour le joueur, des niveaux où chaque couloir, chaque ouverture raconte quelque chose.',
         hero_cta1:'Voir mes projets', hero_cta2:'Me contacter',
         about_label:'À propos',
         about_title:'Étudiant en<br>3ème année<br>à l\'ICAN',
@@ -338,7 +338,7 @@
         about_p2:'Ce qui m\'attire dans le level design, c\'est le pouvoir de façonner l\'expérience du joueur sans qu\'il s\'en rende compte. Un niveau bien construit, c\'est de la narration spatiale : guider le regard, créer du rythme, récompenser l\'exploration. J\'aime l\'idée que l\'espace lui-même devienne un langage, entre <strong>blockout, contraintes de gameplay</strong> et intention artistique.',
         about_p3:'Je cherche actuellement un <strong>stage de level designer</strong> à partir du 1er juin 2026.',
         fact_ican:'Bachelor Game Design · 3ème année', fact_level:'Blockout · Gameplay flow · Narration spatiale',
-        fact_unity:'C# · Intégrations · HDRP', fact_3d:'Blender · Modélisation · UV · Textures',
+        fact_unity:'C# · Intégrations', fact_3d:'Blender · Modélisation · UV · Textures',
         skills_label:'Compétences', skills_title:'Ce que je maîtrise',
         sk_design:'Design', sk_3d:'3D & Art', sk_gamedev:'Game Dev', sk_env:'Environnements', sk_web:'Web & Outils', sk_lang:'Langues',
         lang_fr:'Français (natif)', lang_en:'Anglais (avancé)',
@@ -351,11 +351,14 @@
         devlog_title:'Ce que j\'ai fait', screenshots_title:'Screenshots', no_media:'Pas de média',
         card_more:'Voir plus', filter_unity:'Unity / Game Dev', filter_shader:'Shaders & Visuels',
         filter_web:'Web & Outils', filter_design:'Game Design', filter_other:'Autre',
+        ski_ld:'Level Design', ski_bk:'Blockout', ski_proto:'Prototypage', ski_gp:'Gameplay',
+        ski_pm:'Gestion de projet', ski_model:'Modélisation', ski_tex:'Textures',
+        ski_integ:'Intégrations', ski_interior:'Décors intérieurs', ski_optim:'Optimisation 3D', ski_modtex:'Texturage 3D',
       },
       en: {
         nav_about:'About', nav_skills:'Skills', nav_projects:'Projects',
         hero_tag:'Junior Level Designer · 3rd Year ICAN',
-        hero_sub:'I design game spaces built around the player — levels where every corridor, every opening tells a story.',
+        hero_sub:'I design game spaces built around the player, levels where every corridor, every opening tells a story.',
         hero_cta1:'See my projects', hero_cta2:'Contact me',
         about_label:'About',
         about_title:'3rd Year Student<br>at ICAN',
@@ -363,7 +366,7 @@
         about_p2:'What draws me to level design is the power to shape a player\'s experience without them even noticing. A well-crafted level is spatial storytelling: guiding the eye, building rhythm, rewarding exploration. I love the idea that space itself becomes a language, balancing <strong>blockout, gameplay constraints</strong> and artistic intent.',
         about_p3:'I\'m currently looking for a <strong>level design internship</strong> starting June 1st, 2026.',
         fact_ican:'Bachelor Game Design · 3rd Year', fact_level:'Blockout · Gameplay flow · Spatial Narrative',
-        fact_unity:'C# · Integration · HDRP', fact_3d:'Blender · Modeling · UV · Textures',
+        fact_unity:'C# · Integration', fact_3d:'Blender · Modeling · UV · Textures',
         skills_label:'Skills', skills_title:'What I know',
         sk_design:'Design', sk_3d:'3D & Art', sk_gamedev:'Game Dev', sk_env:'Environments', sk_web:'Web & Tools', sk_lang:'Languages',
         lang_fr:'French (native)', lang_en:'English (advanced)',
@@ -376,11 +379,14 @@
         devlog_title:'What I did', screenshots_title:'Screenshots', no_media:'No media',
         card_more:'See more', filter_unity:'Unity / Game Dev', filter_shader:'Shaders & Visuals',
         filter_web:'Web & Tools', filter_design:'Game Design', filter_other:'Other',
+        ski_ld:'Level Design', ski_bk:'Blockout', ski_proto:'Prototyping', ski_gp:'Gameplay',
+        ski_pm:'Project management', ski_model:'3D Modeling', ski_tex:'Textures',
+        ski_integ:'Integration', ski_interior:'Interior environments', ski_optim:'3D optimization', ski_modtex:'3D texturing',
       },
       es: {
         nav_about:'Sobre mí', nav_skills:'Habilidades', nav_projects:'Proyectos',
         hero_tag:'Level Designer Junior · 3er año ICAN',
-        hero_sub:'Diseño espacios de juego pensados para el jugador — niveles donde cada pasillo, cada abertura cuenta algo.',
+        hero_sub:'Diseño espacios de juego pensados para el jugador, niveles donde cada pasillo, cada abertura cuenta algo.',
         hero_cta1:'Ver mis proyectos', hero_cta2:'Contactarme',
         about_label:'Sobre mí',
         about_title:'Estudiante de<br>3er año<br>en el ICAN',
@@ -388,7 +394,7 @@
         about_p2:'Lo que me atrae del level design es el poder de moldear la experiencia del jugador sin que se dé cuenta. Un nivel bien construido es narrativa espacial: guiar la mirada, crear ritmo, recompensar la exploración. Me gusta la idea de que el espacio mismo se convierta en lenguaje, entre <strong>blockout, restricciones de gameplay</strong> e intención artística.',
         about_p3:'Actualmente busco unas <strong>prácticas de level design</strong> a partir del 1 de junio de 2026.',
         fact_ican:'Bachelor Diseño de Juegos · 3er año', fact_level:'Blockout · Flujo de gameplay · Narrativa espacial',
-        fact_unity:'C# · Integraciones · HDRP', fact_3d:'Blender · Modelado · UV · Texturas',
+        fact_unity:'C# · Integraciones', fact_3d:'Blender · Modelado · UV · Texturas',
         skills_label:'Habilidades', skills_title:'Lo que sé hacer',
         sk_design:'Diseño', sk_3d:'3D & Arte', sk_gamedev:'Game Dev', sk_env:'Entornos', sk_web:'Web & Herramientas', sk_lang:'Idiomas',
         lang_fr:'Francés (nativo)', lang_en:'Inglés (avanzado)',
@@ -401,6 +407,9 @@
         devlog_title:'Lo que hice', screenshots_title:'Capturas', no_media:'Sin media',
         card_more:'Ver más', filter_unity:'Unity / Game Dev', filter_shader:'Shaders y Visuales',
         filter_web:'Web y Herramientas', filter_design:'Diseño de Juego', filter_other:'Otro',
+        ski_ld:'Level Design', ski_bk:'Blockout', ski_proto:'Prototipado', ski_gp:'Gameplay',
+        ski_pm:'Gestión de proyectos', ski_model:'Modelado 3D', ski_tex:'Texturas',
+        ski_integ:'Integraciones', ski_interior:'Entornos interiores', ski_optim:'Optimización 3D', ski_modtex:'Texturizado 3D',
       }
     };
 
