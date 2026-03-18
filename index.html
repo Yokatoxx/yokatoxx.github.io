@@ -140,7 +140,8 @@
     .modal-link.primary:hover { background:var(--accent); border-color:var(--accent); }
     .modal-section { border-top:1px solid var(--line); padding-top:2rem; margin-top:2rem; }
     .modal-section h3 { font-family:'DM Serif Display',serif; font-size:1.3rem; margin-bottom:1.2rem; }
-    .modal-devlog { font-size:.95rem; color:var(--mid); line-height:1.85; white-space:pre-wrap; }
+    .modal-devlog { font-size:.95rem; color:var(--mid); line-height:1.85; }
+    .modal-devlog img { max-width:100%; border-radius:3px; margin:1rem 0; display:block; border:1px solid var(--line); }
     .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:.8rem; }
     .gallery-img { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:2px; border:1px solid var(--line); transition:transform .2s,box-shadow .2s; cursor:zoom-in; display:block; }
     .gallery-img:hover { transform:scale(1.03); box-shadow:0 6px 20px rgba(0,0,0,.12); }
@@ -492,7 +493,7 @@
       if(p.website) links+=`<a href="${p.website}" target="_blank" class="modal-link">Site web</a>`;
       let devlog='';
       if(p.devlog&&p.devlog.trim()){
-        devlog=`<div class="modal-section"><h3>${t('devlog_title')}</h3><div class="modal-devlog">${p.devlog.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div></div>`;
+        devlog=`<div class="modal-section"><h3>${t('devlog_title')}</h3><div class="modal-devlog">${p.devlog}</div></div>`;
       }
       let gallery='';
       if(p.screenshots&&p.screenshots.length){
