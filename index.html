@@ -452,7 +452,9 @@
     // ── PROJECTS ──
     function ytId(url){if(!url)return null;const m=url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&?/]+)/);return m?m[1]:null;}
 
-    function getCatLabel(cat){ return t('filter_'+cat) || cat; }
+    let categoriesData=[];
+    const CATS_FALLBACK={unity:'Unity / Game Dev',shader:'Shaders & Visuels',web:'Web & Outils',design:'Game Design',other:'Autre',level_design:'Level Design',game_jam:'Game Jam',unreal:'Unreal Engine'};
+    function getCatLabel(id){ const c=categoriesData.find(x=>x.id===id); return c?c.label:CATS_FALLBACK[id]||id; }
 
     function cardMedia(p){
       const id=ytId(p.youtube);
@@ -526,11 +528,16 @@
     document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
 
     function buildFilters(projects){
-      const cats=[...new Set(projects.map(p=>p.category||'other'))];
+      const usedIds=[...new Set(projects.map(p=>p.category||'other'))];
+      // Sort: featured first (in their defined order), then the rest
+      const featured=categoriesData.filter(c=>c.featured&&usedIds.includes(c.id));
+      const others=categoriesData.filter(c=>!c.featured&&usedIds.includes(c.id));
+      const uncategorised=usedIds.filter(id=>!categoriesData.find(c=>c.id===id));
+      const ordered=[...featured,...others,...uncategorised.map(id=>({id,label:getCatLabel(id)}))];
       const bar=document.getElementById('filterBar');
-      const active = bar.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+      const active=bar.querySelector('.filter-btn.active')?.dataset.filter||'all';
       bar.innerHTML=`<button class="filter-btn${active==='all'?' active':''}" data-filter="all">${t('filter_all')}</button>`
-        +cats.map(c=>`<button class="filter-btn${active===c?' active':''}" data-filter="${c}">${getCatLabel(c)}</button>`).join('');
+        +ordered.map(c=>`<button class="filter-btn${active===c.id?' active':''}" data-filter="${c.id}">${c.label}</button>`).join('');
       bar.querySelectorAll('.filter-btn').forEach(btn=>{
         btn.addEventListener('click',()=>{
           bar.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
@@ -545,12 +552,18 @@
 
     fetch('projects.json')
       .then(r=>r.ok?r.json():Promise.reject())
-      .then(projects=>{
-        allProjects=projects;
+      .then(data=>{
+        // Support both old format (array) and new format ({categories, projects})
+        if(Array.isArray(data)){
+          allProjects=data;
+        } else {
+          categoriesData=data.categories||[];
+          allProjects=data.projects||[];
+        }
         const grid=document.getElementById('projectsGrid');
-        if(!projects.length){grid.innerHTML=`<div class="empty-state"><p>${t('loading')}</p></div>`;return;}
-        grid.innerHTML=projects.map((p,i)=>renderCard(p,i)).join('');
-        buildFilters(projects);
+        if(!allProjects.length){grid.innerHTML=`<div class="empty-state"><p>Ajoute tes projets depuis <a href="admin.html">le panneau admin</a>.</p></div>`;return;}
+        grid.innerHTML=allProjects.map((p,i)=>renderCard(p,i)).join('');
+        buildFilters(allProjects);
         document.querySelectorAll('.project-card.reveal').forEach(r=>revealObs.observe(r));
       })
       .catch(()=>{
