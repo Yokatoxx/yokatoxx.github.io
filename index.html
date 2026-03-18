@@ -14,9 +14,8 @@
       --line: #DDD9D3; --accent: #C8541A; --card: #EFECE8; --tag-bg: #E5E1DB;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.7; cursor: none; }
-    .cursor { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .2s, height .2s; }
-    .cursor-ring { width: 36px; height: 36px; border: 1px solid var(--ink); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: transform .18s ease; opacity: .5; }
+    body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.7; }
+
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 4rem; background: rgba(247,245,242,.88); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
     nav.scrolled { border-color: var(--line); }
     .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
@@ -25,6 +24,7 @@
     .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; right:0; height:1px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform .25s ease; }
     .nav-links a:hover { color: var(--ink); }
     .nav-links a:hover::after { transform: scaleX(1); }
+
     #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 4rem 6rem; position: relative; overflow: hidden; }
     .hero-bg-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-family:'DM Serif Display',serif; font-size:clamp(5rem,14vw,16rem); color:transparent; -webkit-text-stroke:1px var(--line); white-space:nowrap; user-select:none; pointer-events:none; letter-spacing:-.03em; }
     .hero-tag { font-size:.75rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; opacity:0; animation:fadeUp .7s .2s ease forwards; }
@@ -32,16 +32,18 @@
     .hero-title em { font-style:italic; color:var(--accent); }
     .hero-sub { max-width:480px; font-size:1rem; color:var(--mid); margin-bottom:2.8rem; opacity:0; animation:fadeUp .7s .5s ease forwards; }
     .hero-ctas { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; animation:fadeUp .7s .65s ease forwards; }
-    .btn { text-decoration:none; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; padding:.85rem 2rem; border-radius:2px; transition:background .2s,color .2s,transform .15s; display:inline-block; border:none; font-family:'DM Sans',sans-serif; }
+    .btn { text-decoration:none; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; padding:.85rem 2rem; border-radius:2px; transition:background .2s,color .2s,transform .15s; display:inline-block; border:none; font-family:'DM Sans',sans-serif; cursor:pointer; }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary { background:var(--ink); color:var(--bg); }
     .btn-primary:hover { background:var(--accent); }
     .btn-ghost { background:transparent; color:var(--ink); border:1px solid var(--line); }
     .btn-ghost:hover { border-color:var(--ink); background:var(--card); }
+
     section { padding: 7rem 4rem; }
     .section-label { font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem; }
     .section-title { font-family:'DM Serif Display',serif; font-size:clamp(2rem,4vw,3.2rem); letter-spacing:-.025em; margin-bottom:3.5rem; line-height:1.1; }
     .divider { border:none; border-top:1px solid var(--line); margin:0 4rem; }
+
     .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
     .about-text p { color:var(--mid); margin-bottom:1rem; }
     .about-text p strong { color:var(--ink); font-weight:500; }
@@ -49,6 +51,7 @@
     .fact { border-top:1px solid var(--line); padding-top:1.1rem; }
     .fact-num { font-family:'DM Serif Display',serif; font-size:2.4rem; color:var(--accent); line-height:1; }
     .fact-label { font-size:.82rem; color:var(--mid); margin-top:.2rem; }
+
     #skills { background:var(--ink); color:var(--bg); }
     #skills .section-title { color:var(--bg); }
     #skills .section-label { color:var(--accent); }
@@ -59,13 +62,15 @@
     .skill-group-title { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; }
     .skill-list { list-style:none; display:flex; flex-wrap:wrap; gap:.5rem; }
     .skill-list li { font-size:.82rem; color:#9A9790; background:#252421; padding:.3rem .8rem; border-radius:2px; }
+
     .project-filter { display:flex; gap:.6rem; flex-wrap:wrap; margin-bottom:3rem; }
-    .filter-btn { font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; padding:.45rem 1.1rem; border-radius:2px; border:1px solid var(--line); background:transparent; color:var(--mid); cursor:none; transition:all .2s; font-family:'DM Sans',sans-serif; }
+    .filter-btn { font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; padding:.45rem 1.1rem; border-radius:2px; border:1px solid var(--line); background:transparent; color:var(--mid); cursor:pointer; transition:all .2s; font-family:'DM Sans',sans-serif; }
     .filter-btn.active, .filter-btn:hover { background:var(--ink); color:var(--bg); border-color:var(--ink); }
     .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.5rem; }
-    .project-card { background:var(--card); border:1px solid var(--line); padding:0; border-radius:3px; transition:transform .2s,box-shadow .2s; position:relative; overflow:hidden; display:flex; flex-direction:column; }
-    .project-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform .3s ease; }
-    .project-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.07); }
+
+    .project-card { background:var(--card); border:1px solid var(--line); border-radius:3px; transition:transform .2s,box-shadow .2s; position:relative; overflow:hidden; display:flex; flex-direction:column; cursor:pointer; }
+    .project-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform .3s ease; z-index:1; }
+    .project-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.08); }
     .project-card:hover::before { transform:scaleX(1); }
     .project-card[data-hidden="true"] { display:none; }
     .card-media { width:100%; aspect-ratio:16/9; overflow:hidden; background:#1A1916; position:relative; }
@@ -77,12 +82,71 @@
     .card-category { font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.8rem; }
     .card-title { font-family:'DM Serif Display',serif; font-size:1.35rem; margin-bottom:.7rem; line-height:1.2; }
     .card-desc { font-size:.88rem; color:var(--mid); margin-bottom:1.4rem; flex:1; }
-    .card-footer { display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; }
+    .card-footer { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
     .card-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
     .tag { font-size:.7rem; background:var(--tag-bg); padding:.2rem .6rem; border-radius:2px; color:var(--mid); }
-    .card-links { display:flex; gap:.5rem; flex-shrink:0; }
-    .card-link { font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; color:var(--mid); border:1px solid var(--line); padding:.25rem .7rem; border-radius:2px; transition:all .2s; white-space:nowrap; }
-    .card-link:hover { color:var(--ink); border-color:var(--ink); }
+    .card-read-more { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); white-space:nowrap; opacity:0; transition:opacity .2s; flex-shrink:0; }
+    .project-card:hover .card-read-more { opacity:1; }
+
+    /* ══ MODAL ══ */
+    .modal-backdrop {
+      position:fixed; inset:0; background:rgba(20,18,16,.75);
+      backdrop-filter:blur(8px); z-index:500;
+      display:flex; align-items:center; justify-content:center;
+      padding:2rem; opacity:0; pointer-events:none;
+      transition:opacity .3s ease;
+    }
+    .modal-backdrop.open { opacity:1; pointer-events:all; }
+    .modal {
+      background:var(--bg); border:1px solid var(--line); border-radius:4px;
+      width:100%; max-width:880px; max-height:90vh; overflow-y:auto;
+      transform:translateY(28px) scale(.97);
+      transition:transform .38s cubic-bezier(.16,1,.3,1);
+      position:relative; scrollbar-width:thin; scrollbar-color:var(--line) transparent;
+    }
+    .modal-backdrop.open .modal { transform:none; }
+
+    .modal-topbar {
+      position:sticky; top:0; z-index:10;
+      display:flex; justify-content:flex-end; padding:.9rem 1.2rem;
+      background:linear-gradient(var(--bg) 55%, transparent);
+      pointer-events:none;
+    }
+    .modal-topbar button {
+      pointer-events:all;
+      background:var(--card); border:1px solid var(--line); color:var(--ink);
+      font-size:.75rem; letter-spacing:.1em; text-transform:uppercase;
+      padding:.45rem 1.1rem; border-radius:2px; cursor:pointer;
+      font-family:'DM Sans',sans-serif; transition:background .2s,color .2s;
+    }
+    .modal-topbar button:hover { background:var(--ink); color:var(--bg); }
+
+    .modal-hero { width:100%; aspect-ratio:16/9; background:#1A1916; overflow:hidden; flex-shrink:0; }
+    .modal-hero img { width:100%; height:100%; object-fit:cover; }
+    .modal-hero iframe { width:100%; height:100%; border:none; }
+    .modal-hero-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#333; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; }
+
+    .modal-body { padding:2.5rem 3rem 3.5rem; }
+    .modal-meta { display:flex; align-items:center; gap:1rem; margin-bottom:1rem; flex-wrap:wrap; }
+    .modal-cat { font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+    .modal-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .modal-title { font-family:'DM Serif Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); letter-spacing:-.025em; line-height:1.1; margin-bottom:1rem; }
+    .modal-desc { font-size:1rem; color:var(--mid); margin-bottom:2rem; max-width:640px; line-height:1.75; }
+
+    .modal-links { display:flex; gap:.7rem; flex-wrap:wrap; margin-bottom:2.5rem; }
+    .modal-link { text-decoration:none; font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; padding:.65rem 1.4rem; border-radius:2px; border:1px solid var(--line); color:var(--ink); transition:all .2s; display:inline-block; }
+    .modal-link:hover { background:var(--ink); color:var(--bg); border-color:var(--ink); }
+    .modal-link.primary { background:var(--ink); color:var(--bg); border-color:var(--ink); }
+    .modal-link.primary:hover { background:var(--accent); border-color:var(--accent); }
+
+    .modal-section { border-top:1px solid var(--line); padding-top:2rem; margin-top:2rem; }
+    .modal-section h3 { font-family:'DM Serif Display',serif; font-size:1.3rem; margin-bottom:1.2rem; }
+    .modal-devlog { font-size:.95rem; color:var(--mid); line-height:1.85; white-space:pre-wrap; }
+
+    .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:.8rem; }
+    .gallery-img { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:2px; border:1px solid var(--line); transition:transform .2s,box-shadow .2s; cursor:zoom-in; display:block; }
+    .gallery-img:hover { transform:scale(1.03); box-shadow:0 6px 20px rgba(0,0,0,.1); }
+
     #contact { background:var(--card); }
     .contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
     .contact-intro { color:var(--mid); font-size:1.05rem; margin-bottom:2rem; }
@@ -95,28 +159,30 @@
     .contact-form { display:flex; flex-direction:column; gap:1rem; }
     .form-group { display:flex; flex-direction:column; gap:.4rem; }
     .form-group label { font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--mid); }
-    .form-group input, .form-group textarea { background:var(--bg); border:1px solid var(--line); padding:.8rem 1rem; font-family:'DM Sans',sans-serif; font-size:.9rem; color:var(--ink); border-radius:2px; outline:none; transition:border-color .2s; cursor:none; }
+    .form-group input, .form-group textarea { background:var(--bg); border:1px solid var(--line); padding:.8rem 1rem; font-family:'DM Sans',sans-serif; font-size:.9rem; color:var(--ink); border-radius:2px; outline:none; transition:border-color .2s; }
     .form-group input:focus, .form-group textarea:focus { border-color:var(--ink); }
     .form-group textarea { min-height:130px; resize:vertical; }
+
     footer { background:var(--ink); color:#6B6860; padding:2.5rem 4rem; display:flex; justify-content:space-between; align-items:center; font-size:.78rem; letter-spacing:.06em; }
     footer span em { color:var(--accent); font-style:normal; }
     .empty-state { grid-column:1/-1; text-align:center; padding:4rem 2rem; color:var(--mid); }
-    .empty-state p { font-size:.9rem; }
+    .empty-state a { color:var(--accent); }
+
     @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
     .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
     .reveal.visible { opacity:1; transform:none; }
+
     @media(max-width:900px){
       nav{padding:1.2rem 2rem} section{padding:5rem 2rem} .divider{margin:0 2rem}
       #hero{padding:0 2rem 5rem} .about-grid,.contact-layout{grid-template-columns:1fr;gap:3rem}
       .skills-grid{grid-template-columns:1fr 1fr}
       footer{flex-direction:column;gap:.8rem;text-align:center}
+      .modal-body{padding:1.8rem 1.5rem 2.5rem}
+      .modal-backdrop{padding:.8rem}
     }
   </style>
 </head>
 <body>
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
   <nav id="navbar">
     <a href="#hero" class="nav-logo">JL</a>
     <ul class="nav-links">
@@ -129,49 +195,47 @@
 
   <section id="hero">
     <div class="hero-bg-text">DESIGN</div>
-    <p class="hero-tag">Game Design Student · Développeur Unity</p>
+    <p class="hero-tag">Level Designer Junior · 3ème année ICAN</p>
     <h1 class="hero-title">Jordan<br><em>Lamour</em></h1>
-    <p class="hero-sub">Je conçois des expériences interactives — jeux, outils, shaders et systèmes procéduraux.</p>
+    <p class="hero-sub">Je conçois des expériences interactives — niveaux, outils, shaders et systèmes procéduraux.</p>
     <div class="hero-ctas">
       <a href="#projects" class="btn btn-primary">Voir mes projets</a>
       <a href="#contact" class="btn btn-ghost">Me contacter</a>
     </div>
   </section>
-
   <hr class="divider">
 
   <section id="about">
     <div class="about-grid">
       <div class="about-text reveal">
         <p class="section-label">À propos</p>
-        <h2 class="section-title">Étudiant en<br>game design</h2>
-        <p>Je m'appelle <strong>Jordan Lamour</strong> et je suis passionné par la création d'expériences interactives. Je combine du <strong>game design</strong> avec du développement technique sous <strong>Unity (HDRP)</strong> — shaders, systèmes procéduraux, outils sur mesure.</p>
-        <p>J'aime explorer des mécaniques originales et repousser les limites visuelles et systémiques de mes projets, des simulations de planètes procédurales aux effets d'écholocalisation en shader.</p>
+        <h2 class="section-title">Étudiant en<br>3ème année<br>à l'ICAN</h2>
+        <p>Je m'appelle <strong>Jordan Lamour</strong> et je suis développeur de jeux vidéo spécialisé dans le <strong>level design</strong>.</p>
+        <p>Ce qui m'attire dans le level design, c'est le pouvoir de façonner l'expérience du joueur sans qu'il s'en rende compte. Un niveau bien construit, c'est de la narration spatiale — guider le regard, créer du rythme, récompenser l'exploration. J'aime l'idée que l'espace lui-même devienne un langage, entre <strong>blockout, contraintes de gameplay</strong> et intention artistique.</p>
+        <p>Je cherche actuellement un <strong>stage de level designer</strong> à partir du 1er juin 2026.</p>
       </div>
       <div class="about-facts reveal">
-        <div class="fact"><div class="fact-num">Unity</div><div class="fact-label">HDRP · Compute Shaders · Amplify Shader</div></div>
-        <div class="fact"><div class="fact-num">C#</div><div class="fact-label">Scripting, systèmes de jeu, outils éditeur</div></div>
-        <div class="fact"><div class="fact-num">3D</div><div class="fact-label">Blender · modélisation · rigging</div></div>
-        <div class="fact"><div class="fact-num">Web</div><div class="fact-label">React · outils interactifs · prototypes</div></div>
+        <div class="fact"><div class="fact-num">ICAN</div><div class="fact-label">Bachelor Game Design · 3ème année</div></div>
+        <div class="fact"><div class="fact-num">Level</div><div class="fact-label">Blockout · Gameplay flow · Narration spatiale</div></div>
+        <div class="fact"><div class="fact-num">Unity</div><div class="fact-label">HDRP · C# · Compute Shaders</div></div>
+        <div class="fact"><div class="fact-num">3D</div><div class="fact-label">Blender · Modélisation · UV · Textures</div></div>
       </div>
     </div>
   </section>
-
   <hr class="divider">
 
   <section id="skills">
     <p class="section-label reveal">Compétences</p>
     <h2 class="section-title reveal">Ce que je maîtrise</h2>
     <div class="skills-grid reveal">
-      <div class="skill-group"><p class="skill-group-title">Game Dev</p><ul class="skill-list"><li>Unity HDRP</li><li>C#</li><li>NavMesh</li><li>Cinemachine</li><li>ScriptableObjects</li><li>Compute Shaders</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title">Shaders & Visuels</p><ul class="skill-list"><li>Amplify Shader</li><li>Shader Graph</li><li>VFX Graph</li><li>Post-processing</li><li>HDRP Lighting</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title">3D & Art</p><ul class="skill-list"><li>Blender</li><li>Modélisation</li><li>UV Mapping</li><li>Rigging</li><li>Python (addons)</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title">Design</p><ul class="skill-list"><li>Game Design Doc</li><li>Systèmes de règles</li><li>Mécaniques & boucles</li><li>UX / HUD</li><li>Prototypage</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title">Design</p><ul class="skill-list"><li>Level Design</li><li>Blockout</li><li>Prototypage</li><li>Gameplay</li><li>UX / HUD</li><li>Gestion de projet</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title">3D & Art</p><ul class="skill-list"><li>Blender</li><li>Modélisation</li><li>UV Mapping</li><li>Textures</li><li>Concept Art</li><li>Photoshop</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title">Game Dev</p><ul class="skill-list"><li>Unity HDRP</li><li>C#</li><li>Unreal Engine</li><li>Compute Shaders</li><li>NavMesh</li><li>Amplify Shader</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title">Environnements</p><ul class="skill-list"><li>Interior Design</li><li>Props</li><li>Substance Painter</li><li>Optimisation 3D</li><li>Model Texture</li></ul></div>
       <div class="skill-group"><p class="skill-group-title">Web & Outils</p><ul class="skill-list"><li>React</li><li>JavaScript</li><li>HTML / CSS</li><li>GitHub</li><li>n8n</li></ul></div>
-      <div class="skill-group"><p class="skill-group-title">Langues</p><ul class="skill-list"><li>Français (natif)</li><li>Anglais (B2)</li></ul></div>
+      <div class="skill-group"><p class="skill-group-title">Langues</p><ul class="skill-list"><li>Français (natif)</li><li>Anglais (avancé)</li></ul></div>
     </div>
   </section>
-
   <hr class="divider" style="border-color:#2a2a28;">
 
   <section id="projects">
@@ -181,10 +245,9 @@
       <button class="filter-btn active" data-filter="all">Tous</button>
     </div>
     <div class="projects-grid" id="projectsGrid">
-      <div class="empty-state"><p>Chargement des projets…</p></div>
+      <div class="empty-state"><p>Chargement…</p></div>
     </div>
   </section>
-
   <hr class="divider">
 
   <section id="contact">
@@ -194,24 +257,28 @@
       <div class="reveal">
         <p class="contact-intro">Je suis ouvert aux <strong>collaborations</strong>, stages et projets créatifs. N'hésite pas à me contacter !</p>
         <div class="contact-links">
-          <a href="https://github.com/ton-pseudo" target="_blank" class="contact-link">
-            <span class="link-icon">⌥</span>
-            <div><span class="link-label">GitHub</span>github.com/ton-pseudo</div>
-          </a>
-          <a href="https://linkedin.com/in/ton-profil" target="_blank" class="contact-link">
+          <a href="https://www.linkedin.com/in/jordan-lamour-3244a632b/" target="_blank" class="contact-link">
             <span class="link-icon">in</span>
-            <div><span class="link-label">LinkedIn</span>linkedin.com/in/ton-profil</div>
+            <div><span class="link-label">LinkedIn</span>jordan-lamour-3244a632b</div>
           </a>
-          <a href="mailto:ton@email.com" class="contact-link">
+          <a href="https://github.com/Yokatoxx" target="_blank" class="contact-link">
+            <span class="link-icon">⌥</span>
+            <div><span class="link-label">GitHub</span>github.com/Yokatoxx</div>
+          </a>
+          <a href="https://yokatoxx.itch.io/" target="_blank" class="contact-link">
+            <span class="link-icon">🎮</span>
+            <div><span class="link-label">itch.io</span>yokatoxx.itch.io</div>
+          </a>
+          <a href="mailto:jordan.lamour@hotmail.fr" class="contact-link">
             <span class="link-icon">@</span>
-            <div><span class="link-label">Email</span>ton@email.com</div>
+            <div><span class="link-label">Email</span>jordan.lamour@hotmail.fr</div>
           </a>
         </div>
       </div>
       <form class="contact-form reveal" onsubmit="return false;">
-        <div class="form-group"><label for="name">Nom</label><input type="text" id="name" placeholder="Ton nom"></div>
-        <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="ton@email.com"></div>
-        <div class="form-group"><label for="message">Message</label><textarea id="message" placeholder="Bonjour Jordan…"></textarea></div>
+        <div class="form-group"><label>Nom</label><input type="text" placeholder="Ton nom"></div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="ton@email.com"></div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Bonjour Jordan…"></textarea></div>
         <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Envoyer →</button>
       </form>
     </div>
@@ -222,74 +289,119 @@
     <span>Game Design · Unity · Creative Dev</span>
   </footer>
 
-  <script>
-    // Cursor
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx=0,my=0,rx=0,ry=0;
-    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-    function animCursor(){cursor.style.left=mx+'px';cursor.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animCursor);}
-    animCursor();
+  <!-- MODAL -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="modal">
+      <div class="modal-topbar"><button onclick="closeModal()">✕ Fermer</button></div>
+      <div id="modalContent"></div>
+    </div>
+  </div>
 
-    // Nav scroll
+  <script>
     window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>20));
 
-    // Reveal
-    const obs=new IntersectionObserver(entries=>entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target);}}),{threshold:.1});
-    document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+    const revealObs=new IntersectionObserver(entries=>entries.forEach((e,i)=>{
+      if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);revealObs.unobserve(e.target);}
+    }),{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(r=>revealObs.observe(r));
 
-    // ── Load projects from projects.json ──
-    const CATEGORIES = {
-      'unity':'Unity / Game Dev','shader':'Shaders & Visuels',
-      'web':'Web & Outils','design':'Game Design','other':'Autre'
-    };
+    const CATS={unity:'Unity / Game Dev',shader:'Shaders & Visuels',web:'Web & Outils',design:'Game Design',other:'Autre'};
+    function ytId(url){if(!url)return null;const m=url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&?/]+)/);return m?m[1]:null;}
 
-    function getYoutubeId(url){
-      if(!url)return null;
-      const m=url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&?/]+)/);
-      return m?m[1]:null;
-    }
-
-    function renderMedia(p){
-      if(p.youtube){
-        const id=getYoutubeId(p.youtube);
-        if(id) return `<div class="card-media"><iframe src="https://www.youtube.com/embed/${id}" allowfullscreen loading="lazy"></iframe></div>`;
-      }
-      if(p.screenshot){
-        return `<div class="card-media"><img src="${p.screenshot}" alt="${p.title}" loading="lazy"></div>`;
-      }
+    // ── Card ──
+    function cardMedia(p){
+      const id=ytId(p.youtube);
+      if(id) return `<div class="card-media"><iframe src="https://www.youtube.com/embed/${id}" allowfullscreen loading="lazy"></iframe></div>`;
+      if(p.screenshot) return `<div class="card-media"><img src="${p.screenshot}" alt="${p.title}" loading="lazy"></div>`;
       return `<div class="card-media"><div class="card-media-placeholder">Pas de média</div></div>`;
     }
-
-    function renderLinks(p){
-      let html='';
-      if(p.github) html+=`<a href="${p.github}" target="_blank" class="card-link">GitHub</a>`;
-      if(p.build)  html+=`<a href="${p.build}"  target="_blank" class="card-link">▶ Demo</a>`;
-      return html?`<div class="card-links">${html}</div>`:'';
-    }
-
-    function renderCard(p){
+    function renderCard(p,i){
       const tags=(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
       return `
-        <div class="project-card reveal" data-category="${p.category||'other'}">
-          ${renderMedia(p)}
+        <div class="project-card reveal" data-category="${p.category||'other'}" onclick="openModal(${i})">
+          ${cardMedia(p)}
           <div class="card-body">
-            <p class="card-category">${CATEGORIES[p.category]||p.category||'Projet'}</p>
+            <p class="card-category">${CATS[p.category]||p.category||'Projet'}</p>
             <h3 class="card-title">${p.title}</h3>
             <p class="card-desc">${p.description||''}</p>
             <div class="card-footer">
               <div class="card-tags">${tags}</div>
-              ${renderLinks(p)}
+              <span class="card-read-more">Voir plus →</span>
             </div>
           </div>
         </div>`;
     }
 
+    // ── Modal ──
+    let allProjects=[];
+
+    function buildModalHTML(p){
+      const id=ytId(p.youtube);
+      let hero='';
+      if(id)              hero=`<div class="modal-hero"><iframe src="https://www.youtube.com/embed/${id}" allowfullscreen></iframe></div>`;
+      else if(p.screenshot) hero=`<div class="modal-hero"><img src="${p.screenshot}" alt="${p.title}"></div>`;
+      else                hero=`<div class="modal-hero"><div class="modal-hero-placeholder">Pas de média</div></div>`;
+
+      const tags=(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+
+      let links='';
+      if(p.build)   links+=`<a href="${p.build}"   target="_blank" class="modal-link primary">▶ Jouer / Demo</a>`;
+      if(p.github)  links+=`<a href="${p.github}"  target="_blank" class="modal-link">GitHub</a>`;
+      if(p.itch)    links+=`<a href="${p.itch}"    target="_blank" class="modal-link">itch.io</a>`;
+      if(p.website) links+=`<a href="${p.website}" target="_blank" class="modal-link">Site web</a>`;
+
+      let devlog='';
+      if(p.devlog&&p.devlog.trim()){
+        devlog=`<div class="modal-section">
+          <h3>Ce que j'ai fait</h3>
+          <div class="modal-devlog">${p.devlog.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+        </div>`;
+      }
+
+      let gallery='';
+      if(p.screenshots&&p.screenshots.length){
+        gallery=`<div class="modal-section">
+          <h3>Screenshots</h3>
+          <div class="gallery-grid">${p.screenshots.map(s=>`<img src="${s}" class="gallery-img" loading="lazy">`).join('')}</div>
+        </div>`;
+      }
+
+      return `${hero}
+        <div class="modal-body">
+          <div class="modal-meta">
+            <span class="modal-cat">${CATS[p.category]||p.category||'Projet'}</span>
+            <div class="modal-tags">${tags}</div>
+          </div>
+          <h2 class="modal-title">${p.title}</h2>
+          ${p.description?`<p class="modal-desc">${p.description}</p>`:''}
+          ${links?`<div class="modal-links">${links}</div>`:''}
+          ${devlog}
+          ${gallery}
+        </div>`;
+    }
+
+    function openModal(i){
+      const p=allProjects[i]; if(!p)return;
+      document.getElementById('modalContent').innerHTML=buildModalHTML(p);
+      document.getElementById('modal').scrollTop=0;
+      document.getElementById('modalBackdrop').classList.add('open');
+      document.body.style.overflow='hidden';
+    }
+    function closeModal(){
+      document.getElementById('modalBackdrop').classList.remove('open');
+      document.body.style.overflow='';
+    }
+    document.getElementById('modalBackdrop').addEventListener('click',e=>{
+      if(e.target===document.getElementById('modalBackdrop')) closeModal();
+    });
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+    // ── Filters ──
     function buildFilters(projects){
       const cats=[...new Set(projects.map(p=>p.category||'other'))];
       const bar=document.getElementById('filterBar');
       bar.innerHTML=`<button class="filter-btn active" data-filter="all">Tous</button>`
-        +cats.map(c=>`<button class="filter-btn" data-filter="${c}">${CATEGORIES[c]||c}</button>`).join('');
+        +cats.map(c=>`<button class="filter-btn" data-filter="${c}">${CATS[c]||c}</button>`).join('');
       bar.querySelectorAll('.filter-btn').forEach(btn=>{
         btn.addEventListener('click',()=>{
           bar.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
@@ -302,26 +414,20 @@
       });
     }
 
-    function initReveal(){
-      document.querySelectorAll('.reveal:not(.visible)').forEach(r=>obs.observe(r));
-    }
-
+    // ── Load ──
     fetch('projects.json')
       .then(r=>r.ok?r.json():Promise.reject())
       .then(projects=>{
+        allProjects=projects;
         const grid=document.getElementById('projectsGrid');
-        if(!projects.length){
-          grid.innerHTML='<div class="empty-state"><p>Aucun projet pour l\'instant.</p></div>';
-          return;
-        }
-        grid.innerHTML=projects.map(renderCard).join('');
+        if(!projects.length){grid.innerHTML='<div class="empty-state"><p>Aucun projet pour l\'instant.</p></div>';return;}
+        grid.innerHTML=projects.map((p,i)=>renderCard(p,i)).join('');
         buildFilters(projects);
-        initReveal();
+        document.querySelectorAll('.project-card.reveal').forEach(r=>revealObs.observe(r));
       })
       .catch(()=>{
-        // Fallback: projects.json missing → show placeholder
         document.getElementById('projectsGrid').innerHTML=
-          '<div class="empty-state"><p>Ajoute tes projets depuis <a href="admin.html" style="color:var(--accent)">le panneau admin</a>.</p></div>';
+          '<div class="empty-state"><p>Ajoute tes projets depuis <a href="admin.html">le panneau admin</a>.</p></div>';
       });
   </script>
 </body>
