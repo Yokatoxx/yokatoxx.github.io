@@ -527,6 +527,8 @@
       else hero=`<div class="modal-hero"><div class="modal-hero-placeholder">${t('no_media')}</div></div>`;
 
       const tags=(p.tags||[]).join(', ');
+
+      let links='';
       if(p.build)   links+=`<a href="${p.build}"   target="_blank" class="modal-link primary">▶ Demo</a>`;
       if(p.github)  links+=`<a href="${p.github}"  target="_blank" class="modal-link">GitHub</a>`;
       if(p.itch)    links+=`<a href="${p.itch}"    target="_blank" class="modal-link">itch.io</a>`;
