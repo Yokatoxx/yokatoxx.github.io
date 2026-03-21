@@ -535,7 +535,7 @@
       if(p.website) links+=`<a href="${p.website}" target="_blank" class="modal-link">Site web</a>`;
 
       // Metadata grid items (right column, Atlas V style)
-      const toolTags = (p.tags||[]).filter(t=>['Unity','Unreal Engine','Blender','C#','Photoshop','Substance Painter','Maya','ZBrush'].includes(t)).join(', ');
+      const toolTags = (p.tools||[]).join(', ');
       const allMeta = [
         { label: 'Category', value: getCatLabel(p.category||'other') },
         { label: 'Tags', value: tags || null },
