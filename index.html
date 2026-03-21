@@ -541,6 +541,7 @@
         { label: 'Tags', value: tags || null },
         { label: 'Role', value: 'Level Designer' },
         { label: 'Tools', value: toolTags || null },
+        ...((p.specs||[]).map(s=>({ label: s.label, value: s.value }))),
       ].filter(m => m.value);
 
       const metaGrid = allMeta.map(m=>`
