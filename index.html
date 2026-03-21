@@ -134,10 +134,10 @@
     .modal-topbar button { pointer-events:all; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); color:rgba(255,255,255,.6); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; padding:.4rem 1rem; border-radius:2px; cursor:pointer; font-family:'DM Sans',sans-serif; transition:background .2s,color .2s; }
     .modal-topbar button:hover { background:rgba(255,255,255,.15); color:#fff; }
 
-    .modal-hero { width:100%; aspect-ratio:16/9; background:#111; overflow:hidden; flex-shrink:0; }
-    .modal-hero img { width:100%; height:100%; object-fit:cover; }
-    .modal-hero iframe { width:100%; height:100%; border:none; }
-    .modal-hero-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#333; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; }
+    .modal-hero { width:100%; max-height:70vh; overflow:hidden; background:#111; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+    .modal-hero img { width:100%; height:100%; object-fit:contain; max-height:70vh; display:block; }
+    .modal-hero iframe { width:100%; aspect-ratio:16/9; border:none; display:block; }
+    .modal-hero-placeholder { width:100%; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; color:#333; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; }
 
     /* Atlas V style body: title top, then 2-col layout */
     .modal-body { padding:2.5rem 2.8rem 3rem; color:#E8E4DE; }
