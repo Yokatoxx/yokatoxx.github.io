@@ -222,8 +222,8 @@
     <div class="nav-right">
       <ul class="nav-links">
         <li><a href="#about" data-i18n="nav_about">À propos</a></li>
-        <li><a href="#skills" data-i18n="nav_skills">Compétences</a></li>
         <li><a href="#projects" data-i18n="nav_projects">Projets</a></li>
+        <li><a href="#skills" data-i18n="nav_skills">Compétences</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="lang-switcher">
@@ -266,6 +266,18 @@
   </section>
   <hr class="divider">
 
+  <section id="projects">
+    <p class="section-label reveal" data-i18n="proj_label">Projets</p>
+    <h2 class="section-title reveal" data-i18n="proj_title">Mes réalisations</h2>
+    <div class="project-filter reveal" id="filterBar">
+      <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Tous</button>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <div class="empty-state"><p data-i18n="loading">Chargement…</p></div>
+    </div>
+  </section>
+  <hr class="divider">
+
   <section id="skills">
     <p class="section-label reveal" data-i18n="skills_label">Compétences</p>
     <h2 class="section-title reveal" data-i18n="skills_title">Ce que je maîtrise</h2>
@@ -279,18 +291,6 @@
     </div>
   </section>
   <hr class="divider" style="border-color:var(--skills-border);">
-
-  <section id="projects">
-    <p class="section-label reveal" data-i18n="proj_label">Projets</p>
-    <h2 class="section-title reveal" data-i18n="proj_title">Mes réalisations</h2>
-    <div class="project-filter reveal" id="filterBar">
-      <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Tous</button>
-    </div>
-    <div class="projects-grid" id="projectsGrid">
-      <div class="empty-state"><p data-i18n="loading">Chargement…</p></div>
-    </div>
-  </section>
-  <hr class="divider">
 
   <section id="contact">
     <p class="section-label reveal" data-i18n="contact_label">Contact</p>
