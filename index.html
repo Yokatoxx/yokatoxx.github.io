@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jordan Lamour · Portfolio</title>
+  <meta name="description" content="Portfolio de Jordan Lamour, Level Designer Junior en 3ème année à l'ICAN. Projets Unity, Unreal Engine, level design et game jam.">
+  <meta property="og:title" content="Jordan Lamour · Portfolio">
+  <meta property="og:description" content="Level Designer Junior, étudiant à l'ICAN. Projets de jeux vidéo, level design et game dev.">
+  <meta name="theme-color" content="#F2F0EC">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -25,6 +29,10 @@
     }
 
     html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
     body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.7; transition: background .3s, color .3s; }
 
     /* ── NAV ── */
@@ -53,7 +61,7 @@
     .hero-tag { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; opacity:0; animation:fadeUp .7s .2s ease forwards; }
     .hero-title { font-family:'DM Serif Display',serif; font-size:clamp(3rem,7vw,7rem); line-height:1.0; letter-spacing:-.03em; margin-bottom:1.4rem; opacity:0; animation:fadeUp .7s .35s ease forwards; }
     .hero-title em { font-style:italic; color:var(--accent); }
-    .hero-sub { max-width:500px; font-size:1rem; color:var(--mid); margin-bottom:2.8rem; opacity:0; animation:fadeUp .7s .5s ease forwards; line-height:1.75; }
+    .hero-sub { max-width:500px; font-size:1rem; color:var(--mid); margin-bottom:2.8rem; opacity:0; animation:fadeUp .7s .5s ease forwards; line-height:1.8; }
     .hero-ctas { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; animation:fadeUp .7s .65s ease forwards; }
     .btn { text-decoration:none; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; padding:.85rem 2rem; border-radius:2px; transition:background .2s,color .2s,transform .15s,border-color .2s; display:inline-block; border:none; font-family:'DM Sans',sans-serif; cursor:pointer; }
     .btn:hover { transform: translateY(-2px); }
@@ -78,10 +86,10 @@
     .fact-label { font-size:.82rem; color:var(--mid); margin-top:.2rem; }
 
     /* ── SKILLS ── */
-    #skills { background:var(--skills-bg); color:var(--ink); transition:background .3s; }
-    #skills .section-title { color: var(--ink); filter: invert(1) brightness(2); }
-    [data-theme="dark"] #skills .section-title { filter: none; color: var(--ink); }
+    #skills { background:var(--skills-bg); transition:background .3s; }
     #skills .section-label { color:var(--accent); }
+    #skills .section-title { color:#F0EDE8; }
+    [data-theme="dark"] #skills .section-title { color:#E8E4DE; }
     .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--skills-border); }
     .skill-group { padding:2.2rem 2rem; border-right:1px solid var(--skills-border); border-bottom:1px solid var(--skills-border); }
     .skill-group:nth-child(3n) { border-right:none; }
@@ -96,8 +104,9 @@
     .filter-btn.active, .filter-btn:hover { background:var(--ink); color:var(--bg); border-color:var(--ink); }
     .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.5rem; }
     .project-card { background:var(--card); border:1px solid var(--line); border-radius:3px; transition:transform .2s,box-shadow .2s,background .3s; position:relative; overflow:hidden; display:flex; flex-direction:column; cursor:pointer; }
+    .project-card:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
     .project-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform .3s ease; z-index:1; }
-    .project-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.1); }
+    .project-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,.12); }
     .project-card:hover::before { transform:scaleX(1); }
     .project-card[data-hidden="true"] { display:none; }
     .card-media { width:100%; aspect-ratio:16/9; overflow:hidden; background:#111; position:relative; }
@@ -149,9 +158,9 @@
     .modal-right {}
     .modal-meta-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; }
     .modal-meta-item { padding:1.1rem 1rem 1.1rem 0; border-top:1px solid #2A2825; min-width:0; }
-    .modal-meta-label { font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; color:#5A5856; margin-bottom:.4rem; font-weight:500; }
-    .modal-meta-value { font-size:.88rem; color:#C0BDB8; line-height:1.6; word-break:break-word; }
-    .modal-meta-value .tag { background:#1A1916; color:#7A7770; font-size:.68rem; border:1px solid #2A2825; margin-bottom:3px; display:inline-block; }
+    .modal-meta-item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+    .modal-meta-label { font-size:.65rem; letter-spacing:.14em; text-transform:uppercase; color:#5A5856; margin-bottom:.5rem; font-weight:500; }
+    .modal-meta-value { font-size:.88rem; color:#C0BDB8; line-height:1.65; word-break:break-word; }
 
     /* Devlog & gallery in full width below the grid */
     .modal-section { border-top:1px solid #2A2825; padding-top:2rem; margin-top:2rem; }
@@ -181,8 +190,8 @@
     .contact-intro { color:var(--mid); font-size:1.05rem; margin-bottom:2rem; }
     .contact-intro strong { color:var(--ink); }
     .contact-links { display:flex; flex-direction:column; gap:1rem; }
-    .contact-link { display:flex; align-items:center; gap:1rem; text-decoration:none; color:var(--ink); padding:1rem 1.4rem; background:var(--bg); border:1px solid var(--line); border-radius:3px; transition:border-color .2s,transform .15s,background .3s; font-size:.9rem; font-weight:500; }
-    .contact-link:hover { border-color:var(--ink); transform:translateX(4px); }
+    .contact-link { display:flex; align-items:center; gap:1rem; text-decoration:none; color:var(--ink); padding:1rem 1.4rem; background:var(--bg); border:1px solid var(--line); border-radius:3px; transition:border-color .2s,transform .2s,background .3s,box-shadow .2s; font-size:.9rem; font-weight:500; }
+    .contact-link:hover { border-color:var(--ink); transform:translateX(6px); box-shadow:4px 0 0 0 var(--accent); }
     .link-icon { font-size:1rem; flex-shrink:0; width:1.4rem; text-align:center; }
     .link-label { font-size:.65rem; text-transform:uppercase; letter-spacing:.1em; color:var(--mid); display:block; font-weight:300; margin-bottom:.1rem; }
     .contact-form { display:flex; flex-direction:column; gap:1rem; }
@@ -208,10 +217,15 @@
       #hero{padding:0 2rem 5rem} .about-grid,.contact-layout{grid-template-columns:1fr;gap:3rem}
       .skills-grid{grid-template-columns:1fr 1fr}
       footer{flex-direction:column;gap:.8rem;text-align:center;padding:2rem}
-      .modal-body{padding:1.8rem 1.5rem 2.5rem} .modal-backdrop{padding:.8rem} .modal-content-grid{grid-template-columns:1fr;gap:2rem}
+      .modal-body{padding:1.8rem 1.5rem 2.5rem} .modal-backdrop{padding:.8rem}
+      .modal-content-grid{grid-template-columns:1fr;gap:2rem}
+      .modal-meta-grid{grid-template-columns:1fr 1fr}
     }
     @media(max-width:600px){
       .nav-links{display:none} .skills-grid{grid-template-columns:1fr}
+      .modal-meta-grid{grid-template-columns:1fr}
+      .modal-meta-item:last-child:nth-child(odd){grid-column:1}
+      .hero-title{letter-spacing:-.02em}
     }
   </style>
 </head>
@@ -239,7 +253,7 @@
     <div class="hero-bg-text">DESIGN</div>
     <p class="hero-tag" data-i18n="hero_tag">Level Designer Junior · 3ème année ICAN</p>
     <h1 class="hero-title">Jordan<br><em>Lamour</em></h1>
-    <p class="hero-sub" data-i18n="hero_sub">Je conçois des espaces de jeu pensés pour le joueur — des niveaux où chaque couloir, chaque ouverture raconte quelque chose.</p>
+    <p class="hero-sub" data-i18n="hero_sub">Je conçois des espaces de jeu pensés pour le joueur, des niveaux où chaque couloir, chaque ouverture raconte quelque chose.</p>
     <div class="hero-ctas">
       <a href="#projects" class="btn btn-primary" data-i18n="hero_cta1">Voir mes projets</a>
       <a href="#contact" class="btn btn-ghost" data-i18n="hero_cta2">Me contacter</a>
@@ -503,7 +517,7 @@
     function renderCard(p,i){
       const tags=(p.tags||[]).map(tag=>`<span class="tag">${tag}</span>`).join('');
       return `
-        <div class="project-card reveal" data-category="${p.category||'other'}" onclick="openModal(${i})">
+        <div class="project-card reveal" data-category="${p.category||'other'}" onclick="openModal(${i})" tabindex="0" onkeydown="if(event.key==='Enter')openModal(${i})"  role="button" aria-label="Voir le projet ${p.title}">
           ${cardMedia(p)}
           <div class="card-body">
             <p class="card-category">${getCatLabel(p.category||'other')}</p>
