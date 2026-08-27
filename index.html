@@ -7,7 +7,11 @@
   <meta name="description" content="Portfolio de Jordan Lamour, Level Designer Junior en 3ème année à l'ICAN. Projets Unity, Unreal Engine, level design et game jam.">
   <meta property="og:title" content="Jordan Lamour · Portfolio">
   <meta property="og:description" content="Level Designer Junior, étudiant à l'ICAN. Projets de jeux vidéo, level design et game dev.">
+  <meta name="twitter:card" content="summary">
+  <meta name="author" content="Jordan Lamour">
   <meta name="theme-color" content="#F2F0EC">
+  <link rel="canonical" href="https://yokatoxx.github.io/">
+  <link rel="icon" href="TemplateData/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -54,6 +58,8 @@
     /* Dark mode toggle */
     .theme-toggle { background: transparent; border: 1px solid var(--line); color: var(--mid); font-size: .85rem; padding: .3rem .6rem; border-radius: 2px; cursor: pointer; transition: all .2s; line-height: 1; }
     .theme-toggle:hover { border-color: var(--ink); color: var(--ink); }
+    .nav-menu-toggle { display:none; background:transparent; border:1px solid var(--line); color:var(--mid); font-size:1rem; line-height:1; padding:.35rem .55rem; border-radius:2px; cursor:pointer; }
+    .nav-menu-toggle:hover, .nav-menu-toggle:focus-visible { border-color:var(--ink); color:var(--ink); }
 
     /* ── HERO ── */
     #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 4rem 6rem; position: relative; overflow: hidden; }
@@ -114,6 +120,7 @@
     .project-card:hover .card-media img { transform:scale(1.04); }
     .card-media iframe { width:100%; height:100%; border:none; }
     .card-media-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#444; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; }
+    .media-play { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.2rem; text-shadow:0 1px 8px rgba(0,0,0,.7); pointer-events:none; opacity:.9; }
     .card-body { padding:1.8rem; flex:1; display:flex; flex-direction:column; }
     .card-category { font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.8rem; }
     .card-title { font-family:'DM Serif Display',serif; font-size:1.35rem; margin-bottom:.7rem; line-height:1.2; }
@@ -170,6 +177,7 @@
     .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:.8rem; }
     .gallery-img { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:2px; border:1px solid #2A2825; transition:transform .2s,opacity .2s; cursor:zoom-in; display:block; }
     .gallery-img:hover { transform:scale(1.03); opacity:.9; }
+    .gallery-img:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
 
     /* ── LIGHTBOX ── */
     .lightbox { position:fixed; inset:0; background:rgba(10,9,8,.95); z-index:600; display:flex; align-items:center; justify-content:center; padding:2rem; opacity:0; pointer-events:none; transition:opacity .25s ease; }
@@ -200,6 +208,7 @@
     .form-group input, .form-group textarea { background:var(--bg); border:1px solid var(--line); padding:.8rem 1rem; font-family:'DM Sans',sans-serif; font-size:.9rem; color:var(--ink); border-radius:2px; outline:none; transition:border-color .2s,background .3s; }
     .form-group input:focus, .form-group textarea:focus { border-color:var(--accent); }
     .form-group textarea { min-height:130px; resize:vertical; }
+    .form-status { min-height:1.4em; font-size:.78rem; color:var(--mid); }
 
     /* ── FOOTER ── */
     footer { background:var(--skills-bg); color:var(--mid); padding:2.5rem 4rem; display:flex; justify-content:space-between; align-items:center; font-size:.78rem; letter-spacing:.06em; transition:background .3s; }
@@ -211,6 +220,7 @@
     @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
     .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
     .reveal.visible { opacity:1; transform:none; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
     @media(max-width:900px){
       nav{padding:1rem 1.5rem} .nav-links{gap:1.2rem} section{padding:5rem 2rem} .divider{margin:0 2rem}
@@ -222,10 +232,18 @@
       .modal-meta-grid{grid-template-columns:1fr 1fr}
     }
     @media(max-width:600px){
-      .nav-links{display:none} .skills-grid{grid-template-columns:1fr}
+      nav { position:fixed; }
+      .nav-right { gap:.45rem; }
+      .nav-menu-toggle { display:inline-flex; align-items:center; justify-content:center; }
+      .nav-links { position:absolute; top:100%; left:0; right:0; display:flex; flex-direction:column; gap:0; padding:0 1.5rem; background:var(--nav-bg); border-bottom:1px solid var(--line); max-height:0; overflow:hidden; opacity:0; pointer-events:none; transition:max-height .25s ease,opacity .2s ease,padding .25s ease; }
+      nav.menu-open .nav-links { max-height:18rem; padding-top:.55rem; padding-bottom:.65rem; opacity:1; pointer-events:auto; }
+      .nav-links li { width:100%; }
+      .nav-links a { display:block; padding:.45rem 0; }
+      .skills-grid{grid-template-columns:1fr}
       .modal-meta-grid{grid-template-columns:1fr}
       .modal-meta-item:last-child:nth-child(odd){grid-column:1}
       .hero-title{letter-spacing:-.02em}
+      .projects-grid { grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr)); }
     }
   </style>
 </head>
@@ -234,18 +252,19 @@
   <nav id="navbar">
     <a href="#hero" class="nav-logo">JL</a>
     <div class="nav-right">
-      <ul class="nav-links">
+      <ul class="nav-links" id="primaryNav">
         <li><a href="#projects" data-i18n="nav_projects">Projets</a></li>
         <li><a href="#skills" data-i18n="nav_skills">Compétences</a></li>
         <li><a href="#about" data-i18n="nav_about">À propos</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <button class="nav-menu-toggle" id="navMenuToggle" type="button" aria-controls="primaryNav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
       <div class="lang-switcher">
-        <button class="lang-btn active" onclick="setLang('fr')">FR</button>
-        <button class="lang-btn" onclick="setLang('en')">EN</button>
-        <button class="lang-btn" onclick="setLang('es')">ES</button>
+        <button class="lang-btn active" type="button" aria-pressed="true" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn" type="button" aria-pressed="false" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" type="button" aria-pressed="false" onclick="setLang('es')">ES</button>
       </div>
-      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Changer le thème">☾</button>
+      <button class="theme-toggle" id="themeToggle" type="button" onclick="toggleTheme()" title="Changer le thème" aria-label="Activer le thème sombre" aria-pressed="false">☾</button>
     </div>
   </nav>
 
@@ -294,7 +313,7 @@
         <h2 class="section-title" data-i18n="about_title">Étudiant en<br>3ème année<br>à l'ICAN</h2>
         <p data-i18n="about_p1">Je m'appelle <strong>Jordan Lamour</strong> et je suis développeur de jeux vidéo spécialisé dans le <strong>level design</strong>.</p>
         <p data-i18n="about_p2">Ce qui m'attire dans le level design, c'est le pouvoir de façonner l'expérience du joueur sans qu'il s'en rende compte. Un niveau bien construit, c'est de la narration spatiale : guider le regard, créer du rythme, récompenser l'exploration. J'aime l'idée que l'espace lui-même devienne un langage, entre <strong>blockout, contraintes de gameplay</strong> et intention artistique.</p>
-        <p data-i18n="about_p3">Je cherche actuellement un <strong>stage de level designer</strong> à partir du 1er juin 2026.</p>
+        <p data-i18n="about_p3">Je suis ouvert aux <strong>opportunités de level design</strong>, collaborations et projets créatifs.</p>
       </div>
       <div class="about-facts reveal">
         <div class="fact"><div class="fact-num">ICAN</div><div class="fact-label" data-i18n="fact_ican">Bachelor Game Design · 3ème année</div></div>
@@ -313,21 +332,21 @@
       <div class="reveal">
         <p class="contact-intro" data-i18n="contact_intro">Je suis ouvert aux <strong>collaborations</strong>, stages et projets créatifs.</p>
         <div class="contact-links">
-          <a href="https://www.linkedin.com/in/jordan-lamour-3244a632b/" target="_blank" class="contact-link">
+          <a href="https://www.linkedin.com/in/jordan-lamour-3244a632b/" target="_blank" rel="noopener noreferrer" class="contact-link">
             <span class="link-icon">in</span>
             <div><span class="link-label">LinkedIn</span>LinkedIn</div>
           </a>
-          <a href="https://github.com/Yokatoxx" target="_blank" class="contact-link">
+          <a href="https://github.com/Yokatoxx" target="_blank" rel="noopener noreferrer" class="contact-link">
             <span class="link-icon">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58C20.56 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
             </span>
             <div><span class="link-label">GitHub</span>GitHub</div>
           </a>
-          <a href="https://yokatoxx.itch.io/" target="_blank" class="contact-link">
+          <a href="https://yokatoxx.itch.io/" target="_blank" rel="noopener noreferrer" class="contact-link">
             <span class="link-icon">◈</span>
             <div><span class="link-label">itch.io</span>itch.io</div>
           </a>
-          <a href="https://www.artstation.com/yokatoxx" target="_blank" class="contact-link">
+          <a href="https://www.artstation.com/yokatoxx" target="_blank" rel="noopener noreferrer" class="contact-link">
             <span class="link-icon">▲</span>
             <div><span class="link-label">ArtStation</span>ArtStation</div>
           </a>
@@ -337,50 +356,60 @@
           </a>
         </div>
       </div>
-      <form class="contact-form reveal" onsubmit="return false;">
-        <div class="form-group"><label data-i18n="form_name">Nom</label><input type="text" data-i18n-placeholder="form_name_ph" placeholder="Ton nom"></div>
-        <div class="form-group"><label>Email</label><input type="email" placeholder="ton@email.com"></div>
-        <div class="form-group"><label data-i18n="form_msg">Message</label><textarea data-i18n-placeholder="form_msg_ph" placeholder="Bonjour Jordan…"></textarea></div>
+      <form class="contact-form reveal" onsubmit="sendMessage(event)">
+        <div class="form-group"><label for="contactName" data-i18n="form_name">Nom</label><input id="contactName" name="name" type="text" autocomplete="name" required data-i18n-placeholder="form_name_ph" placeholder="Ton nom"></div>
+        <div class="form-group"><label for="contactEmail" data-i18n="form_email">Email</label><input id="contactEmail" name="email" type="email" autocomplete="email" required placeholder="ton@email.com"></div>
+        <div class="form-group"><label for="contactMessage" data-i18n="form_msg">Message</label><textarea id="contactMessage" name="message" required data-i18n-placeholder="form_msg_ph" placeholder="Bonjour Jordan…"></textarea></div>
         <button type="submit" class="btn btn-primary" style="align-self:flex-start;" data-i18n="form_send">Envoyer</button>
+        <p class="form-hint" data-i18n="form_mail_hint">Ton logiciel de messagerie s’ouvrira pour préparer l’email.</p>
+        <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
       </form>
     </div>
   </section>
 
   <footer>
-    <span>© 2025 <em>Jordan Lamour</em></span>
+    <span>© 2026 <em>Jordan Lamour</em></span>
     <span data-i18n="footer_sub">Level Designer Junior · ICAN</span>
   </footer>
 
   <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" onclick="closeLightbox()">✕ Fermer</button>
-    <button class="lightbox-prev" id="lightboxPrev" onclick="lightboxNav(-1)">‹</button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galerie d’images" aria-hidden="true">
+    <button class="lightbox-close" type="button" onclick="closeLightbox()">✕ Fermer</button>
+    <button class="lightbox-prev" type="button" id="lightboxPrev" aria-label="Image précédente" onclick="lightboxNav(-1)">‹</button>
     <img class="lightbox-img" id="lightboxImg" src="" alt="">
-    <button class="lightbox-next" id="lightboxNext" onclick="lightboxNav(1)">›</button>
+    <button class="lightbox-next" type="button" id="lightboxNext" aria-label="Image suivante" onclick="lightboxNav(1)">›</button>
     <span class="lightbox-counter" id="lightboxCounter"></span>
   </div>
 
-  <div class="modal-backdrop" id="modalBackdrop">
-    <div class="modal" id="modal">
-      <div class="modal-topbar"><button onclick="closeModal()" data-i18n="modal_close">✕ Fermer</button></div>
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-topbar"><button type="button" onclick="closeModal()" data-i18n="modal_close">✕ Fermer</button></div>
       <div id="modalContent"></div>
     </div>
   </div>
 
   <script>
     // ── THEME ──
-    const savedTheme = localStorage.getItem('jl_theme');
-    if(savedTheme === 'dark') { document.documentElement.setAttribute('data-theme','dark'); document.getElementById('themeToggle').textContent = '☀'; }
+    let savedTheme = null;
+    try { savedTheme = localStorage.getItem('jl_theme'); } catch(e) { /* stockage indisponible */ }
+    function updateThemeButton(isDark){
+      const button=document.getElementById('themeToggle');
+      button.textContent=isDark?'☀':'☾';
+      button.setAttribute('aria-pressed',String(isDark));
+      button.setAttribute('aria-label',isDark?'Passer au thème clair':'Activer le thème sombre');
+    }
+    if(savedTheme === 'dark') { document.documentElement.setAttribute('data-theme','dark'); updateThemeButton(true); }
     function toggleTheme(){
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
-      document.getElementById('themeToggle').textContent = isDark ? '☾' : '☀';
-      localStorage.setItem('jl_theme', isDark ? 'light' : 'dark');
+      updateThemeButton(!isDark);
+      try { localStorage.setItem('jl_theme', isDark ? 'light' : 'dark'); } catch(e) { /* stockage indisponible */ }
     }
 
     // ── I18N ──
     const TRANSLATIONS = {
       fr: {
+        meta_title:'Jordan Lamour · Portfolio', meta_description:'Portfolio de Jordan Lamour, Level Designer Junior à l’ICAN. Projets de jeux vidéo, level design et game dev.',
         nav_about:'À propos', nav_skills:'Compétences', nav_projects:'Projets',
         hero_tag:'Level Designer Junior · 3ème année ICAN',
         hero_sub:'Je conçois des espaces de jeu pensés pour le joueur, des niveaux où chaque couloir, chaque ouverture raconte quelque chose.',
@@ -389,7 +418,7 @@
         about_title:'Étudiant en<br>3ème année<br>à l\'ICAN',
         about_p1:'Je m\'appelle <strong>Jordan Lamour</strong> et je suis développeur de jeux vidéo spécialisé dans le <strong>level design</strong>.',
         about_p2:'Ce qui m\'attire dans le level design, c\'est le pouvoir de façonner l\'expérience du joueur sans qu\'il s\'en rende compte. Un niveau bien construit, c\'est de la narration spatiale : guider le regard, créer du rythme, récompenser l\'exploration. J\'aime l\'idée que l\'espace lui-même devienne un langage, entre <strong>blockout, contraintes de gameplay</strong> et intention artistique.',
-        about_p3:'Je cherche actuellement un <strong>stage de level designer</strong> à partir du 1er juin 2026.',
+        about_p3:'Je suis ouvert aux <strong>opportunités de level design</strong>, collaborations et projets créatifs.',
         fact_ican:'Bachelor Game Design · 3ème année', fact_level:'Blockout · Gameplay flow · Narration spatiale',
         fact_unity:'C# · Intégrations', fact_3d:'Blender · Modélisation · UV · Textures',
         skills_label:'Compétences', skills_title:'Ce que je maîtrise',
@@ -398,17 +427,21 @@
         proj_label:'Projets', proj_title:'Mes réalisations', filter_all:'Tous', loading:'Chargement…',
         contact_label:'Contact', contact_title:'Travaillons<br>ensemble',
         contact_intro:'Je suis ouvert aux <strong>collaborations</strong>, stages et projets créatifs.',
-        form_name:'Nom', form_name_ph:'Ton nom', form_msg:'Message', form_msg_ph:'Bonjour Jordan…', form_send:'Envoyer',
+        form_name:'Nom', form_email:'Email', form_name_ph:'Ton nom', form_msg:'Message', form_msg_ph:'Bonjour Jordan…', form_send:'Envoyer', form_mail_hint:'Ton logiciel de messagerie s’ouvrira pour préparer l’email.',
+        projects_empty:'Aucun projet n’est disponible pour le moment.', projects_error:'Impossible de charger les projets. Réessaie dans quelques instants.',
         footer_sub:'Level Designer Junior · ICAN',
         modal_close:'✕ Fermer',
         devlog_title:'Ce que j\'ai fait', screenshots_title:'Screenshots', no_media:'Pas de média',
-        card_more:'Voir plus', filter_unity:'Unity / Game Dev', filter_shader:'Shaders & Visuels',
+        card_more:'Voir plus', card_open:'Ouvrir le projet', screenshot_alt:'capture', image_previous:'Image précédente', image_next:'Image suivante', menu_open:'Ouvrir le menu', menu_close:'Fermer le menu',
+        meta_category:'Catégorie', meta_tags:'Tags', meta_role:'Rôle', meta_tools:'Outils', role_default:'Contributeur',
+        filter_unity:'Unity / Game Dev', filter_shader:'Shaders & Visuels',
         filter_web:'Web & Outils', filter_design:'Game Design', filter_other:'Autre',
         ski_ld:'Level Design', ski_bk:'Blockout', ski_proto:'Prototypage', ski_gp:'Gameplay',
         ski_pm:'Gestion de projet', ski_model:'Modélisation', ski_tex:'Textures',
         ski_integ:'Intégrations', ski_interior:'Décors intérieurs', ski_optim:'Optimisation 3D', ski_modtex:'Texturage 3D',
       },
       en: {
+        meta_title:'Jordan Lamour · Portfolio', meta_description:'Portfolio of Jordan Lamour, Junior Level Designer at ICAN. Game projects, level design and game development.',
         nav_about:'About', nav_skills:'Skills', nav_projects:'Projects',
         hero_tag:'Junior Level Designer · 3rd Year ICAN',
         hero_sub:'I design game spaces built around the player, levels where every corridor, every opening tells a story.',
@@ -417,7 +450,7 @@
         about_title:'3rd Year Student<br>at ICAN',
         about_p1:'My name is <strong>Jordan Lamour</strong> and I\'m a game developer specializing in <strong>level design</strong>.',
         about_p2:'What draws me to level design is the power to shape a player\'s experience without them even noticing. A well-crafted level is spatial storytelling: guiding the eye, building rhythm, rewarding exploration. I love the idea that space itself becomes a language, balancing <strong>blockout, gameplay constraints</strong> and artistic intent.',
-        about_p3:'I\'m currently looking for a <strong>level design internship</strong> starting June 1st, 2026.',
+        about_p3:'I\'m open to <strong>level design opportunities</strong>, collaborations and creative projects.',
         fact_ican:'Bachelor Game Design · 3rd Year', fact_level:'Blockout · Gameplay flow · Spatial Narrative',
         fact_unity:'C# · Integration', fact_3d:'Blender · Modeling · UV · Textures',
         skills_label:'Skills', skills_title:'What I know',
@@ -426,17 +459,21 @@
         proj_label:'Projects', proj_title:'My Work', filter_all:'All', loading:'Loading…',
         contact_label:'Contact', contact_title:'Let\'s work<br>together',
         contact_intro:'Open to <strong>collaborations</strong>, internships and creative projects.',
-        form_name:'Name', form_name_ph:'Your name', form_msg:'Message', form_msg_ph:'Hello Jordan…', form_send:'Send',
+        form_name:'Name', form_email:'Email', form_name_ph:'Your name', form_msg:'Message', form_msg_ph:'Hello Jordan…', form_send:'Send', form_mail_hint:'Your email app will open to prepare the message.',
+        projects_empty:'No project is available right now.', projects_error:'Unable to load the projects. Please try again in a moment.',
         footer_sub:'Junior Level Designer · ICAN',
         modal_close:'✕ Close',
         devlog_title:'What I did', screenshots_title:'Screenshots', no_media:'No media',
-        card_more:'See more', filter_unity:'Unity / Game Dev', filter_shader:'Shaders & Visuals',
+        card_more:'See more', card_open:'Open project', screenshot_alt:'screenshot', image_previous:'Previous image', image_next:'Next image', menu_open:'Open menu', menu_close:'Close menu',
+        meta_category:'Category', meta_tags:'Tags', meta_role:'Role', meta_tools:'Tools', role_default:'Contributor',
+        filter_unity:'Unity / Game Dev', filter_shader:'Shaders & Visuals',
         filter_web:'Web & Tools', filter_design:'Game Design', filter_other:'Other',
         ski_ld:'Level Design', ski_bk:'Blockout', ski_proto:'Prototyping', ski_gp:'Gameplay',
         ski_pm:'Project management', ski_model:'3D Modeling', ski_tex:'Textures',
         ski_integ:'Integration', ski_interior:'Interior environments', ski_optim:'3D optimization', ski_modtex:'3D texturing',
       },
       es: {
+        meta_title:'Jordan Lamour · Portfolio', meta_description:'Portfolio de Jordan Lamour, Level Designer Junior en ICAN. Proyectos de videojuegos, level design y game dev.',
         nav_about:'Sobre mí', nav_skills:'Habilidades', nav_projects:'Proyectos',
         hero_tag:'Level Designer Junior · 3er año ICAN',
         hero_sub:'Diseño espacios de juego pensados para el jugador, niveles donde cada pasillo, cada abertura cuenta algo.',
@@ -445,7 +482,7 @@
         about_title:'Estudiante de<br>3er año<br>en el ICAN',
         about_p1:'Me llamo <strong>Jordan Lamour</strong> y soy desarrollador de videojuegos especializado en <strong>level design</strong>.',
         about_p2:'Lo que me atrae del level design es el poder de moldear la experiencia del jugador sin que se dé cuenta. Un nivel bien construido es narrativa espacial: guiar la mirada, crear ritmo, recompensar la exploración. Me gusta la idea de que el espacio mismo se convierta en lenguaje, entre <strong>blockout, restricciones de gameplay</strong> e intención artística.',
-        about_p3:'Actualmente busco unas <strong>prácticas de level design</strong> a partir del 1 de junio de 2026.',
+        about_p3:'Estoy abierto a <strong>oportunidades de level design</strong>, colaboraciones y proyectos creativos.',
         fact_ican:'Bachelor Diseño de Juegos · 3er año', fact_level:'Blockout · Flujo de gameplay · Narrativa espacial',
         fact_unity:'C# · Integraciones', fact_3d:'Blender · Modelado · UV · Texturas',
         skills_label:'Habilidades', skills_title:'Lo que sé hacer',
@@ -454,11 +491,14 @@
         proj_label:'Proyectos', proj_title:'Mis trabajos', filter_all:'Todos', loading:'Cargando…',
         contact_label:'Contacto', contact_title:'Trabajemos<br>juntos',
         contact_intro:'Abierto a <strong>colaboraciones</strong>, prácticas y proyectos creativos.',
-        form_name:'Nombre', form_name_ph:'Tu nombre', form_msg:'Mensaje', form_msg_ph:'Hola Jordan…', form_send:'Enviar',
+        form_name:'Nombre', form_email:'Email', form_name_ph:'Tu nombre', form_msg:'Mensaje', form_msg_ph:'Hola Jordan…', form_send:'Enviar', form_mail_hint:'Tu aplicación de correo se abrirá para preparar el mensaje.',
+        projects_empty:'No hay proyectos disponibles por ahora.', projects_error:'No se han podido cargar los proyectos. Inténtalo de nuevo.',
         footer_sub:'Level Designer Junior · ICAN',
         modal_close:'✕ Cerrar',
         devlog_title:'Lo que hice', screenshots_title:'Capturas', no_media:'Sin media',
-        card_more:'Ver más', filter_unity:'Unity / Game Dev', filter_shader:'Shaders y Visuales',
+        card_more:'Ver más', card_open:'Abrir proyecto', screenshot_alt:'captura', image_previous:'Imagen anterior', image_next:'Imagen siguiente', menu_open:'Abrir menú', menu_close:'Cerrar menú',
+        meta_category:'Categoría', meta_tags:'Tags', meta_role:'Rol', meta_tools:'Herramientas', role_default:'Colaborador',
+        filter_unity:'Unity / Game Dev', filter_shader:'Shaders y Visuales',
         filter_web:'Web y Herramientas', filter_design:'Diseño de Juego', filter_other:'Otro',
         ski_ld:'Level Design', ski_bk:'Blockout', ski_proto:'Prototipado', ski_gp:'Gameplay',
         ski_pm:'Gestión de proyectos', ski_model:'Modelado 3D', ski_tex:'Texturas',
@@ -466,7 +506,8 @@
       }
     };
 
-    let currentLang = localStorage.getItem('jl_lang') || 'fr';
+    let currentLang = 'fr';
+    try { currentLang = localStorage.getItem('jl_lang') || 'fr'; } catch(e) { /* stockage indisponible */ }
 
     function t(key){ return TRANSLATIONS[currentLang][key] || TRANSLATIONS['fr'][key] || key; }
 
@@ -480,20 +521,54 @@
       });
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.textContent.toLowerCase() === currentLang);
+        btn.setAttribute('aria-pressed',String(btn.textContent.toLowerCase() === currentLang));
       });
       document.documentElement.lang = currentLang;
+      document.title=t('meta_title');
+      document.querySelector('meta[name="description"]').setAttribute('content',t('meta_description'));
+      document.querySelector('meta[property="og:title"]').setAttribute('content',t('meta_title'));
+      document.querySelector('meta[property="og:description"]').setAttribute('content',t('meta_description'));
+      document.getElementById('navMenuToggle').setAttribute('aria-label',t(document.getElementById('navMenuToggle').getAttribute('aria-expanded')==='true'?'menu_close':'menu_open'));
+      document.getElementById('lightboxPrev').setAttribute('aria-label',t('image_previous'));
+      document.getElementById('lightboxNext').setAttribute('aria-label',t('image_next'));
       // Re-render project filter labels if projects are loaded
       if(allProjects.length) buildFilters(allProjects);
     }
 
     function setLang(lang){
       currentLang = lang;
-      localStorage.setItem('jl_lang', lang);
+      try { localStorage.setItem('jl_lang', lang); } catch(e) { /* stockage indisponible */ }
       applyLang();
+    }
+
+    function sendMessage(event){
+      event.preventDefault();
+      const form=event.currentTarget;
+      if(!form.reportValidity()) return;
+      const name=document.getElementById('contactName').value.trim();
+      const email=document.getElementById('contactEmail').value.trim();
+      const message=document.getElementById('contactMessage').value.trim();
+      const subject=encodeURIComponent(`Portfolio — ${name}`);
+      const body=encodeURIComponent(`Bonjour Jordan,\n\n${message}\n\nNom : ${name}\nEmail : ${email}`);
+      document.getElementById('contactStatus').textContent=t('form_mail_hint');
+      window.location.href=`mailto:jordan.lamour@hotmail.fr?subject=${subject}&body=${body}`;
     }
 
     // ── NAV ──
     window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>20));
+    const nav=document.getElementById('navbar');
+    const navMenuToggle=document.getElementById('navMenuToggle');
+    function closeMobileNav(){
+      nav.classList.remove('menu-open');
+      navMenuToggle.setAttribute('aria-expanded','false');
+      navMenuToggle.setAttribute('aria-label',t('menu_open'));
+    }
+    navMenuToggle.addEventListener('click',()=>{
+      const isOpen=nav.classList.toggle('menu-open');
+      navMenuToggle.setAttribute('aria-expanded',String(isOpen));
+      navMenuToggle.setAttribute('aria-label',t(isOpen?'menu_close':'menu_open'));
+    });
+    document.querySelectorAll('.nav-links a').forEach(link=>link.addEventListener('click',closeMobileNav));
 
     // ── REVEAL ──
     const revealObs=new IntersectionObserver(entries=>entries.forEach((e,i)=>{
@@ -502,7 +577,40 @@
     document.querySelectorAll('.reveal').forEach(r=>revealObs.observe(r));
 
     // ── PROJECTS ──
-    function ytId(url){if(!url)return null;const m=url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&?/]+)/);return m?m[1]:null;}
+    function ytId(url){if(!url)return null;const m=String(url).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&?/]+)/);return m?m[1]:null;}
+
+    function escapeHTML(value){
+      return String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    }
+    function safeResourceUrl(value){
+      const raw=String(value??'').trim();
+      if(!raw) return '';
+      if(raw.startsWith('data:image/')) return raw;
+      try{
+        const url=new URL(raw,location.href);
+        return ['http:','https:'].includes(url.protocol)?url.href:'';
+      }catch(e){return '';}
+    }
+    function safeExternalUrl(value){
+      const raw=String(value??'').trim();
+      try{
+        const url=new URL(raw,location.href);
+        return ['http:','https:'].includes(url.protocol)?url.href:'';
+      }catch(e){return '';}
+    }
+    function sanitizeRichText(html){
+      const template=document.createElement('template');
+      template.innerHTML=String(html??'');
+      template.content.querySelectorAll('script,style,iframe,object,embed,form,svg,math').forEach(el=>el.remove());
+      template.content.querySelectorAll('*').forEach(el=>{
+        [...el.attributes].forEach(attr=>{
+          const name=attr.name.toLowerCase();
+          if(name.startsWith('on')||name==='srcdoc') el.removeAttribute(attr.name);
+          if((name==='src'||name==='href')&&!safeResourceUrl(attr.value)&&!(name==='href'&&attr.value.trim().toLowerCase().startsWith('mailto:'))) el.removeAttribute(attr.name);
+        });
+      });
+      return template.innerHTML;
+    }
 
     let categoriesData=[];
     const CATS_FALLBACK={unity:'Unity / Game Dev',shader:'Shaders & Visuels',web:'Web & Outils',design:'Game Design',other:'Autre',level_design:'Level Design',game_jam:'Game Jam',unreal:'Unreal Engine'};
@@ -510,19 +618,23 @@
 
     function cardMedia(p){
       const id=ytId(p.youtube);
-      if(id) return `<div class="card-media"><iframe src="https://www.youtube.com/embed/${id}" allowfullscreen loading="lazy"></iframe></div>`;
-      if(p.screenshot) return `<div class="card-media"><img src="${p.screenshot}" alt="${p.title}" loading="lazy"></div>`;
+      const title=escapeHTML(p.title);
+      if(id) return `<div class="card-media"><img src="https://i.ytimg.com/vi/${encodeURIComponent(id)}/hqdefault.jpg" alt="${title} – vidéo" loading="lazy" decoding="async"><span class="media-play" aria-hidden="true">▶</span></div>`;
+      const screenshot=safeResourceUrl(p.screenshot);
+      if(screenshot) return `<div class="card-media"><img src="${escapeHTML(screenshot)}" alt="${title}" loading="lazy" decoding="async"></div>`;
       return `<div class="card-media"><div class="card-media-placeholder">${t('no_media')}</div></div>`;
     }
     function renderCard(p,i){
-      const tags=(p.tags||[]).map(tag=>`<span class="tag">${tag}</span>`).join('');
+      const category=p.category||'other';
+      const title=escapeHTML(p.title);
+      const tags=(p.tags||[]).map(tag=>`<span class="tag">${escapeHTML(tag)}</span>`).join('');
       return `
-        <div class="project-card reveal" data-category="${p.category||'other'}" onclick="openModal(${i})" tabindex="0" onkeydown="if(event.key==='Enter')openModal(${i})"  role="button" aria-label="Voir le projet ${p.title}">
+        <div class="project-card reveal" data-category="${escapeHTML(category)}" onclick="openModal(${i})" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal(${i})}" role="button" aria-label="${escapeHTML(t('card_open')+' '+p.title)}">
           ${cardMedia(p)}
           <div class="card-body">
-            <p class="card-category">${getCatLabel(p.category||'other')}</p>
-            <h3 class="card-title">${p.title}</h3>
-            <p class="card-desc">${p.description||''}</p>
+            <p class="card-category">${escapeHTML(getCatLabel(category))}</p>
+            <h3 class="card-title">${title}</h3>
+            <p class="card-desc">${escapeHTML(p.description||'')}</p>
             <div class="card-footer">
               <div class="card-tags">${tags}</div>
               <span class="card-read-more">${t('card_more')} →</span>
@@ -535,27 +647,33 @@
 
     function buildModalHTML(p){
       const id=ytId(p.youtube);
+      const title=escapeHTML(p.title);
+      const category=p.category||'other';
       let hero='';
-      if(id) hero=`<div class="modal-hero"><iframe src="https://www.youtube.com/embed/${id}" allowfullscreen></iframe></div>`;
-      else if(p.screenshot) hero=`<div class="modal-hero"><img src="${p.screenshot}" alt="${p.title}"></div>`;
+      if(id) hero=`<div class="modal-hero"><iframe src="https://www.youtube.com/embed/${encodeURIComponent(id)}" title="${title} – vidéo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen></iframe></div>`;
+      else if(safeResourceUrl(p.screenshot)) hero=`<div class="modal-hero"><img src="${escapeHTML(safeResourceUrl(p.screenshot))}" alt="${title}" decoding="async"></div>`;
       else hero=`<div class="modal-hero"><div class="modal-hero-placeholder">${t('no_media')}</div></div>`;
 
-      const tags=(p.tags||[]).join(', ');
+      const tags=(p.tags||[]).map(escapeHTML).join(', ');
 
       let links='';
-      if(p.build)   links+=`<a href="${p.build}"   target="_blank" class="modal-link primary">▶ Demo</a>`;
-      if(p.github)  links+=`<a href="${p.github}"  target="_blank" class="modal-link">GitHub</a>`;
-      if(p.itch)    links+=`<a href="${p.itch}"    target="_blank" class="modal-link">itch.io</a>`;
-      if(p.website) links+=`<a href="${p.website}" target="_blank" class="modal-link">Site web</a>`;
+      const externalLink=(url,label,primary=false)=>{
+        const safe=safeExternalUrl(url);
+        return safe?`<a href="${escapeHTML(safe)}" target="_blank" rel="noopener noreferrer" class="modal-link${primary?' primary':''}">${label}</a>`:'';
+      };
+      links+=externalLink(p.build,'▶ Demo',true);
+      links+=externalLink(p.github,'GitHub');
+      links+=externalLink(p.itch,'itch.io');
+      links+=externalLink(p.website,'Site web');
 
       // Metadata grid items (right column, Atlas V style)
-      const toolTags = (p.tools||[]).join(', ');
+      const toolTags = (p.tools||[]).map(escapeHTML).join(', ');
       const allMeta = [
-        { label: 'Category', value: getCatLabel(p.category||'other') },
-        { label: 'Tags', value: tags || null },
-        { label: 'Role', value: 'Level Designer' },
-        { label: 'Tools', value: toolTags || null },
-        ...((p.specs||[]).map(s=>({ label: s.label, value: s.value }))),
+        { label: t('meta_category'), value: escapeHTML(getCatLabel(category)) },
+        { label: t('meta_tags'), value: tags || null },
+        { label: t('meta_role'), value: escapeHTML(p.role||t('role_default')) },
+        { label: t('meta_tools'), value: toolTags || null },
+        ...((p.specs||[]).map(s=>({ label: escapeHTML(s.label), value: escapeHTML(s.value) }))),
       ].filter(m => m.value);
 
       const metaGrid = allMeta.map(m=>`
@@ -566,24 +684,24 @@
 
       let devlog='';
       if(p.devlog&&p.devlog.trim()){
-        devlog=`<div class="modal-section"><h3>${t('devlog_title')}</h3><div class="modal-devlog">${p.devlog}</div></div>`;
+        devlog=`<div class="modal-section"><h3>${t('devlog_title')}</h3><div class="modal-devlog">${sanitizeRichText(p.devlog)}</div></div>`;
       }
 
       let gallery='';
-      if(p.screenshots&&p.screenshots.length){
-        const imgs=p.screenshots.map((s,i)=>`<img src="${s}" class="gallery-img" loading="lazy" onclick="openLightbox(${i},galleryImages)">`).join('');
+      if(galleryImages.length){
+        const imgs=galleryImages.map((s,i)=>`<img src="${escapeHTML(s)}" class="gallery-img" loading="lazy" decoding="async" alt="${title} – ${t('screenshot_alt')} ${i+1}" tabindex="0" role="button" onclick="openLightbox(${i},galleryImages)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox(${i},galleryImages)}">`).join('');
         gallery=`<div class="modal-section"><h3>${t('screenshots_title')}</h3><div class="gallery-grid">${imgs}</div></div>`;
       }
 
       return `${hero}
         <div class="modal-body">
           <div class="modal-title-row">
-            <p class="modal-cat-label">${getCatLabel(p.category||'other')}</p>
-            <h2 class="modal-title">${p.title}</h2>
+            <p class="modal-cat-label">${escapeHTML(getCatLabel(category))}</p>
+            <h2 class="modal-title" id="modalTitle">${title}</h2>
           </div>
           <div class="modal-content-grid">
             <div class="modal-left">
-              ${p.description?`<p class="modal-desc">${p.description}</p>`:''}
+              ${p.description?`<p class="modal-desc">${escapeHTML(p.description)}</p>`:''}
               ${links?`<div class="modal-links">${links}</div>`:''}
             </div>
             <div class="modal-right">
@@ -595,39 +713,56 @@
     }
 
     let galleryImages=[];
+    let galleryTitle='';
+    let modalReturnFocus=null;
+    let lightboxReturnFocus=null;
     function openModal(i){
       const p=allProjects[i]; if(!p)return;
-      galleryImages=p.screenshots||[];
+      modalReturnFocus=document.activeElement;
+      galleryTitle=p.title||'';
+      galleryImages=(p.screenshots||[]).map(s=>safeResourceUrl(s)).filter(Boolean);
       document.getElementById('modalContent').innerHTML=buildModalHTML(p);
       document.getElementById('modal').scrollTop=0;
       document.getElementById('modalBackdrop').classList.add('open');
+      document.getElementById('modalBackdrop').setAttribute('aria-hidden','false');
       document.body.style.overflow='hidden';
+      requestAnimationFrame(()=>document.querySelector('#modal .modal-topbar button')?.focus());
     }
     function closeModal(){
       document.getElementById('modalBackdrop').classList.remove('open');
+      document.getElementById('modalBackdrop').setAttribute('aria-hidden','true');
       document.body.style.overflow='';
+      modalReturnFocus?.focus();
+      modalReturnFocus=null;
     }
     document.getElementById('modalBackdrop').addEventListener('click',e=>{
       if(e.target===document.getElementById('modalBackdrop')) closeModal();
     });
-    document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!document.getElementById('lightbox').classList.contains('open')) closeModal(); });
 
     // ── LIGHTBOX ──
     let lbIndex=0, lbImages=[];
     function openLightbox(idx, images){
-      lbImages=images; lbIndex=idx;
+      lbImages=images.filter(Boolean); lbIndex=idx;
+      lightboxReturnFocus=document.activeElement;
       renderLightbox();
       document.getElementById('lightbox').classList.add('open');
+      document.getElementById('lightbox').setAttribute('aria-hidden','false');
+      requestAnimationFrame(()=>document.querySelector('#lightbox .lightbox-close')?.focus());
     }
     function closeLightbox(){
       document.getElementById('lightbox').classList.remove('open');
+      document.getElementById('lightbox').setAttribute('aria-hidden','true');
+      lightboxReturnFocus?.focus();
+      lightboxReturnFocus=null;
     }
     function lightboxNav(dir){
       lbIndex=(lbIndex+dir+lbImages.length)%lbImages.length;
       renderLightbox();
     }
     function renderLightbox(){
+      if(!lbImages.length)return;
       document.getElementById('lightboxImg').src=lbImages[lbIndex];
+      document.getElementById('lightboxImg').alt=`${galleryTitle} – ${t('screenshot_alt')} ${lbIndex+1}`;
       document.getElementById('lightboxCounter').textContent=lbImages.length>1?`${lbIndex+1} / ${lbImages.length}`:'';
       document.getElementById('lightboxPrev').style.display=lbImages.length>1?'flex':'none';
       document.getElementById('lightboxNext').style.display=lbImages.length>1?'flex':'none';
@@ -635,11 +770,27 @@
     document.getElementById('lightbox').addEventListener('click',e=>{
       if(e.target===document.getElementById('lightbox')) closeLightbox();
     });
+    function trapFocus(container,event){
+      const focusable=[...container.querySelectorAll('a[href],button:not([disabled]),input,textarea,select,[tabindex]:not([tabindex="-1"])')].filter(el=>!el.hidden&&el.offsetParent!==null);
+      if(!focusable.length)return;
+      const first=focusable[0], last=focusable[focusable.length-1];
+      if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+      else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+    }
     document.addEventListener('keydown',e=>{
-      if(!document.getElementById('lightbox').classList.contains('open')) return;
-      if(e.key==='Escape') closeLightbox();
-      if(e.key==='ArrowLeft') lightboxNav(-1);
-      if(e.key==='ArrowRight') lightboxNav(1);
+      const lightbox=document.getElementById('lightbox');
+      const backdrop=document.getElementById('modalBackdrop');
+      if(lightbox.classList.contains('open')){
+        if(e.key==='Escape')closeLightbox();
+        if(e.key==='ArrowLeft')lightboxNav(-1);
+        if(e.key==='ArrowRight')lightboxNav(1);
+        if(e.key==='Tab')trapFocus(lightbox,e);
+        return;
+      }
+      if(backdrop.classList.contains('open')){
+        if(e.key==='Escape')closeModal();
+        if(e.key==='Tab')trapFocus(document.getElementById('modal'),e);
+      }
     });
 
     function buildFilters(projects){
@@ -651,8 +802,8 @@
       const ordered=[...featured,...others,...uncategorised.map(id=>({id,label:getCatLabel(id)}))];
       const bar=document.getElementById('filterBar');
       const active=bar.querySelector('.filter-btn.active')?.dataset.filter||'all';
-      bar.innerHTML=`<button class="filter-btn${active==='all'?' active':''}" data-filter="all">${t('filter_all')}</button>`
-        +ordered.map(c=>`<button class="filter-btn${active===c.id?' active':''}" data-filter="${c.id}">${c.label}</button>`).join('');
+      bar.innerHTML=`<button type="button" class="filter-btn${active==='all'?' active':''}" data-filter="all">${t('filter_all')}</button>`
+        +ordered.map(c=>`<button type="button" class="filter-btn${active===c.id?' active':''}" data-filter="${escapeHTML(c.id)}">${escapeHTML(c.label)}</button>`).join('');
       bar.querySelectorAll('.filter-btn').forEach(btn=>{
         btn.addEventListener('click',()=>{
           bar.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
@@ -676,14 +827,14 @@
           allProjects=data.projects||[];
         }
         const grid=document.getElementById('projectsGrid');
-        if(!allProjects.length){grid.innerHTML=`<div class="empty-state"><p>Ajoute tes projets depuis <a href="admin.html">le panneau admin</a>.</p></div>`;return;}
+        if(!allProjects.length){grid.innerHTML=`<div class="empty-state"><p>${t('projects_empty')}</p></div>`;return;}
         grid.innerHTML=allProjects.map((p,i)=>renderCard(p,i)).join('');
         buildFilters(allProjects);
         document.querySelectorAll('.project-card.reveal').forEach(r=>revealObs.observe(r));
       })
       .catch(()=>{
         document.getElementById('projectsGrid').innerHTML=
-          `<div class="empty-state"><p>Ajoute tes projets depuis <a href="admin.html">le panneau admin</a>.</p></div>`;
+          `<div class="empty-state"><p>${t('projects_error')}</p></div>`;
       });
 
     // Init lang

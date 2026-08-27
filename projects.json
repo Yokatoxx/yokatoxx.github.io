@@ -35,6 +35,7 @@
     {
       "title": "0xD34D",
       "category": "game_jam",
+      "role": "Level Designer",
       "description": "This game was created for the \"Here we go again\" Epic Game Jam. The theme was a perfect fit for the core of die & retry: that mix of frustration and exhilaration from starting over, again and again, until you achieve perfection. Protocol: Reboot is our interpretation of that concept.",
       "youtube": "https://youtu.be/PoIe25VPFok",
       "screenshot": "https://img.itch.zone/aW1nLzIzNzY0MjUzLnBuZw==/original/BmcoLH.png",
@@ -64,6 +65,7 @@
     {
       "title": "Snouff & Piktty",
       "category": "unity",
+      "role": "Lead Programmer",
       "description": "A precision game where the player must sort between two types of creatures by sliding them either to the left or right of the screen. There is a global timer that decreases as the game progresses. It can increase with each successful sort or decrease each time the player makes a mistake.",
       "youtube": null,
       "screenshot": "https://zupimages.net/up/26/12/iupx.png",
@@ -92,6 +94,7 @@
     {
       "title": "ShadowLight",
       "category": "game_jam",
+      "role": "Lead Programmer",
       "description": "ShadowLight is a project from the Winter GameJam based on the theme \"Two in One.\" Together with my collaborator, Noah Caux.",
       "youtube": null,
       "screenshot": "https://zupimages.net/up/26/12/nhm9.png",
