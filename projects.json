@@ -54,7 +54,15 @@
         },
         {
           "label": "Type",
-          "value": "Prototype de game jam"
+          "value": "Game jam prototype"
+        },
+        {
+          "label": "Engine",
+          "value": "Unreal Engine"
+        },
+        {
+          "label": "Focus",
+          "value": "Player flow · Enemy placement · Sightlines · Encounter pacing"
         }
       ],
       "github": null,
@@ -66,10 +74,12 @@
       ],
       "tags": [
         "Level Design",
-        "GameJam",
-        "Fast Paced"
+        "Game Jam",
+        "Top-Down Shooter",
+        "Die & Retry",
+        "Fast-Paced"
       ],
-      "devlogUrl": "content/0xd34d.html"
+      "devlogUrl": "content/0xd34d-improved.html"
     },
     {
       "title": "Snouff & Piktty",

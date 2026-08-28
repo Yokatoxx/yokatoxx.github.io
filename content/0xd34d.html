@@ -1,3 +1,61 @@
-<div>For this project, I was in charge of level design for a fast-paced top-down shooter created during the Epic Games Game Jam 2025, built around the theme "Here we go again." Our team's concept centered on short, intense levels with near-instant respawning a loop designed to keep the player constantly engaged rather than frustrated. From the start, my goal was to make each death feel like a learning moment, not a setback.
-To ground my design choices, I began by playing through several fast-paced shooters of the same genre, with Hotline Miami as my primary reference. Studying how that game structures its rooms tight corridors, limited sight lines, enemies placed to reward quick decision-making gave me a clear design language to draw from. Rather than copying its aesthetics, I focused on extracting the underlying principles: short engagement distances, high enemy density in contained spaces, and a layout that naturally directs player movement.</div><div><br></div><div>&nbsp;From there, I sketched rapid layout drafts on paper. This low-fidelity step was intentional it let me iterate on player flow and enemy placement quickly, without committing to anything in-engine. Each sketch was essentially a hypothesis about how a player would move through the space and where tension would peak.&nbsp;</div><div><img src="assets/projects/0xd34d/devlog-1.jpg" style="max-width: 100%;"><br></div><div>First level for example.</div><div>Once I had a solid base, I moved directly into Unreal Engine to prototype the levels. This is where theory met reality. One significant constraint I had to adapt to was our isometric camera: enemies placed in standard positions were nearly impossible for the player to spot. I had to rethink placement entirely, prioritising visibility over tactical challenge, and adjusting angles so that threats were always readable from the player's perspective.
-The final levels are short and deliberately intense exactly what the concept called for. This project reinforced for me how much camera perspective shapes spatial design decisions, and how essential early paper prototyping is for validating flow before touching an engine.</div><div><br></div><div>Here the final flow:</div><div><img src="assets/projects/0xd34d/devlog-2.png" style="max-width: 100%;"><br></div>
+<section class="project-case-study">
+  <h3>Design Challenge</h3>
+  <p>0xD34D was created during the Epic Games Game Jam 2025 around the theme <strong>“Here we go again.”</strong> Our interpretation focused on the die-and-retry loop: short, intense encounters where failure should lead to a better decision rather than a long interruption.</p>
+  <p>As Level Designer, I worked on player flow, enemy placement and encounter readability for a fast-paced top-down shooter. My main objective was to make every death feel understandable and useful to the player.</p>
+
+  <div style="margin:2rem 0;padding:1.5rem;background:#1A1916;border:1px solid #2E2C29;border-radius:3px;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">Core Gameplay Loop</p>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;text-align:center;font-size:.75rem;line-height:1.35;">
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Enter<br><span style="color:#9A9790;font-size:.65rem;">Read the room</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Choose<br><span style="color:#9A9790;font-size:.65rem;">Position & route</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Fight<br><span style="color:#9A9790;font-size:.65rem;">Commit quickly</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Fail / Win<br><span style="color:#9A9790;font-size:.65rem;">Receive feedback</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Retry<br><span style="color:#9A9790;font-size:.65rem;">Apply what you learned</span></div>
+    </div>
+    <p style="margin:1rem 0 0;color:#8A8880;font-size:.82rem;line-height:1.7;">Near-instant respawning keeps the player inside the learning loop instead of turning failure into downtime.</p>
+  </div>
+
+  <h3>Level Design Principles</h3>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.2rem 0 2rem;">
+    <div style="padding:1.2rem;background:#1A1916;border:1px solid #2E2C29;"><p style="margin:0 0 .5rem;color:#D96830;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;">01 · Readability</p><p style="margin:0;color:#9A9790;font-size:.85rem;line-height:1.7;">The player must understand the immediate threat before committing to a movement or attack.</p></div>
+    <div style="padding:1.2rem;background:#1A1916;border:1px solid #2E2C29;"><p style="margin:0 0 .5rem;color:#D96830;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;">02 · Pressure</p><p style="margin:0;color:#9A9790;font-size:.85rem;line-height:1.7;">Tight spaces, limited sightlines and enemy density create urgency without relying on long encounters.</p></div>
+    <div style="padding:1.2rem;background:#1A1916;border:1px solid #2E2C29;"><p style="margin:0 0 .5rem;color:#D96830;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;">03 · Feedback</p><p style="margin:0;color:#9A9790;font-size:.85rem;line-height:1.7;">A death should reveal something about the room, the enemy placement or the player’s positioning.</p></div>
+    <div style="padding:1.2rem;background:#1A1916;border:1px solid #2E2C29;"><p style="margin:0 0 .5rem;color:#D96830;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;">04 · Mastery</p><p style="margin:0;color:#9A9790;font-size:.85rem;line-height:1.7;">Repeated attempts let the player turn room knowledge into faster and more confident decisions.</p></div>
+  </div>
+
+  <h3>From Research to Blockout</h3>
+  <p>I used Hotline Miami as a reference for its room structure, limited sightlines and fast decision-making. I did not copy its aesthetics; I extracted spatial principles that could support our own gameplay loop.</p>
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:1.5rem 0 2rem;color:#E8E4DE;font-size:.76rem;text-align:center;">
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Research</strong><span style="color:#9A9790;">Extract spatial rules</span></div>
+    <span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Paper Layout</strong><span style="color:#9A9790;">Test flow quickly</span></div>
+    <span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Unreal Prototype</strong><span style="color:#9A9790;">Validate the idea</span></div>
+    <span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Iteration</strong><span style="color:#9A9790;">Adjust placement & flow</span></div>
+  </div>
+  <img src="assets/projects/0xd34d/devlog-1.jpg" alt="Paper level layout sketches for 0xD34D" loading="lazy" decoding="async" style="max-width:100%;">
+  <p style="color:#8A8880;font-size:.8rem;margin-top:.5rem;">Early paper layouts used to test player flow and enemy placement before building the level in-engine.</p>
+
+  <h3>Designing for an Isometric Camera</h3>
+  <p>Moving from paper layouts to Unreal Engine revealed a specific constraint: the isometric camera changed what the player could see. Enemy positions that looked correct in a standard top-down layout could become difficult to spot from the actual gameplay perspective.</p>
+  <p>I therefore prioritised <strong>threat visibility over purely tactical placement</strong>. Angles, positions and encounter composition had to be reconsidered from the player’s real point of view.</p>
+  <div style="margin:1.5rem 0;padding:1.4rem;background:#1A1916;border:1px solid #2E2C29;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">Camera Constraint → Design Response</p>
+    <div style="display:grid;grid-template-columns:1fr 40px 1fr;gap:.8rem;align-items:center;text-align:center;font-size:.8rem;">
+      <div style="padding:1rem;background:#252421;color:#9A9790;">Enemy hidden by<br>isometric perspective</div><div style="color:#D96830;font-size:1.3rem;">→</div><div style="padding:1rem;background:#252421;color:#E8E4DE;">Reposition enemies<br>and adjust angles</div>
+      <div style="padding:1rem;background:#252421;color:#9A9790;">Tactical challenge<br>becomes unreadable</div><div style="color:#D96830;font-size:1.3rem;">→</div><div style="padding:1rem;background:#252421;color:#E8E4DE;">Preserve pressure<br>while improving clarity</div>
+    </div>
+  </div>
+  <img src="assets/projects/0xd34d/devlog-2.png" alt="Final level flow for 0xD34D" loading="lazy" decoding="async" style="max-width:100%;">
+  <p style="color:#8A8880;font-size:.8rem;margin-top:.5rem;">Final level flow after adapting the layout to the isometric camera and encounter readability.</p>
+
+  <h3>What I Learned</h3>
+  <p>This project reinforced how strongly camera perspective shapes level design. A layout cannot be evaluated independently from the way the player sees and reads it.</p>
+  <p>It also confirmed the value of early paper prototyping: testing flow and enemy placement before touching the engine made it possible to explore ideas quickly and focus in-engine time on validating the most promising layouts.</p>
+
+  <div style="margin-top:2rem;padding:1.4rem;background:#1A1916;border-left:2px solid #D96830;color:#9A9790;font-size:.9rem;line-height:1.8;">
+    <strong style="color:#E8E4DE;">Key takeaway</strong><br>
+    Fast-paced difficulty only feels fair when the player can understand the space, identify the cause of failure and try again immediately.
+  </div>
+</section>
