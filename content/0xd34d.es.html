@@ -1,0 +1,28 @@
+<section class="project-case-study">
+  <h3>Problema de diseño</h3>
+  <p>0xD34D se creó durante la Epic Games Game Jam 2025 alrededor del tema <strong>«Here we go again.»</strong> Nuestra interpretación se basa en un ciclo de morir y volver a intentarlo: encuentros cortos e intensos en los que fallar debe llevar a una mejor decisión, no a una larga interrupción.</p>
+  <p>Como diseñador de niveles, trabajé en el flujo del jugador, la colocación de enemigos y la legibilidad de los encuentros para un shooter top-down rápido. Mi objetivo principal era que cada muerte resultara comprensible y útil.</p>
+
+  <h3>Principios de diseño de niveles</h3>
+  <p><strong>Legibilidad.</strong> El jugador debe entender la amenaza inmediata antes de comprometerse con un movimiento o un ataque.</p>
+  <p><strong>Presión.</strong> Los espacios estrechos, las líneas de visión limitadas y la densidad de enemigos crean urgencia sin alargar los enfrentamientos.</p>
+  <p><strong>Feedback.</strong> Una muerte debe revelar algo sobre la sala, la colocación de los enemigos o la posición del jugador.</p>
+  <p><strong>Dominio.</strong> Los intentos repetidos permiten convertir el conocimiento de la sala en decisiones más rápidas y seguras.</p>
+
+  <h3>De la investigación al blockout</h3>
+  <p>Utilicé Hotline Miami como referencia por su estructura de salas, sus líneas de visión limitadas y sus decisiones rápidas. No copié su estética: extraje principios espaciales que podían apoyar nuestro ciclo de gameplay.</p>
+  <p>Empecé dibujando rápidamente los layouts en papel. Esta etapa de baja fidelidad me permitió iterar sobre el flujo del jugador y la colocación de enemigos antes de pasar al motor.</p>
+  <img src="assets/projects/0xd34d/devlog-1.jpg" alt="Bocetos de layouts en papel para 0xD34D" loading="lazy" decoding="async" style="max-width:100%;">
+  <p style="color:#8A8880;font-size:.8rem;margin-top:.5rem;">Primeros layouts en papel para probar el flujo y la colocación de enemigos.</p>
+
+  <h3>Diseñar con una cámara isométrica</h3>
+  <p>El paso del papel a Unreal Engine reveló una restricción concreta: la cámara isométrica cambiaba lo que el jugador podía ver. Posiciones correctas en un layout top-down clásico se volvían difíciles de leer desde la perspectiva real del juego.</p>
+  <p>Por eso prioricé la <strong>visibilidad de las amenazas</strong> frente a una colocación puramente táctica. Replanteé ángulos, posiciones y composición de los encuentros desde el punto de vista del jugador.</p>
+  <img src="assets/projects/0xd34d/devlog-2.png" alt="Flujo final de un nivel de 0xD34D" loading="lazy" decoding="async" style="max-width:100%;">
+  <p style="color:#8A8880;font-size:.8rem;margin-top:.5rem;">Flujo final tras adaptar el layout a la cámara isométrica y a la legibilidad de los encuentros.</p>
+
+  <h3>Lo que aprendí</h3>
+  <p>Este proyecto confirmó hasta qué punto la perspectiva de la cámara condiciona el diseño de niveles. Un layout no puede evaluarse separado de la forma en que el jugador lo ve y lo interpreta.</p>
+  <p>También confirmó el valor del prototipado en papel: probar el flujo y la colocación de enemigos antes de tocar el motor permite explorar ideas rápidamente y concentrar el tiempo de producción en los layouts más prometedores.</p>
+  <div style="margin-top:2rem;padding:1.4rem;background:#1A1916;border-left:2px solid #D96830;color:#9A9790;font-size:.9rem;line-height:1.8;"><strong style="color:#E8E4DE;">Idea clave</strong><br>Una dificultad rápida solo parece justa si el jugador entiende el espacio, identifica la causa de su fallo y puede volver a intentarlo de inmediato.</div>
+</section>

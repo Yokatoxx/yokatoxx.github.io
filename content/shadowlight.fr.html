@@ -1,0 +1,17 @@
+<section class="project-case-study">
+  <h3>Défi de design</h3>
+  <p>Ce projet a été réalisé pendant une game jam de 48 heures autour du thème <strong>« Two in One »</strong>. En tant que programmeur principal de l’équipe, j’étais responsable de transformer nos décisions de design en systèmes jouables sous une forte contrainte de temps. Dès la première heure, il était clair que la maîtrise du scope déciderait de notre capacité à terminer le jeu.</p>
+  <img src="assets/projects/shadowlight/devlog-1.png" alt="Prototype de ShadowLight" loading="lazy" decoding="async" style="max-width:100%;">
+
+  <h3>Exprimer le thème par une mécanique</h3>
+  <p>Notre première session de design a consisté à trouver une mécanique qui exprime le thème de manière honnête et réalisable. Nous avons discuté d’un mode coopératif en écran partagé et du contrôle de deux personnages, avant de retenir le changement de dimension.</p>
+  <p>Le concept était simple : le joueur traverse un monde habité par des fantômes issus de deux dimensions et doit passer dans la dimension d’origine d’un fantôme pour pouvoir l’attaquer. Cette interprétation correspondait directement au thème, ne demandait pas de pipeline artistique supplémentaire et pouvait être prototypée rapidement. J’ai commencé par le changement d’état et la logique de vulnérabilité, afin de valider la sensation de base avant d’ajouter les améliorations.</p>
+
+  <h3>Construire une boucle rejouable</h3>
+  <p>Une fois la boucle de combat fonctionnelle, nous avons identifié la rejouabilité comme son principal point faible. Plutôt que de créer davantage de niveaux ou d’ennemis, nous avons ajouté une économie d’âmes : le joueur récupère des âmes sur les fantômes vaincus et les dépense entre les manches pour améliorer son personnage.</p>
+  <p>Ce choix proche du roguelite apportait des décisions intéressantes sans demander plus d’assets ni de temps de production. Il s’intégrait aussi naturellement à la boucle die and retry que nous construisions.</p>
+
+  <h3>Ce que j’ai appris</h3>
+  <p>Chaque idée devait passer un test rapide de coût et de bénéfice : améliore-t-elle suffisamment l’expérience pour justifier le temps qu’elle coûte ? La plupart des fonctionnalités ont été coupées ou repoussées. Maintenir cette discipline a été l’un des apprentissages les plus précieux de la jam.</p>
+  <p>Sur le plan technique, l’état de changement de dimension demandait une gestion précise pour éviter les bugs audio et visuels lors de la transition. Cela m’a poussé à écrire un code plus propre et plus modulaire. Cette jam a renforcé mon instinct de priorisation : une mécanique ciblée et bien exécutée vaut mieux qu’une idée ambitieuse inachevée.</p>
+</section>

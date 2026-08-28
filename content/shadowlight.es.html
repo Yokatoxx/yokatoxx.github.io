@@ -1,0 +1,17 @@
+<section class="project-case-study">
+  <h3>Desafío de diseño</h3>
+  <p>Este proyecto se creó durante una game jam de 48 horas alrededor del tema <strong>«Two in One»</strong>. Como programador principal del equipo, era responsable de convertir nuestras decisiones de diseño en sistemas jugables bajo una gran presión de tiempo. Desde la primera hora quedó claro que controlar el alcance determinaría si podíamos terminar el juego.</p>
+  <img src="assets/projects/shadowlight/devlog-1.png" alt="Prototipo de ShadowLight" loading="lazy" decoding="async" style="max-width:100%;">
+
+  <h3>Expresar el tema mediante una mecánica</h3>
+  <p>Nuestra primera sesión de diseño consistió en encontrar una mecánica que expresara el tema de forma honesta y viable. Hablamos de un modo cooperativo con pantalla dividida y del control de dos personajes, antes de elegir el cambio de dimensión.</p>
+  <p>El concepto era sencillo: el jugador recorre un mundo habitado por fantasmas de dos dimensiones y debe cambiar a la dimensión de origen de cada fantasma para poder atacarlo. Esta interpretación conectaba directamente con el tema, no requería un pipeline artístico adicional y podía prototiparse rápidamente. Empecé por el cambio de estado y la lógica de vulnerabilidad para validar la sensación básica antes de añadir mejoras.</p>
+
+  <h3>Construir un ciclo rejugable</h3>
+  <p>Cuando el ciclo de combate funcionó, identificamos la rejugabilidad como su principal debilidad. En lugar de diseñar más niveles o enemigos, añadimos una economía de almas: el jugador recoge almas de los fantasmas derrotados y las gasta entre rondas para mejorar su personaje.</p>
+  <p>Esta decisión cercana al roguelite aportaba elecciones significativas sin exigir más recursos artísticos ni tiempo de producción. También encajaba de forma natural con el ciclo de morir y volver a intentarlo.</p>
+
+  <h3>Lo que aprendí</h3>
+  <p>Cada idea debía superar una comprobación rápida de coste y beneficio: ¿mejora la experiencia lo suficiente como para justificar el tiempo que cuesta? La mayoría de las funciones se eliminaron o se aplazaron. Mantener esta disciplina fue uno de los aprendizajes más valiosos de la jam.</p>
+  <p>En el plano técnico, el estado de cambio de dimensión necesitaba una gestión cuidadosa para evitar errores de audio y vídeo durante la transición. Esto me llevó a escribir un código más limpio y modular. La jam reforzó mi instinto de priorización: una mecánica enfocada y bien ejecutada vale más que una idea ambiciosa sin terminar.</p>
+</section>

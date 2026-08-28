@@ -1,0 +1,30 @@
+<section class="project-case-study">
+  <h3>Problématique de design</h3>
+  <p>0xD34D a été créé pendant l’Epic Games Game Jam 2025 autour du thème <strong>« Here we go again. »</strong> Notre interprétation repose sur une boucle die and retry : des affrontements courts et intenses où l’échec doit mener à une meilleure décision plutôt qu’à une longue interruption.</p>
+  <p>En tant que Level Designer, j’ai travaillé sur le flow du joueur, le placement des ennemis et la lisibilité des rencontres pour un shooter top-down rapide. Mon objectif principal était de rendre chaque mort compréhensible et utile.</p>
+
+  <h3>Principes de level design</h3>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.2rem 0 2rem;">
+    <div style="padding:1.2rem;background:#1A1916;border:1px solid #2E2C29;"><p style="margin:0 0 .5rem;color:#D96830;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;">01 · Lisibilité</p><p style="margin:0;color:#9A9790;font-size:.85rem;line-height:1.7;">Le joueur doit comprendre la menace immédiate avant de s’engager dans un déplacement ou une attaque.</p></div>
+    <div style="padding:1.2rem;background:#1A1916;border:1px solid #2E2C29;"><p style="margin:0 0 .5rem;color:#D96830;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;">02 · Pression</p><p style="margin:0;color:#9A9790;font-size:.85rem;line-height:1.7;">Les espaces resserrés, les lignes de vue limitées et la densité d’ennemis créent de l’urgence sans allonger les affrontements.</p></div>
+    <div style="padding:1.2rem;background:#1A1916;border:1px solid #2E2C29;"><p style="margin:0 0 .5rem;color:#D96830;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;">03 · Feedback</p><p style="margin:0;color:#9A9790;font-size:.85rem;line-height:1.7;">Une mort doit révéler quelque chose sur la salle, le placement des ennemis ou la position du joueur.</p></div>
+    <div style="padding:1.2rem;background:#1A1916;border:1px solid #2E2C29;"><p style="margin:0 0 .5rem;color:#D96830;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;">04 · Maîtrise</p><p style="margin:0;color:#9A9790;font-size:.85rem;line-height:1.7;">Les tentatives répétées permettent de transformer la connaissance de la salle en décisions plus rapides et plus sûres.</p></div>
+  </div>
+
+  <h3>De la recherche au blockout</h3>
+  <p>J’ai utilisé Hotline Miami comme référence pour sa structure de salles, ses lignes de vue limitées et ses prises de décision rapides. Je n’ai pas copié son esthétique : j’en ai extrait des principes spatiaux adaptés à notre boucle de gameplay.</p>
+  <p>J’ai commencé par esquisser rapidement les layouts sur papier. Cette étape basse fidélité m’a permis d’itérer sur le flow du joueur et le placement des ennemis avant de m’engager dans le moteur.</p>
+  <img src="assets/projects/0xd34d/devlog-1.jpg" alt="Esquisses papier de layouts pour 0xD34D" loading="lazy" decoding="async" style="max-width:100%;">
+  <p style="color:#8A8880;font-size:.8rem;margin-top:.5rem;">Premiers layouts papier utilisés pour tester le flow et le placement des ennemis.</p>
+
+  <h3>Concevoir avec une caméra isométrique</h3>
+  <p>Le passage du papier à Unreal Engine a révélé une contrainte précise : la caméra isométrique modifiait ce que le joueur pouvait voir. Des positions correctes dans un layout top-down classique devenaient difficiles à lire depuis la perspective réelle du jeu.</p>
+  <p>J’ai donc privilégié la <strong>visibilité des menaces</strong> plutôt qu’un placement purement tactique. Les angles, les positions et la composition des rencontres ont été réévalués depuis le point de vue du joueur.</p>
+  <img src="assets/projects/0xd34d/devlog-2.png" alt="Flow final d’un niveau de 0xD34D" loading="lazy" decoding="async" style="max-width:100%;">
+  <p style="color:#8A8880;font-size:.8rem;margin-top:.5rem;">Flow final après adaptation à la caméra isométrique et à la lisibilité des rencontres.</p>
+
+  <h3>Ce que j’ai appris</h3>
+  <p>Ce projet m’a confirmé à quel point la perspective de la caméra influence le level design. Un layout ne peut pas être évalué indépendamment de la façon dont le joueur le voit et le lit.</p>
+  <p>Il a aussi confirmé la valeur du prototypage papier : tester le flow et le placement avant de toucher au moteur permet d’explorer rapidement les idées et de réserver le temps de production aux layouts les plus prometteurs.</p>
+  <div style="margin-top:2rem;padding:1.4rem;background:#1A1916;border-left:2px solid #D96830;color:#9A9790;font-size:.9rem;line-height:1.8;"><strong style="color:#E8E4DE;">À retenir</strong><br>Une difficulté rapide ne paraît juste que si le joueur comprend l’espace, identifie la cause de son échec et peut réessayer immédiatement.</div>
+</section>

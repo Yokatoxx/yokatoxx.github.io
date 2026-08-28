@@ -262,13 +262,14 @@
         <li><a href="#projects" data-i18n="nav_projects">Projets</a></li>
         <li><a href="#skills" data-i18n="nav_skills">Compétences</a></li>
         <li><a href="#about" data-i18n="nav_about">À propos</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
       <button class="nav-menu-toggle" id="navMenuToggle" type="button" aria-controls="primaryNav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
       <div class="lang-switcher">
         <button class="lang-btn active" type="button" aria-pressed="true" onclick="setLang('fr')">FR</button>
         <button class="lang-btn" type="button" aria-pressed="false" onclick="setLang('en')">EN</button>
         <button class="lang-btn" type="button" aria-pressed="false" onclick="setLang('es')">ES</button>
+        <button class="lang-btn" type="button" aria-pressed="false" onclick="setLang('de')">DE</button>
       </div>
       <button class="theme-toggle" id="themeToggle" type="button" onclick="toggleTheme()" title="Changer le thème" aria-label="Activer le thème sombre" aria-pressed="false">☾</button>
     </div>
@@ -381,7 +382,7 @@
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galerie d’images" aria-hidden="true">
-    <button class="lightbox-close" type="button" onclick="closeLightbox()">✕ Fermer</button>
+    <button class="lightbox-close" type="button" onclick="closeLightbox()" data-i18n="modal_close">✕ Fermer</button>
     <button class="lightbox-prev" type="button" id="lightboxPrev" aria-label="Image précédente" onclick="lightboxNav(-1)">‹</button>
     <img class="lightbox-img" id="lightboxImg" src="" alt="">
     <button class="lightbox-next" type="button" id="lightboxNext" aria-label="Image suivante" onclick="lightboxNav(1)">›</button>
@@ -401,9 +402,16 @@
     try { savedTheme = localStorage.getItem('jl_theme'); } catch(e) { /* stockage indisponible */ }
     function updateThemeButton(isDark){
       const button=document.getElementById('themeToggle');
+      const labels={
+        fr:{dark:'Activer le thème sombre',light:'Passer au thème clair'},
+        en:{dark:'Enable dark theme',light:'Switch to light theme'},
+        es:{dark:'Activar tema oscuro',light:'Cambiar al tema claro'},
+        de:{dark:'Dunkles Theme aktivieren',light:'Helles Theme aktivieren'},
+      };
+      const lang=labels[document.documentElement.lang]||labels.fr;
       button.textContent=isDark?'☀':'☾';
       button.setAttribute('aria-pressed',String(isDark));
-      button.setAttribute('aria-label',isDark?'Passer au thème clair':'Activer le thème sombre');
+      button.setAttribute('aria-label',isDark?lang.light:lang.dark);
     }
     if(savedTheme === 'dark') { document.documentElement.setAttribute('data-theme','dark'); updateThemeButton(true); }
     function toggleTheme(){
@@ -417,7 +425,7 @@
     const TRANSLATIONS = {
       fr: {
         meta_title:'Jordan Lamour · Portfolio', meta_description:'Portfolio de Jordan Lamour, Game Designer & Level Designer diplômé d’un Bachelor Game Design à l’ICAN. Projets de jeux vidéo, gameplay et level design.',
-        nav_about:'À propos', nav_skills:'Compétences', nav_projects:'Projets',
+        nav_about:'À propos', nav_skills:'Compétences', nav_projects:'Projets', nav_contact:'Contact',
         hero_tag:'Game Designer & Level Designer — Bachelor Game Design',
         hero_sub:'Je conçois des mécaniques, des boucles de gameplay et des espaces de jeu pensés pour le joueur.',
         hero_specialization:'Gameplay systems · Level flow · Greyboxing · Player guidance',
@@ -438,10 +446,11 @@
         form_name:'Nom', form_email:'Email', form_name_ph:'Ton nom', form_msg:'Message', form_msg_ph:'Bonjour Jordan…', form_send:'Envoyer', form_mail_hint:'Ton logiciel de messagerie s’ouvrira pour préparer l’email.',
         projects_empty:'Aucun projet n’est disponible pour le moment.', projects_error:'Impossible de charger les projets. Réessaie dans quelques instants.',
         footer_sub:'Level Designer & Game Designer · ICAN',
-        modal_close:'✕ Fermer',
+        modal_close:'✕ Fermer', theme_title:'Changer le thème', theme_label:'Activer le thème sombre',
         devlog_title:'Ce que j\'ai fait', devlog_loading:'Chargement du devlog…', devlog_error:'Le devlog n\'a pas pu être chargé.', screenshots_title:'Screenshots', no_media:'Pas de média',
         card_more:'Voir plus', card_open:'Ouvrir le projet', screenshot_alt:'capture', image_previous:'Image précédente', image_next:'Image suivante', menu_open:'Ouvrir le menu', menu_close:'Fermer le menu',
-        meta_category:'Catégorie', meta_tags:'Tags', meta_role:'Rôle', meta_tools:'Outils', role_default:'Contributeur',
+        meta_category:'Catégorie', meta_tags:'Tags', meta_role:'Rôle', meta_tools:'Outils', meta_focus:'Focus', role_default:'Contributeur',
+        link_demo:'Démo', link_github:'GitHub', link_itch:'itch.io', link_website:'Site web',
         filter_unity:'Unity / Game Dev', filter_shader:'Shaders & Visuels',
         filter_web:'Web & Outils', filter_design:'Game Design', filter_other:'Autre',
         ski_ld:'Level Design', ski_bk:'Blockout', ski_proto:'Prototypage', ski_gp:'Gameplay',
@@ -450,7 +459,7 @@
       },
       en: {
         meta_title:'Jordan Lamour · Portfolio', meta_description:'Portfolio of Jordan Lamour, Game Designer & Level Designer with a Bachelor in Game Design from ICAN. Game projects, gameplay and level design.',
-        nav_about:'About', nav_skills:'Skills', nav_projects:'Projects',
+        nav_about:'About', nav_skills:'Skills', nav_projects:'Projects', nav_contact:'Contact',
         hero_tag:'Game Designer & Level Designer — Bachelor in Game Design',
         hero_sub:'I design mechanics, gameplay loops and game spaces built around the player.',
         hero_specialization:'Gameplay systems · Level flow · Greyboxing · Player guidance',
@@ -471,10 +480,11 @@
         form_name:'Name', form_email:'Email', form_name_ph:'Your name', form_msg:'Message', form_msg_ph:'Hello Jordan…', form_send:'Send', form_mail_hint:'Your email app will open to prepare the message.',
         projects_empty:'No project is available right now.', projects_error:'Unable to load the projects. Please try again in a moment.',
         footer_sub:'Level Designer & Game Designer · ICAN',
-        modal_close:'✕ Close',
+        modal_close:'✕ Close', theme_title:'Change theme', theme_label:'Enable dark theme',
         devlog_title:'What I did', devlog_loading:'Loading the devlog…', devlog_error:'The devlog could not be loaded.', screenshots_title:'Screenshots', no_media:'No media',
         card_more:'See more', card_open:'Open project', screenshot_alt:'screenshot', image_previous:'Previous image', image_next:'Next image', menu_open:'Open menu', menu_close:'Close menu',
-        meta_category:'Category', meta_tags:'Tags', meta_role:'Role', meta_tools:'Tools', role_default:'Contributor',
+        meta_category:'Category', meta_tags:'Tags', meta_role:'Role', meta_tools:'Tools', meta_focus:'Focus', role_default:'Contributor',
+        link_demo:'Demo', link_github:'GitHub', link_itch:'itch.io', link_website:'Website',
         filter_unity:'Unity / Game Dev', filter_shader:'Shaders & Visuals',
         filter_web:'Web & Tools', filter_design:'Game Design', filter_other:'Other',
         ski_ld:'Level Design', ski_bk:'Blockout', ski_proto:'Prototyping', ski_gp:'Gameplay',
@@ -483,7 +493,7 @@
       },
       es: {
         meta_title:'Jordan Lamour · Portfolio', meta_description:'Portfolio de Jordan Lamour, Game Designer y Level Designer con un Bachelor en Diseño de Videojuegos por ICAN. Proyectos de videojuegos, gameplay y level design.',
-        nav_about:'Sobre mí', nav_skills:'Habilidades', nav_projects:'Proyectos',
+        nav_about:'Sobre mí', nav_skills:'Habilidades', nav_projects:'Proyectos', nav_contact:'Contacto',
         hero_tag:'Game Designer y Level Designer — Bachelor en Diseño de Videojuegos',
         hero_sub:'Diseño mecánicas, bucles de gameplay y espacios de juego pensados para el jugador.',
         hero_specialization:'Gameplay systems · Level flow · Greyboxing · Player guidance',
@@ -504,15 +514,48 @@
         form_name:'Nombre', form_email:'Email', form_name_ph:'Tu nombre', form_msg:'Mensaje', form_msg_ph:'Hola Jordan…', form_send:'Enviar', form_mail_hint:'Tu aplicación de correo se abrirá para preparar el mensaje.',
         projects_empty:'No hay proyectos disponibles por ahora.', projects_error:'No se han podido cargar los proyectos. Inténtalo de nuevo.',
         footer_sub:'Level Designer & Game Designer · ICAN',
-        modal_close:'✕ Cerrar',
+        modal_close:'✕ Cerrar', theme_title:'Cambiar tema', theme_label:'Activar tema oscuro',
         devlog_title:'Lo que hice', devlog_loading:'Cargando el devlog…', devlog_error:'No se ha podido cargar el devlog.', screenshots_title:'Capturas', no_media:'Sin media',
         card_more:'Ver más', card_open:'Abrir proyecto', screenshot_alt:'captura', image_previous:'Imagen anterior', image_next:'Imagen siguiente', menu_open:'Abrir menú', menu_close:'Cerrar menú',
-        meta_category:'Categoría', meta_tags:'Tags', meta_role:'Rol', meta_tools:'Herramientas', role_default:'Colaborador',
+        meta_category:'Categoría', meta_tags:'Tags', meta_role:'Rol', meta_tools:'Herramientas', meta_focus:'Enfoque', role_default:'Colaborador',
+        link_demo:'Demo', link_github:'GitHub', link_itch:'itch.io', link_website:'Sitio web',
         filter_unity:'Unity / Game Dev', filter_shader:'Shaders y Visuales',
         filter_web:'Web y Herramientas', filter_design:'Diseño de Juego', filter_other:'Otro',
         ski_ld:'Level Design', ski_bk:'Blockout', ski_proto:'Prototipado', ski_gp:'Gameplay',
         ski_pm:'Gestión de proyectos', ski_model:'Modelado 3D', ski_tex:'Texturas',
         ski_integ:'Integraciones', ski_interior:'Entornos interiores', ski_optim:'Optimización 3D', ski_modtex:'Texturizado 3D',
+      }
+      ,de: {
+        meta_title:'Jordan Lamour · Portfolio', meta_description:'Portfolio von Jordan Lamour, Game Designer und Level Designer mit einem Bachelor in Game Design von ICAN. Videospielprojekte, Gameplay und Level Design.',
+        nav_about:'Über mich', nav_skills:'Kompetenzen', nav_projects:'Projekte', nav_contact:'Kontakt',
+        hero_tag:'Game Designer & Level Designer — Bachelor in Game Design',
+        hero_sub:'Ich entwickle Spielmechaniken, Gameplay-Loops und Spielräume, die auf die Spielerfahrung ausgerichtet sind.',
+        hero_specialization:'Gameplay-Systeme · Level Flow · Greyboxing · Spielerführung',
+        hero_cta1:'Meine Projekte', hero_cta2:'Kontakt aufnehmen',
+        about_label:'Über mich',
+        about_title:'Game Designer &amp;<br>Level Designer<br>ICAN-Absolvent',
+        about_p1:'Ich bin <strong>Jordan Lamour</strong>, <strong>Game Designer &amp; Level Designer</strong> mit einem Bachelor in Game Design von ICAN.',
+        about_p2:'Am Game und Level Design fasziniert mich, die Spielerfahrung von Grund auf zu gestalten: klare Mechaniken, interessante Gameplay-Loops und Räume, die Rhythmus erzeugen, den Blick führen und Erkundung belohnen. Ich verbinde gerne <strong>Gameplay-Intention, Blockout, Produktionsbedingungen</strong> und künstlerische Leitung.',
+        about_p3:'Ich bin offen für <strong>Game-Design- und Level-Design-Möglichkeiten</strong>, Kooperationen und kreative Projekte.',
+        fact_ican:'Bachelor in Game Design · ICAN-Absolvent', fact_level:'Game Design · Level Design · Gameplay Flow · Räumliche Dramaturgie',
+        fact_unity:'C# · Integrationen', fact_3d:'Blender · Modellierung · UV · Texturen',
+        skills_label:'Kompetenzen', skills_title:'Was ich gestalte',
+        sk_design:'Game & Level Design', sk_3d:'3D & Art', sk_gamedev:'Game Dev', sk_env:'Umgebungen', sk_web:'Web & Tools', sk_lang:'Sprachen',
+        lang_fr:'Französisch (Muttersprache)', lang_en:'Englisch (fortgeschritten)',
+        proj_label:'Projekte', proj_title:'Meine Arbeiten', filter_all:'Alle', loading:'Wird geladen…',
+        contact_label:'Kontakt', contact_title:'Lass uns<br>zusammenarbeiten',
+        contact_intro:'Offen für <strong>Game-Design- und Level-Design-Möglichkeiten</strong>, Praktika und kreative Projekte.',
+        form_name:'Name', form_email:'E-Mail', form_name_ph:'Dein Name', form_msg:'Nachricht', form_msg_ph:'Hallo Jordan…', form_send:'Senden', form_mail_hint:'Deine Mail-App wird geöffnet, um die Nachricht vorzubereiten.',
+        projects_empty:'Derzeit sind keine Projekte verfügbar.', projects_error:'Die Projekte konnten nicht geladen werden. Bitte versuche es gleich noch einmal.',
+        footer_sub:'Game Designer & Level Designer · ICAN',
+        modal_close:'✕ Schließen', theme_title:'Theme wechseln', theme_label:'Dunkles Theme aktivieren',
+        devlog_title:'Was ich gemacht habe', devlog_loading:'Devlog wird geladen…', devlog_error:'Der Devlog konnte nicht geladen werden.', screenshots_title:'Screenshots', no_media:'Keine Medien',
+        card_more:'Mehr ansehen', card_open:'Projekt öffnen', screenshot_alt:'Screenshot', image_previous:'Vorheriges Bild', image_next:'Nächstes Bild', menu_open:'Menü öffnen', menu_close:'Menü schließen',
+        meta_category:'Kategorie', meta_tags:'Tags', meta_role:'Rolle', meta_tools:'Tools', meta_focus:'Fokus', role_default:'Mitarbeit',
+        link_demo:'Demo', link_github:'GitHub', link_itch:'itch.io', link_website:'Website',
+        filter_unity:'Unity / Game Dev', filter_shader:'Shader & Visuals', filter_web:'Web & Tools', filter_design:'Game Design', filter_other:'Sonstiges',
+        ski_ld:'Level Design', ski_bk:'Blockout', ski_proto:'Prototyping', ski_gp:'Gameplay', ski_pm:'Projektmanagement', ski_model:'3D-Modellierung', ski_tex:'Texturen',
+        ski_integ:'Integrationen', ski_interior:'Innenräume', ski_optim:'3D-Optimierung', ski_modtex:'3D-Texturierung',
       }
     };
 
@@ -538,11 +581,20 @@
       document.querySelector('meta[name="description"]').setAttribute('content',t('meta_description'));
       document.querySelector('meta[property="og:title"]').setAttribute('content',t('meta_title'));
       document.querySelector('meta[property="og:description"]').setAttribute('content',t('meta_description'));
+      document.getElementById('themeToggle').setAttribute('title',t('theme_title'));
+      updateThemeButton(document.documentElement.getAttribute('data-theme') === 'dark');
       document.getElementById('navMenuToggle').setAttribute('aria-label',t(document.getElementById('navMenuToggle').getAttribute('aria-expanded')==='true'?'menu_close':'menu_open'));
       document.getElementById('lightboxPrev').setAttribute('aria-label',t('image_previous'));
       document.getElementById('lightboxNext').setAttribute('aria-label',t('image_next'));
-      // Re-render project filter labels if projects are loaded
-      if(allProjects.length) buildFilters(allProjects);
+      // Re-render translated project cards and filter labels if projects are loaded
+      if(allProjects.length){
+        renderProjects();
+        if(activeProjectIndex!==null && document.getElementById('modalBackdrop').classList.contains('open')){
+          const project=allProjects[activeProjectIndex];
+          document.getElementById('modalContent').innerHTML=buildModalHTML(project);
+          loadDevlog(project);
+        }
+      }
     }
 
     function setLang(lang){
@@ -632,11 +684,18 @@
 
     let categoriesData=[];
     const CATS_FALLBACK={unity:'Unity / Game Dev',shader:'Shaders & Visuels',web:'Web & Outils',design:'Game Design',other:'Autre',level_design:'Level Design',game_jam:'Game Jam',unreal:'Unreal Engine'};
-    function getCatLabel(id){ const c=categoriesData.find(x=>x.id===id); return c?c.label:CATS_FALLBACK[id]||id; }
+    function getCatLabel(id){ const c=categoriesData.find(x=>x.id===id); return c?(c.labels?.[currentLang]||c.label):CATS_FALLBACK[id]||id; }
+    function projectValue(project,field){ return project.translations?.[currentLang]?.[field] ?? project[field]; }
+    function projectArray(project,field){ const value=projectValue(project,field); return Array.isArray(value)?value:[]; }
+    function projectSpecs(project){ return projectArray(project,'specs'); }
+    function projectDevlogUrl(project){
+      const value=project.devlogUrl;
+      return typeof value==='string' ? value : (value?.[currentLang]||value?.fr||'');
+    }
 
     function cardMedia(p){
       const id=ytId(p.youtube);
-      const title=escapeHTML(p.title);
+      const title=escapeHTML(projectValue(p,'title'));
       if(id) return `<div class="card-media"><img src="https://i.ytimg.com/vi/${encodeURIComponent(id)}/hqdefault.jpg" alt="${title} – vidéo" loading="lazy" decoding="async"><span class="media-play" aria-hidden="true">▶</span></div>`;
       const screenshot=safeResourceUrl(p.screenshot);
       if(screenshot) return `<div class="card-media"><img src="${escapeHTML(screenshot)}" alt="${title}" loading="lazy" decoding="async"></div>`;
@@ -644,16 +703,17 @@
     }
     function renderCard(p,i){
       const category=p.category||'other';
-      const title=escapeHTML(p.title);
-      const tags=(p.tags||[]).map(tag=>`<span class="tag">${escapeHTML(tag)}</span>`).join('');
+      const title=escapeHTML(projectValue(p,'title'));
+      const role=projectValue(p,'role');
+      const tags=projectArray(p,'tags').map(tag=>`<span class="tag">${escapeHTML(tag)}</span>`).join('');
       return `
-        <div class="project-card reveal" data-category="${escapeHTML(category)}" onclick="openModal(${i})" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal(${i})}" role="button" aria-label="${escapeHTML(t('card_open')+' '+p.title)}">
+        <div class="project-card reveal" data-category="${escapeHTML(category)}" onclick="openModal(${i})" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal(${i})}" role="button" aria-label="${escapeHTML(t('card_open')+' '+projectValue(p,'title'))}">
           ${cardMedia(p)}
           <div class="card-body">
             <p class="card-category">${escapeHTML(getCatLabel(category))}</p>
             <h3 class="card-title">${title}</h3>
-            ${p.role?`<p class="card-role">${escapeHTML(p.role)}</p>`:''}
-            <p class="card-desc">${escapeHTML(p.description||'')}</p>
+            ${role?`<p class="card-role">${escapeHTML(role)}</p>`:''}
+            <p class="card-desc">${escapeHTML(projectValue(p,'description')||'')}</p>
             <div class="card-footer">
               <div class="card-tags">${tags}</div>
               <span class="card-read-more">${t('card_more')} →</span>
@@ -666,33 +726,34 @@
 
     function buildModalHTML(p){
       const id=ytId(p.youtube);
-      const title=escapeHTML(p.title);
+      const title=escapeHTML(projectValue(p,'title'));
       const category=p.category||'other';
       let hero='';
       if(id) hero=`<div class="modal-hero"><iframe src="https://www.youtube.com/embed/${encodeURIComponent(id)}" title="${title} – vidéo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen></iframe></div>`;
       else if(safeResourceUrl(p.screenshot)) hero=`<div class="modal-hero"><img src="${escapeHTML(safeResourceUrl(p.screenshot))}" alt="${title}" decoding="async"></div>`;
       else hero=`<div class="modal-hero"><div class="modal-hero-placeholder">${t('no_media')}</div></div>`;
 
-      const tags=(p.tags||[]).map(escapeHTML).join(', ');
+      const tags=projectArray(p,'tags').map(escapeHTML).join(', ');
 
       let links='';
       const externalLink=(url,label,primary=false)=>{
         const safe=safeExternalUrl(url);
         return safe?`<a href="${escapeHTML(safe)}" target="_blank" rel="noopener noreferrer" class="modal-link${primary?' primary':''}">${label}</a>`:'';
       };
-      links+=externalLink(p.build,'▶ Demo',true);
-      links+=externalLink(p.github,'GitHub');
-      links+=externalLink(p.itch,'itch.io');
-      links+=externalLink(p.website,'Site web');
+      links+=externalLink(p.build,`▶ ${t('link_demo')}`,true);
+      links+=externalLink(p.github,t('link_github'));
+      links+=externalLink(p.itch,t('link_itch'));
+      links+=externalLink(p.website,t('link_website'));
 
       // Metadata grid items (right column, Atlas V style)
-      const toolTags = (p.tools||[]).map(escapeHTML).join(', ');
+      const toolTags = projectArray(p,'tools').map(escapeHTML).join(', ');
       const allMeta = [
         { label: t('meta_category'), value: escapeHTML(getCatLabel(category)) },
         { label: t('meta_tags'), value: tags || null },
-        { label: t('meta_role'), value: escapeHTML(p.role||t('role_default')) },
+        { label: t('meta_role'), value: escapeHTML(projectValue(p,'role')||t('role_default')) },
+        { label: t('meta_focus'), value: escapeHTML(projectValue(p,'focus')||'') },
         { label: t('meta_tools'), value: toolTags || null },
-        ...((p.specs||[]).map(s=>({ label: escapeHTML(s.label), value: escapeHTML(s.value) }))),
+        ...(projectSpecs(p).map(s=>({ label: escapeHTML(s.label), value: escapeHTML(s.value) }))),
       ].filter(m => m.value);
 
       const metaGrid = allMeta.map(m=>`
@@ -722,7 +783,7 @@
           </div>
           <div class="modal-content-grid">
             <div class="modal-left">
-              ${p.description?`<p class="modal-desc">${escapeHTML(p.description)}</p>`:''}
+              ${projectValue(p,'description')?`<p class="modal-desc">${escapeHTML(projectValue(p,'description'))}</p>`:''}
               ${links?`<div class="modal-links">${links}</div>`:''}
             </div>
             <div class="modal-right">
@@ -734,9 +795,10 @@
     }
 
     async function loadDevlog(p){
-      if(!p.devlogUrl)return;
+      const devlogUrl=projectDevlogUrl(p);
+      if(!devlogUrl)return;
       const target=document.getElementById('devlogContent');
-      const url=safeContentUrl(p.devlogUrl);
+      const url=safeContentUrl(devlogUrl);
       if(!target||!url)return;
       try{
         const response=await fetch(url);
@@ -751,10 +813,12 @@
     let galleryTitle='';
     let modalReturnFocus=null;
     let lightboxReturnFocus=null;
+    let activeProjectIndex=null;
     function openModal(i){
       const p=allProjects[i]; if(!p)return;
+      activeProjectIndex=i;
       modalReturnFocus=document.activeElement;
-      galleryTitle=p.title||'';
+      galleryTitle=projectValue(p,'title')||'';
       galleryImages=(p.screenshots||[]).map(s=>safeResourceUrl(s)).filter(Boolean);
       document.getElementById('modalContent').innerHTML=buildModalHTML(p);
       loadDevlog(p);
@@ -770,6 +834,7 @@
       document.body.style.overflow='';
       modalReturnFocus?.focus();
       modalReturnFocus=null;
+      activeProjectIndex=null;
     }
     document.getElementById('modalBackdrop').addEventListener('click',e=>{
       if(e.target===document.getElementById('modalBackdrop')) closeModal();
@@ -850,6 +915,17 @@
           });
         });
       });
+      document.querySelectorAll('.project-card').forEach(c=>{
+        c.setAttribute('data-hidden',active!=='all'&&c.dataset.category!==active);
+      });
+    }
+
+    function renderProjects(){
+      const grid=document.getElementById('projectsGrid');
+      if(!allProjects.length){grid.innerHTML=`<div class="empty-state"><p>${t('projects_empty')}</p></div>`;return;}
+      grid.innerHTML=allProjects.map((p,i)=>renderCard(p,i)).join('');
+      buildFilters(allProjects);
+      document.querySelectorAll('.project-card.reveal').forEach(r=>revealObs.observe(r));
     }
 
     fetch('projects.json')
@@ -862,11 +938,7 @@
           categoriesData=data.categories||[];
           allProjects=data.projects||[];
         }
-        const grid=document.getElementById('projectsGrid');
-        if(!allProjects.length){grid.innerHTML=`<div class="empty-state"><p>${t('projects_empty')}</p></div>`;return;}
-        grid.innerHTML=allProjects.map((p,i)=>renderCard(p,i)).join('');
-        buildFilters(allProjects);
-        document.querySelectorAll('.project-card.reveal').forEach(r=>revealObs.observe(r));
+        renderProjects();
       })
       .catch(()=>{
         document.getElementById('projectsGrid').innerHTML=

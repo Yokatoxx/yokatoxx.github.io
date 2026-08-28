@@ -3,32 +3,68 @@
     {
       "id": "level_design",
       "label": "Level Design",
-      "featured": true
+      "featured": true,
+      "labels": {
+        "fr": "Level Design",
+        "en": "Level Design",
+        "es": "Diseño de niveles",
+        "de": "Level Design"
+      }
     },
     {
       "id": "game_jam",
       "label": "Game Jam",
-      "featured": true
+      "featured": true,
+      "labels": {
+        "fr": "Game Jam",
+        "en": "Game Jam",
+        "es": "Game Jam",
+        "de": "Game Jam"
+      }
     },
     {
       "id": "unity",
       "label": "Unity / Game Dev",
-      "featured": false
+      "featured": false,
+      "labels": {
+        "fr": "Unity / Game Dev",
+        "en": "Unity / Game Dev",
+        "es": "Unity / Desarrollo",
+        "de": "Unity / Game Dev"
+      }
     },
     {
       "id": "unreal",
       "label": "Unreal Engine",
-      "featured": false
+      "featured": false,
+      "labels": {
+        "fr": "Unreal Engine",
+        "en": "Unreal Engine",
+        "es": "Unreal Engine",
+        "de": "Unreal Engine"
+      }
     },
     {
       "id": "web",
       "label": "Web & Outils",
-      "featured": false
+      "featured": false,
+      "labels": {
+        "fr": "Web & Outils",
+        "en": "Web & Tools",
+        "es": "Web y Herramientas",
+        "de": "Web & Tools"
+      }
     },
     {
       "id": "3d",
       "label": "3D / Art",
-      "featured": false
+      "featured": false,
+      "labels": {
+        "fr": "3D / Art",
+        "en": "3D / Art",
+        "es": "3D / Arte",
+        "de": "3D / Art"
+      }
     }
   ],
   "projects": [
@@ -79,7 +115,150 @@
         "Die & Retry",
         "Fast-Paced"
       ],
-      "devlogUrl": "content/0xd34d.html"
+      "devlogUrl": {
+        "fr": "content/0xd34d.fr.html",
+        "en": "content/0xd34d.en.html",
+        "es": "content/0xd34d.es.html",
+        "de": "content/0xd34d.de.html"
+      },
+      "translations": {
+        "fr": {
+          "title": "0xD34D — Protocol: Reboot",
+          "description": "Un shooter top-down rapide conçu autour d’une boucle die and retry, où chaque échec doit aider le joueur à prendre une meilleure décision.",
+          "role": "Level Designer",
+          "focus": "Flow joueur · Placement des ennemis · Lignes de vue · Rythme des rencontres",
+          "tags": [
+            "Level Design",
+            "Game Jam",
+            "Shooter top-down",
+            "Die & Retry",
+            "Rythme soutenu"
+          ],
+          "tools": [
+            "Unreal Engine"
+          ],
+          "specs": [
+            {
+              "label": "Format",
+              "value": "Epic Games Game Jam 2025"
+            },
+            {
+              "label": "Type",
+              "value": "Prototype de game jam"
+            },
+            {
+              "label": "Moteur",
+              "value": "Unreal Engine"
+            },
+            {
+              "label": "Focus",
+              "value": "Flow joueur · Placement des ennemis · Lignes de vue · Rythme des rencontres"
+            }
+          ]
+        },
+        "en": {
+          "title": "0xD34D — Protocol: Reboot",
+          "description": "A fast-paced top-down shooter built around a die-and-retry loop, where every failure should help the player make a better decision.",
+          "role": "Level Designer",
+          "focus": "Player flow · Enemy placement · Sightlines · Encounter pacing",
+          "tags": [
+            "Level Design",
+            "Game Jam",
+            "Top-Down Shooter",
+            "Die & Retry",
+            "Fast-Paced"
+          ],
+          "tools": [
+            "Unreal Engine"
+          ],
+          "specs": [
+            {
+              "label": "Format",
+              "value": "Epic Games Game Jam 2025"
+            },
+            {
+              "label": "Type",
+              "value": "Game jam prototype"
+            },
+            {
+              "label": "Engine",
+              "value": "Unreal Engine"
+            },
+            {
+              "label": "Focus",
+              "value": "Player flow · Enemy placement · Sightlines · Encounter pacing"
+            }
+          ]
+        },
+        "es": {
+          "title": "0xD34D — Protocol: Reboot",
+          "description": "Un shooter top-down rápido construido alrededor de un ciclo de morir y volver a intentarlo, donde cada fallo ayuda al jugador a tomar una mejor decisión.",
+          "role": "Diseñador de niveles",
+          "focus": "Flujo del jugador · Colocación de enemigos · Líneas de visión · Ritmo de los encuentros",
+          "tags": [
+            "Diseño de niveles",
+            "Game Jam",
+            "Shooter top-down",
+            "Die & Retry",
+            "Ritmo intenso"
+          ],
+          "tools": [
+            "Unreal Engine"
+          ],
+          "specs": [
+            {
+              "label": "Formato",
+              "value": "Epic Games Game Jam 2025"
+            },
+            {
+              "label": "Tipo",
+              "value": "Prototipo de game jam"
+            },
+            {
+              "label": "Motor",
+              "value": "Unreal Engine"
+            },
+            {
+              "label": "Enfoque",
+              "value": "Flujo del jugador · Colocación de enemigos · Líneas de visión · Ritmo de los encuentros"
+            }
+          ]
+        },
+        "de": {
+          "title": "0xD34D — Protocol: Reboot",
+          "description": "Ein schneller Top-Down-Shooter mit einer Die-and-Retry-Spielschleife, in der jeder Fehlschlag dem Spieler zu einer besseren Entscheidung verhilft.",
+          "role": "Level Designer",
+          "focus": "Spielerfluss · Gegnerplatzierung · Sichtlinien · Begegnungsrhythmus",
+          "tags": [
+            "Level Design",
+            "Game Jam",
+            "Top-Down-Shooter",
+            "Die & Retry",
+            "Hohes Tempo"
+          ],
+          "tools": [
+            "Unreal Engine"
+          ],
+          "specs": [
+            {
+              "label": "Format",
+              "value": "Epic Games Game Jam 2025"
+            },
+            {
+              "label": "Typ",
+              "value": "Game-Jam-Prototyp"
+            },
+            {
+              "label": "Engine",
+              "value": "Unreal Engine"
+            },
+            {
+              "label": "Fokus",
+              "value": "Spielerfluss · Gegnerplatzierung · Sichtlinien · Begegnungsrhythmus"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "Snouff & Piktty",
@@ -121,7 +300,126 @@
         "Accelerometre",
         "Casual"
       ],
-      "devlogUrl": "content/snouff-piktty.html"
+      "devlogUrl": {
+        "fr": "content/snouff-piktty.fr.html",
+        "en": "content/snouff-piktty.en.html",
+        "es": "content/snouff-piktty.es.html",
+        "de": "content/snouff-piktty.de.html"
+      },
+      "translations": {
+        "fr": {
+          "title": "Snouff & Piktty",
+          "description": "Un jeu de précision dans lequel le joueur trie deux types de créatures en les faisant glisser à gauche ou à droite. Un chronomètre global diminue au fil de la partie, mais remonte en cas de tri réussi et baisse après une erreur.",
+          "role": "Programmeur principal",
+          "focus": "Input mobile · Accéléromètre · UI/UX · Lisibilité",
+          "tags": [
+            "Mobile",
+            "Accéléromètre",
+            "Casual"
+          ],
+          "tools": [
+            "Unity"
+          ],
+          "specs": [
+            {
+              "label": "Durée",
+              "value": "1 semaine"
+            },
+            {
+              "label": "Plateforme",
+              "value": "Mobile"
+            },
+            {
+              "label": "Format",
+              "value": "Game jam"
+            }
+          ]
+        },
+        "en": {
+          "title": "Snouff & Piktty",
+          "description": "A precision game where the player sorts two types of creatures by sliding them left or right. A global timer decreases throughout the game, increases after a successful sort and drops after a mistake.",
+          "role": "Lead Programmer",
+          "focus": "Mobile input · Accelerometer · UI/UX · Readability",
+          "tags": [
+            "Mobile",
+            "Accelerometer",
+            "Casual"
+          ],
+          "tools": [
+            "Unity"
+          ],
+          "specs": [
+            {
+              "label": "Duration",
+              "value": "1 week"
+            },
+            {
+              "label": "Platform",
+              "value": "Mobile"
+            },
+            {
+              "label": "Format",
+              "value": "Game jam"
+            }
+          ]
+        },
+        "es": {
+          "title": "Snouff & Piktty",
+          "description": "Un juego de precisión en el que el jugador clasifica dos tipos de criaturas deslizándolas hacia la izquierda o la derecha. Un temporizador global disminuye durante la partida, aumenta tras un acierto y baja después de un error.",
+          "role": "Programador principal",
+          "focus": "Input móvil · Acelerómetro · UI/UX · Legibilidad",
+          "tags": [
+            "Móvil",
+            "Acelerómetro",
+            "Casual"
+          ],
+          "tools": [
+            "Unity"
+          ],
+          "specs": [
+            {
+              "label": "Duración",
+              "value": "1 semana"
+            },
+            {
+              "label": "Plataforma",
+              "value": "Móvil"
+            },
+            {
+              "label": "Formato",
+              "value": "Game jam"
+            }
+          ]
+        },
+        "de": {
+          "title": "Snouff & Piktty",
+          "description": "Ein Präzisionsspiel, in dem der Spieler zwei Arten von Kreaturen durch Wischen nach links oder rechts sortiert. Ein globaler Timer läuft während des Spiels herunter, steigt bei einer richtigen Sortierung und sinkt nach einem Fehler.",
+          "role": "Lead Programmer",
+          "focus": "Mobile Input · Beschleunigungssensor · UI/UX · Lesbarkeit",
+          "tags": [
+            "Mobile",
+            "Beschleunigungssensor",
+            "Casual"
+          ],
+          "tools": [
+            "Unity"
+          ],
+          "specs": [
+            {
+              "label": "Dauer",
+              "value": "1 Woche"
+            },
+            {
+              "label": "Plattform",
+              "value": "Mobile"
+            },
+            {
+              "label": "Format",
+              "value": "Game Jam"
+            }
+          ]
+        }
+      }
     },
     {
       "title": "ShadowLight",
@@ -161,7 +459,122 @@
         "Stylised",
         "RogueLite"
       ],
-      "devlogUrl": "content/shadowlight.html"
+      "devlogUrl": {
+        "fr": "content/shadowlight.fr.html",
+        "en": "content/shadowlight.en.html",
+        "es": "content/shadowlight.es.html",
+        "de": "content/shadowlight.de.html"
+      },
+      "translations": {
+        "fr": {
+          "title": "ShadowLight",
+          "description": "Un projet réalisé pendant la Winter GameJam autour du thème « Two in One », en collaboration avec Noah Caux.",
+          "role": "Programmeur principal",
+          "focus": "Changement de dimension · Boucle de combat · Priorisation du scope",
+          "tags": [
+            "2D",
+            "Shooter",
+            "Die & Retry",
+            "Stylisé",
+            "Roguelite"
+          ],
+          "tools": [
+            "Unity",
+            "Git"
+          ],
+          "specs": [
+            {
+              "label": "Durée",
+              "value": "48 heures"
+            },
+            {
+              "label": "Format",
+              "value": "Game jam"
+            }
+          ]
+        },
+        "en": {
+          "title": "ShadowLight",
+          "description": "A project created during the Winter GameJam around the theme “Two in One,” in collaboration with Noah Caux.",
+          "role": "Lead Programmer",
+          "focus": "Dimension switching · Combat loop · Scope discipline",
+          "tags": [
+            "2D",
+            "Shooter",
+            "Die & Retry",
+            "Stylised",
+            "Roguelite"
+          ],
+          "tools": [
+            "Unity",
+            "Git"
+          ],
+          "specs": [
+            {
+              "label": "Duration",
+              "value": "48 hours"
+            },
+            {
+              "label": "Format",
+              "value": "Game jam"
+            }
+          ]
+        },
+        "es": {
+          "title": "ShadowLight",
+          "description": "Un proyecto creado durante la Winter GameJam alrededor del tema «Two in One», en colaboración con Noah Caux.",
+          "role": "Programador principal",
+          "focus": "Cambio de dimensión · Bucle de combate · Control del alcance",
+          "tags": [
+            "2D",
+            "Shooter",
+            "Die & Retry",
+            "Estilizado",
+            "Roguelite"
+          ],
+          "tools": [
+            "Unity",
+            "Git"
+          ],
+          "specs": [
+            {
+              "label": "Duración",
+              "value": "48 horas"
+            },
+            {
+              "label": "Formato",
+              "value": "Game jam"
+            }
+          ]
+        },
+        "de": {
+          "title": "ShadowLight",
+          "description": "Ein Projekt aus der Winter GameJam zum Thema „Two in One“, gemeinsam mit Noah Caux entwickelt.",
+          "role": "Lead Programmer",
+          "focus": "Dimensionswechsel · Kampfschleife · Scope-Disziplin",
+          "tags": [
+            "2D",
+            "Shooter",
+            "Die & Retry",
+            "Stilisierter Look",
+            "Roguelite"
+          ],
+          "tools": [
+            "Unity",
+            "Git"
+          ],
+          "specs": [
+            {
+              "label": "Dauer",
+              "value": "48 Stunden"
+            },
+            {
+              "label": "Format",
+              "value": "Game Jam"
+            }
+          ]
+        }
+      }
     }
   ]
 }
