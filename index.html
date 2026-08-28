@@ -4,10 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jordan Lamour · Portfolio</title>
-  <meta name="description" content="Portfolio de Jordan Lamour, Level Designer & Game Designer en 3ème année à l'ICAN. Projets de jeux vidéo, gameplay et level design.">
+  <meta name="description" content="Portfolio de Jordan Lamour, Game Designer & Level Designer diplômé d'un Bachelor Game Design à l'ICAN. Projets de jeux vidéo, gameplay et level design.">
   <meta property="og:title" content="Jordan Lamour · Portfolio">
-  <meta property="og:description" content="Level Designer & Game Designer, étudiant à l'ICAN. Projets de jeux vidéo, gameplay et level design.">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:description" content="Game Designer & Level Designer diplômé d'un Bachelor Game Design. Projets de jeux vidéo, gameplay et level design.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yokatoxx.github.io/">
+  <meta property="og:image" content="https://yokatoxx.github.io/assets/projects/0xd34d/devlog-1.jpg">
+  <meta property="og:image:alt" content="0xD34D — Protocol: Reboot">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="author" content="Jordan Lamour">
   <meta name="theme-color" content="#F2F0EC">
   <link rel="canonical" href="https://yokatoxx.github.io/">
@@ -68,6 +72,7 @@
     .hero-title { font-family:'DM Serif Display',serif; font-size:clamp(3rem,7vw,7rem); line-height:1.0; letter-spacing:-.03em; margin-bottom:1.4rem; opacity:0; animation:fadeUp .7s .35s ease forwards; }
     .hero-title em { font-style:italic; color:var(--accent); }
     .hero-sub { max-width:500px; font-size:1rem; color:var(--mid); margin-bottom:2.8rem; opacity:0; animation:fadeUp .7s .5s ease forwards; line-height:1.8; }
+    .hero-specialization { max-width:620px; font-size:.72rem; letter-spacing:.11em; text-transform:uppercase; color:var(--ink); margin-top:-1.8rem; margin-bottom:2.4rem; opacity:.62; }
     .hero-ctas { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; animation:fadeUp .7s .65s ease forwards; }
     .btn { text-decoration:none; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; padding:.85rem 2rem; border-radius:2px; transition:background .2s,color .2s,transform .15s,border-color .2s; display:inline-block; border:none; font-family:'DM Sans',sans-serif; cursor:pointer; }
     .btn:hover { transform: translateY(-2px); }
@@ -124,6 +129,7 @@
     .card-body { padding:1.8rem; flex:1; display:flex; flex-direction:column; }
     .card-category { font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.8rem; }
     .card-title { font-family:'DM Serif Display',serif; font-size:1.35rem; margin-bottom:.7rem; line-height:1.2; }
+    .card-role { font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.62; margin-bottom:.9rem; }
     .card-desc { font-size:.88rem; color:var(--mid); margin-bottom:1.4rem; flex:1; }
     .card-footer { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
     .card-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
@@ -270,9 +276,10 @@
 
   <section id="hero">
     <div class="hero-bg-text">DESIGN</div>
-    <p class="hero-tag" data-i18n="hero_tag">Level Designer &amp; Game Designer · 3ème année ICAN</p>
+    <p class="hero-tag" data-i18n="hero_tag">Game Designer &amp; Level Designer — Bachelor Game Design</p>
     <h1 class="hero-title">Jordan<br><em>Lamour</em></h1>
     <p class="hero-sub" data-i18n="hero_sub">Je conçois des mécaniques, des boucles de gameplay et des espaces de jeu pensés pour le joueur.</p>
+    <p class="hero-specialization" data-i18n="hero_specialization">Gameplay systems · Level flow · Greyboxing · Player guidance</p>
     <div class="hero-ctas">
       <a href="#projects" class="btn btn-primary" data-i18n="hero_cta1">Voir mes projets</a>
       <a href="#contact" class="btn btn-ghost" data-i18n="hero_cta2">Me contacter</a>
@@ -310,13 +317,13 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <p class="section-label" data-i18n="about_label">À propos</p>
-        <h2 class="section-title" data-i18n="about_title">Game Designer &amp;<br>Level Designer<br>à l'ICAN</h2>
-        <p data-i18n="about_p1">Je m'appelle <strong>Jordan Lamour</strong> et je suis <strong>Game Designer &amp; Level Designer</strong>, spécialisé dans la conception d'expériences de jeu.</p>
+        <h2 class="section-title" data-i18n="about_title">Game Designer &amp;<br>Level Designer<br>diplômé de l'ICAN</h2>
+        <p data-i18n="about_p1">Je m'appelle <strong>Jordan Lamour</strong> et je suis <strong>Game Designer &amp; Level Designer</strong>, diplômé d'un Bachelor Game Design à l'ICAN.</p>
         <p data-i18n="about_p2">Ce qui m'attire dans le game et level design, c'est de construire l'expérience du joueur de bout en bout : imaginer des mécaniques lisibles, créer des boucles de gameplay intéressantes et façonner des espaces qui donnent du rythme, guident le regard et récompensent l'exploration. J'aime faire dialoguer <strong>intentions de gameplay, blockout, contraintes de production</strong> et direction artistique.</p>
         <p data-i18n="about_p3">Je suis ouvert aux <strong>opportunités de level design</strong>, collaborations et projets créatifs.</p>
       </div>
       <div class="about-facts reveal">
-        <div class="fact"><div class="fact-num">ICAN</div><div class="fact-label" data-i18n="fact_ican">Bachelor Game Design · 3ème année</div></div>
+        <div class="fact"><div class="fact-num">ICAN</div><div class="fact-label" data-i18n="fact_ican">Bachelor Game Design · Diplômé de l'ICAN</div></div>
         <div class="fact"><div class="fact-num">Design</div><div class="fact-label" data-i18n="fact_level">Game Design · Level Design · Gameplay flow · Narration spatiale</div></div>
         <div class="fact"><div class="fact-num">Unity</div><div class="fact-label" data-i18n="fact_unity">C# · Intégrations · HDRP</div></div>
         <div class="fact"><div class="fact-num">3D</div><div class="fact-label" data-i18n="fact_3d">Blender · Modélisation · UV · Textures</div></div>
@@ -409,17 +416,18 @@
     // ── I18N ──
     const TRANSLATIONS = {
       fr: {
-        meta_title:'Jordan Lamour · Portfolio', meta_description:'Portfolio de Jordan Lamour, Level Designer & Game Designer à l’ICAN. Projets de jeux vidéo, gameplay et level design.',
+        meta_title:'Jordan Lamour · Portfolio', meta_description:'Portfolio de Jordan Lamour, Game Designer & Level Designer diplômé d’un Bachelor Game Design à l’ICAN. Projets de jeux vidéo, gameplay et level design.',
         nav_about:'À propos', nav_skills:'Compétences', nav_projects:'Projets',
-        hero_tag:'Level Designer & Game Designer · 3ème année ICAN',
+        hero_tag:'Game Designer & Level Designer — Bachelor Game Design',
         hero_sub:'Je conçois des mécaniques, des boucles de gameplay et des espaces de jeu pensés pour le joueur.',
+        hero_specialization:'Gameplay systems · Level flow · Greyboxing · Player guidance',
         hero_cta1:'Voir mes projets', hero_cta2:'Me contacter',
         about_label:'À propos',
-        about_title:'Game Designer &amp;<br>Level Designer<br>à l\'ICAN',
-        about_p1:'Je m\'appelle <strong>Jordan Lamour</strong> et je suis <strong>Game Designer &amp; Level Designer</strong>, spécialisé dans la conception d\'expériences de jeu.',
+        about_title:'Game Designer &amp;<br>Level Designer<br>diplômé de l\'ICAN',
+        about_p1:'Je m\'appelle <strong>Jordan Lamour</strong> et je suis <strong>Game Designer &amp; Level Designer</strong>, diplômé d\'un Bachelor Game Design à l\'ICAN.',
         about_p2:'Ce qui m\'attire dans le game et level design, c\'est de construire l\'expérience du joueur de bout en bout : imaginer des mécaniques lisibles, créer des boucles de gameplay intéressantes et façonner des espaces qui donnent du rythme, guident le regard et récompensent l\'exploration. J\'aime faire dialoguer <strong>intentions de gameplay, blockout, contraintes de production</strong> et direction artistique.',
         about_p3:'Je suis ouvert aux <strong>opportunités en game design et level design</strong>, collaborations et projets créatifs.',
-        fact_ican:'Bachelor Game Design · 3ème année', fact_level:'Game Design · Level Design · Gameplay flow · Narration spatiale',
+        fact_ican:'Bachelor Game Design · Diplômé de l\'ICAN', fact_level:'Game Design · Level Design · Gameplay flow · Narration spatiale',
         fact_unity:'C# · Intégrations', fact_3d:'Blender · Modélisation · UV · Textures',
         skills_label:'Compétences', skills_title:'Ce que je conçois',
         sk_design:'Game & Level Design', sk_3d:'3D & Art', sk_gamedev:'Game Dev', sk_env:'Environnements', sk_web:'Web & Outils', sk_lang:'Langues',
@@ -431,7 +439,7 @@
         projects_empty:'Aucun projet n’est disponible pour le moment.', projects_error:'Impossible de charger les projets. Réessaie dans quelques instants.',
         footer_sub:'Level Designer & Game Designer · ICAN',
         modal_close:'✕ Fermer',
-        devlog_title:'Ce que j\'ai fait', screenshots_title:'Screenshots', no_media:'Pas de média',
+        devlog_title:'Ce que j\'ai fait', devlog_loading:'Chargement du devlog…', devlog_error:'Le devlog n\'a pas pu être chargé.', screenshots_title:'Screenshots', no_media:'Pas de média',
         card_more:'Voir plus', card_open:'Ouvrir le projet', screenshot_alt:'capture', image_previous:'Image précédente', image_next:'Image suivante', menu_open:'Ouvrir le menu', menu_close:'Fermer le menu',
         meta_category:'Catégorie', meta_tags:'Tags', meta_role:'Rôle', meta_tools:'Outils', role_default:'Contributeur',
         filter_unity:'Unity / Game Dev', filter_shader:'Shaders & Visuels',
@@ -441,17 +449,18 @@
         ski_integ:'Intégrations', ski_interior:'Décors intérieurs', ski_optim:'Optimisation 3D', ski_modtex:'Texturage 3D',
       },
       en: {
-        meta_title:'Jordan Lamour · Portfolio', meta_description:'Portfolio of Jordan Lamour, Level Designer & Game Designer at ICAN. Game projects, gameplay and level design.',
+        meta_title:'Jordan Lamour · Portfolio', meta_description:'Portfolio of Jordan Lamour, Game Designer & Level Designer with a Bachelor in Game Design from ICAN. Game projects, gameplay and level design.',
         nav_about:'About', nav_skills:'Skills', nav_projects:'Projects',
-        hero_tag:'Level Designer & Game Designer · 3rd Year ICAN',
+        hero_tag:'Game Designer & Level Designer — Bachelor in Game Design',
         hero_sub:'I design mechanics, gameplay loops and game spaces built around the player.',
+        hero_specialization:'Gameplay systems · Level flow · Greyboxing · Player guidance',
         hero_cta1:'See my projects', hero_cta2:'Contact me',
         about_label:'About',
-        about_title:'Game Designer &amp;<br>Level Designer<br>at ICAN',
-        about_p1:'My name is <strong>Jordan Lamour</strong> and I\'m a <strong>Game Designer &amp; Level Designer</strong> focused on building player experiences.',
+        about_title:'Game Designer &amp;<br>Level Designer<br>ICAN graduate',
+        about_p1:'My name is <strong>Jordan Lamour</strong> and I\'m a <strong>Game Designer &amp; Level Designer</strong> with a Bachelor in Game Design from ICAN.',
         about_p2:'What draws me to game and level design is shaping the player\'s experience from the ground up: creating readable mechanics, interesting gameplay loops and spaces that build rhythm, guide the eye and reward exploration. I enjoy connecting <strong>gameplay intent, blockout, production constraints</strong> and artistic direction.',
         about_p3:'I\'m open to <strong>game design and level design opportunities</strong>, collaborations and creative projects.',
-        fact_ican:'Bachelor Game Design · 3rd Year', fact_level:'Game Design · Level Design · Gameplay flow · Spatial Narrative',
+        fact_ican:'Bachelor in Game Design · ICAN graduate', fact_level:'Game Design · Level Design · Gameplay flow · Spatial Narrative',
         fact_unity:'C# · Integration', fact_3d:'Blender · Modeling · UV · Textures',
         skills_label:'Skills', skills_title:'What I design',
         sk_design:'Game & Level Design', sk_3d:'3D & Art', sk_gamedev:'Game Dev', sk_env:'Environments', sk_web:'Web & Tools', sk_lang:'Languages',
@@ -463,7 +472,7 @@
         projects_empty:'No project is available right now.', projects_error:'Unable to load the projects. Please try again in a moment.',
         footer_sub:'Level Designer & Game Designer · ICAN',
         modal_close:'✕ Close',
-        devlog_title:'What I did', screenshots_title:'Screenshots', no_media:'No media',
+        devlog_title:'What I did', devlog_loading:'Loading the devlog…', devlog_error:'The devlog could not be loaded.', screenshots_title:'Screenshots', no_media:'No media',
         card_more:'See more', card_open:'Open project', screenshot_alt:'screenshot', image_previous:'Previous image', image_next:'Next image', menu_open:'Open menu', menu_close:'Close menu',
         meta_category:'Category', meta_tags:'Tags', meta_role:'Role', meta_tools:'Tools', role_default:'Contributor',
         filter_unity:'Unity / Game Dev', filter_shader:'Shaders & Visuals',
@@ -473,17 +482,18 @@
         ski_integ:'Integration', ski_interior:'Interior environments', ski_optim:'3D optimization', ski_modtex:'3D texturing',
       },
       es: {
-        meta_title:'Jordan Lamour · Portfolio', meta_description:'Portfolio de Jordan Lamour, Level Designer & Game Designer en ICAN. Proyectos de videojuegos, gameplay y level design.',
+        meta_title:'Jordan Lamour · Portfolio', meta_description:'Portfolio de Jordan Lamour, Game Designer y Level Designer con un Bachelor en Diseño de Videojuegos por ICAN. Proyectos de videojuegos, gameplay y level design.',
         nav_about:'Sobre mí', nav_skills:'Habilidades', nav_projects:'Proyectos',
-        hero_tag:'Level Designer & Game Designer · 3er año ICAN',
+        hero_tag:'Game Designer y Level Designer — Bachelor en Diseño de Videojuegos',
         hero_sub:'Diseño mecánicas, bucles de gameplay y espacios de juego pensados para el jugador.',
+        hero_specialization:'Gameplay systems · Level flow · Greyboxing · Player guidance',
         hero_cta1:'Ver mis proyectos', hero_cta2:'Contactarme',
         about_label:'Sobre mí',
-        about_title:'Game Designer y<br>Level Designer<br>en ICAN',
-        about_p1:'Me llamo <strong>Jordan Lamour</strong> y soy <strong>Game Designer y Level Designer</strong>, especializado en crear experiencias de juego.',
+        about_title:'Game Designer y<br>Level Designer<br>graduado de ICAN',
+        about_p1:'Me llamo <strong>Jordan Lamour</strong> y soy <strong>Game Designer y Level Designer</strong>, graduado de un Bachelor en Diseño de Videojuegos por ICAN.',
         about_p2:'Lo que me atrae del game y level design es construir la experiencia del jugador de principio a fin: imaginar mecánicas claras, crear bucles de gameplay interesantes y diseñar espacios que marquen el ritmo, guíen la mirada y recompensen la exploración. Me gusta conectar <strong>intenciones de gameplay, blockout, restricciones de producción</strong> y dirección artística.',
         about_p3:'Estoy abierto a <strong>oportunidades de game design y level design</strong>, colaboraciones y proyectos creativos.',
-        fact_ican:'Bachelor Diseño de Juegos · 3er año', fact_level:'Game Design · Level Design · Flujo de gameplay · Narrativa espacial',
+        fact_ican:'Bachelor Diseño de Videojuegos · Graduado de ICAN', fact_level:'Game Design · Level Design · Flujo de gameplay · Narrativa espacial',
         fact_unity:'C# · Integraciones', fact_3d:'Blender · Modelado · UV · Texturas',
         skills_label:'Habilidades', skills_title:'Lo que diseño',
         sk_design:'Game & Level Design', sk_3d:'3D & Arte', sk_gamedev:'Game Dev', sk_env:'Entornos', sk_web:'Web & Herramientas', sk_lang:'Idiomas',
@@ -495,7 +505,7 @@
         projects_empty:'No hay proyectos disponibles por ahora.', projects_error:'No se han podido cargar los proyectos. Inténtalo de nuevo.',
         footer_sub:'Level Designer & Game Designer · ICAN',
         modal_close:'✕ Cerrar',
-        devlog_title:'Lo que hice', screenshots_title:'Capturas', no_media:'Sin media',
+        devlog_title:'Lo que hice', devlog_loading:'Cargando el devlog…', devlog_error:'No se ha podido cargar el devlog.', screenshots_title:'Capturas', no_media:'Sin media',
         card_more:'Ver más', card_open:'Abrir proyecto', screenshot_alt:'captura', image_previous:'Imagen anterior', image_next:'Imagen siguiente', menu_open:'Abrir menú', menu_close:'Cerrar menú',
         meta_category:'Categoría', meta_tags:'Tags', meta_role:'Rol', meta_tools:'Herramientas', role_default:'Colaborador',
         filter_unity:'Unity / Game Dev', filter_shader:'Shaders y Visuales',
@@ -598,6 +608,14 @@
         return ['http:','https:'].includes(url.protocol)?url.href:'';
       }catch(e){return '';}
     }
+    function safeContentUrl(value){
+      const safe=safeResourceUrl(value);
+      if(!safe)return '';
+      try{
+        const url=new URL(safe,location.href);
+        return url.origin===location.origin?url.href:'';
+      }catch(e){return '';}
+    }
     function sanitizeRichText(html){
       const template=document.createElement('template');
       template.innerHTML=String(html??'');
@@ -634,6 +652,7 @@
           <div class="card-body">
             <p class="card-category">${escapeHTML(getCatLabel(category))}</p>
             <h3 class="card-title">${title}</h3>
+            ${p.role?`<p class="card-role">${escapeHTML(p.role)}</p>`:''}
             <p class="card-desc">${escapeHTML(p.description||'')}</p>
             <div class="card-footer">
               <div class="card-tags">${tags}</div>
@@ -683,7 +702,9 @@
         </div>`).join('');
 
       let devlog='';
-      if(p.devlog&&p.devlog.trim()){
+      if(p.devlogUrl){
+        devlog=`<div class="modal-section"><h3>${t('devlog_title')}</h3><div class="modal-devlog" id="devlogContent"><p>${t('devlog_loading')}</p></div></div>`;
+      }else if(p.devlog&&p.devlog.trim()){
         devlog=`<div class="modal-section"><h3>${t('devlog_title')}</h3><div class="modal-devlog">${sanitizeRichText(p.devlog)}</div></div>`;
       }
 
@@ -712,6 +733,20 @@
         </div>`;
     }
 
+    async function loadDevlog(p){
+      if(!p.devlogUrl)return;
+      const target=document.getElementById('devlogContent');
+      const url=safeContentUrl(p.devlogUrl);
+      if(!target||!url)return;
+      try{
+        const response=await fetch(url);
+        if(!response.ok)throw new Error('devlog request failed');
+        target.innerHTML=sanitizeRichText(await response.text());
+      }catch(e){
+        target.textContent=t('devlog_error');
+      }
+    }
+
     let galleryImages=[];
     let galleryTitle='';
     let modalReturnFocus=null;
@@ -722,6 +757,7 @@
       galleryTitle=p.title||'';
       galleryImages=(p.screenshots||[]).map(s=>safeResourceUrl(s)).filter(Boolean);
       document.getElementById('modalContent').innerHTML=buildModalHTML(p);
+      loadDevlog(p);
       document.getElementById('modal').scrollTop=0;
       document.getElementById('modalBackdrop').classList.add('open');
       document.getElementById('modalBackdrop').setAttribute('aria-hidden','false');
