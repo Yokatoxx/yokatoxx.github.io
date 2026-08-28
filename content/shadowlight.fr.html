@@ -1,17 +1,56 @@
 <section class="project-case-study">
-  <h3>Défi de design</h3>
-  <p>Ce projet a été réalisé pendant une game jam de 48 heures autour du thème <strong>« Two in One »</strong>. En tant que programmeur principal de l’équipe, j’étais responsable de transformer nos décisions de design en systèmes jouables sous une forte contrainte de temps. Dès la première heure, il était clair que la maîtrise du scope déciderait de notre capacité à terminer le jeu.</p>
+  <h3>Résumé du projet</h3>
+  <p><strong>ShadowLight</strong> est un projet réalisé pendant la Winter GameJam en 48 heures autour du thème <strong>« Two in One »</strong>, en collaboration avec Noah Caux.</p>
+  <p>En tant que <strong>programmeur principal</strong>, j’ai travaillé sur la transformation des intentions de design en systèmes jouables, avec une attention particulière portée au changement de dimension, à la vulnérabilité des ennemis et à la rejouabilité.</p>
   <img src="assets/projects/shadowlight/devlog-1.png" alt="Prototype de ShadowLight" loading="lazy" decoding="async" style="max-width:100%;">
 
+  <h3>Défi de design</h3>
+  <p>Le thème imposait de concevoir une mécanique qui exprime réellement l’idée de « deux en un », tout en restant réalisable dans le temps limité d’une game jam.</p>
+  <p>Nous avons envisagé plusieurs directions, notamment un mode coopératif en écran partagé et le contrôle de deux personnages. Nous avons finalement retenu une mécanique de changement de dimension, plus directement liée au thème et plus réaliste à prototyper rapidement.</p>
+
+  <div style="margin:2rem 0;padding:1.5rem;background:#1A1916;border:1px solid #2E2C29;border-radius:3px;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">Boucle de combat</p>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;text-align:center;font-size:.75rem;line-height:1.35;">
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Observer<br><span style="color:#9A9790;font-size:.65rem;">Identifier la dimension</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Changer<br><span style="color:#9A9790;font-size:.65rem;">Activer le bon état</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Attaquer<br><span style="color:#9A9790;font-size:.65rem;">Profiter de la vulnérabilité</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Récolter<br><span style="color:#9A9790;font-size:.65rem;">Gagner des âmes</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Améliorer<br><span style="color:#9A9790;font-size:.65rem;">Préparer la prochaine manche</span></div>
+    </div>
+  </div>
+
   <h3>Exprimer le thème par une mécanique</h3>
-  <p>Notre première session de design a consisté à trouver une mécanique qui exprime le thème de manière honnête et réalisable. Nous avons discuté d’un mode coopératif en écran partagé et du contrôle de deux personnages, avant de retenir le changement de dimension.</p>
-  <p>Le concept était simple : le joueur traverse un monde habité par des fantômes issus de deux dimensions et doit passer dans la dimension d’origine d’un fantôme pour pouvoir l’attaquer. Cette interprétation correspondait directement au thème, ne demandait pas de pipeline artistique supplémentaire et pouvait être prototypée rapidement. J’ai commencé par le changement d’état et la logique de vulnérabilité, afin de valider la sensation de base avant d’ajouter les améliorations.</p>
+  <p>Le monde est habité par des fantômes provenant de deux dimensions. Le joueur ne peut attaquer un fantôme que lorsqu’il se trouve dans la dimension d’origine de celui-ci.</p>
+  <div style="margin:1.5rem 0;padding:1.4rem;background:#1A1916;border:1px solid #2E2C29;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">Relation entre état et vulnérabilité</p>
+    <div style="display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;gap:.5rem;align-items:center;text-align:center;font-size:.76rem;">
+      <div style="padding:.9rem .4rem;background:#252421;color:#9A9790;">Dimension A<br><small>Fantôme B invisible ou invulnérable</small></div><div style="color:#D96830;font-size:1.2rem;">→</div><div style="padding:.9rem .4rem;background:#252421;color:#E8E4DE;">Switch dimension<br><small>Le joueur change d’état</small></div><div style="color:#D96830;font-size:1.2rem;">→</div><div style="padding:.9rem .4rem;background:#252421;color:#9A9790;">Dimension B<br><small>La cible devient attaquable</small></div>
+    </div>
+  </div>
+  <p>J’ai commencé par implémenter le changement d’état et la logique de vulnérabilité. Cette approche permettait de valider la sensation de base avant d’ajouter des améliorations ou des systèmes secondaires.</p>
 
   <h3>Construire une boucle rejouable</h3>
-  <p>Une fois la boucle de combat fonctionnelle, nous avons identifié la rejouabilité comme son principal point faible. Plutôt que de créer davantage de niveaux ou d’ennemis, nous avons ajouté une économie d’âmes : le joueur récupère des âmes sur les fantômes vaincus et les dépense entre les manches pour améliorer son personnage.</p>
-  <p>Ce choix proche du roguelite apportait des décisions intéressantes sans demander plus d’assets ni de temps de production. Il s’intégrait aussi naturellement à la boucle die and retry que nous construisions.</p>
+  <p>Une fois la boucle de combat fonctionnelle, nous avons identifié la rejouabilité comme son principal point faible. Nous avons choisi d’ajouter une économie d’âmes plutôt que de produire davantage de niveaux ou d’ennemis.</p>
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:1.5rem 0;color:#E8E4DE;font-size:.78rem;text-align:center;">
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Combat</strong><span style="color:#9A9790;">Vaincre les fantômes</span></div>
+    <span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Âmes</strong><span style="color:#9A9790;">Récolter une ressource</span></div>
+    <span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Choix</strong><span style="color:#9A9790;">Dépenser entre les manches</span></div>
+    <span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Amélioration</strong><span style="color:#9A9790;">Revenir plus préparé</span></div>
+  </div>
+  <p>Ce choix proche du roguelite apportait des décisions intéressantes sans nécessiter de nouveaux assets ou de temps de production important. Il s’intégrait naturellement à la boucle die and retry.</p>
+
+  <h3>Prioriser le scope</h3>
+  <p>Dans une game jam de 48 heures, chaque fonctionnalité devait être évaluée selon son coût et son bénéfice. Nous avons coupé ou reporté les idées qui n’amélioraient pas suffisamment l’expérience par rapport au temps nécessaire.</p>
+  <div style="margin:1.5rem 0;padding:1.4rem;background:#1A1916;border-left:2px solid #D96830;color:#9A9790;font-size:.9rem;line-height:1.8;">
+    <strong style="color:#E8E4DE;">Question utilisée pendant la production</strong><br>
+    Cette fonctionnalité améliore-t-elle suffisamment l’expérience pour justifier le temps qu’elle coûte ?
+  </div>
 
   <h3>Ce que j’ai appris</h3>
-  <p>Chaque idée devait passer un test rapide de coût et de bénéfice : améliore-t-elle suffisamment l’expérience pour justifier le temps qu’elle coûte ? La plupart des fonctionnalités ont été coupées ou repoussées. Maintenir cette discipline a été l’un des apprentissages les plus précieux de la jam.</p>
-  <p>Sur le plan technique, l’état de changement de dimension demandait une gestion précise pour éviter les bugs audio et visuels lors de la transition. Cela m’a poussé à écrire un code plus propre et plus modulaire. Cette jam a renforcé mon instinct de priorisation : une mécanique ciblée et bien exécutée vaut mieux qu’une idée ambitieuse inachevée.</p>
+  <p>Cette jam a renforcé mon instinct de priorisation. Une mécanique ciblée et correctement exécutée est plus intéressante qu’une idée ambitieuse laissée inachevée.</p>
+  <p>Sur le plan technique, le changement de dimension demandait une gestion précise afin d’éviter les problèmes audio et visuels lors des transitions. Cela m’a poussé à écrire un code plus propre et plus modulaire.</p>
+  <p>Le projet m’a également appris à relier plus directement une contrainte de thème à une boucle de jeu concrète, puis à protéger cette boucle contre l’excès de fonctionnalités.</p>
 </section>

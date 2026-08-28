@@ -1,4 +1,46 @@
-<p class="font-claude-response-body break-words whitespace-normal leading-[1.7]">For this project, I took on the role of lead programmer for a one-week mobile game jam developed with my team. From the start, we aligned on a clear principle: keep the concept simple, but make it feel genuinely mobile-native. Rather than porting a standard mechanic to touchscreen, we decided to build the entire experience around the accelerometer, which pushed me into territory I had never explored before.</p><p class="font-claude-response-body break-words whitespace-normal leading-[1.7]"><br></p>
-<p class="font-claude-response-body break-words whitespace-normal leading-[1.7]">My first challenge was learning how to work with Unity's mobile input APIs. I had never programmed for mobile before, so understanding how to read accelerometer data, normalize it across devices with different sensitivities, and translate it into responsive gameplay required significant research. Getting the feel right took several iterations. Too sensitive and the game felt uncontrollable, too stiff and it lost its appeal. Finding that balance was one of the most technically interesting problems I worked through during the week.</p>
-<p class="font-claude-response-body break-words whitespace-normal leading-[1.7]">Alongside the core programming, I handled a significant part of the UI/UX design. This turned out to be its own design challenge. I am used to designing HUDs for desktop screens, where space is generous and the player uses a mouse. On mobile, every element competes for screen real estate, and placement must account for how the player physically holds the device. I had to rethink my instincts entirely, prioritising thumb-reachable zones and ensuring all key information was readable at a glance without obscuring the gameplay area.</p>
-<p class="font-claude-response-body break-words whitespace-normal leading-[1.7]">This project gave me a strong foundation in mobile development and reinforced how much platform context shapes both technical and design decisions. Constraints, when embraced early, can become the most creative part of the process.</p>
+<section class="project-case-study">
+  <h3>Project summary</h3>
+  <p><strong>Snouff &amp; Piktty</strong> is a mobile precision game created during a one-week game jam. The player must sort two types of creatures to the left or right while managing a global timer that changes according to successful and failed actions.</p>
+  <p>As <strong>Lead Programmer</strong>, I worked on the mobile input, game logic and a significant part of the UI/UX.</p>
+
+  <div style="margin:2rem 0;padding:1.5rem;background:#1A1916;border:1px solid #2E2C29;border-radius:3px;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">Gameplay loop</p>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;text-align:center;font-size:.75rem;line-height:1.35;">
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Observe<br><span style="color:#9A9790;font-size:.65rem;">Identify the creature</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Choose<br><span style="color:#9A9790;font-size:.65rem;">Left or right</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Move<br><span style="color:#9A9790;font-size:.65rem;">Use mobile input</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Sort<br><span style="color:#9A9790;font-size:.65rem;">Success or mistake</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Retry<br><span style="color:#9A9790;font-size:.65rem;">Manage remaining time</span></div>
+    </div>
+  </div>
+
+  <h3>Design challenge</h3>
+  <p>Our goal was to create an experience that felt genuinely designed for mobile, rather than moving a classic game mechanic onto a touchscreen. We therefore built the gameplay around the accelerometer.</p>
+  <p>This decision created a clear constraint: the player had to understand the action, control the device and read important information without the interface getting in the way of the play area.</p>
+
+  <h3>Learning mobile input</h3>
+  <p>I had never programmed for mobile before. I had to learn how to read accelerometer data, normalize it for devices with different sensitivities and translate it into sufficiently precise movement.</p>
+  <div style="margin:1.5rem 0;padding:1.4rem;background:#1A1916;border:1px solid #2E2C29;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">Tuning the feel</p>
+    <div style="display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;gap:.5rem;align-items:center;text-align:center;font-size:.76rem;">
+      <div style="padding:.9rem .4rem;background:#252421;color:#9A9790;">Too sensitive<br><small>Unstable control</small></div><div style="color:#D96830;font-size:1.2rem;">→</div><div style="padding:.9rem .4rem;background:#252421;color:#E8E4DE;">Iterations<br><small>Adjust the response</small></div><div style="color:#D96830;font-size:1.2rem;">→</div><div style="padding:.9rem .4rem;background:#252421;color:#9A9790;">Too stiff<br><small>Less engaging game</small></div>
+    </div>
+  </div>
+  <p>Finding the right balance required several iterations. Excessive sensitivity made the game difficult to control; a response that was too stiff removed the feeling of precision and responsiveness we were looking for.</p>
+
+  <h3>Designing the mobile interface</h3>
+  <p>I also handled a significant part of the UI/UX design. On desktop, the available space is more generous and the player uses a mouse. On mobile, every element must account for the screen size and the way the device is held.</p>
+  <div style="margin:1.5rem 0;padding:1.4rem;background:#1A1916;border:1px solid #2E2C29;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">UI/UX principles</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;text-align:center;font-size:.78rem;">
+      <div style="padding:1rem;background:#252421;color:#E8E4DE;">Visible information<br><span style="color:#9A9790;font-size:.68rem;">Understand the game state</span></div>
+      <div style="padding:1rem;background:#252421;color:#E8E4DE;">Accessible areas<br><span style="color:#9A9790;font-size:.68rem;">Respect the grip</span></div>
+      <div style="padding:1rem;background:#252421;color:#E8E4DE;">Readable gameplay<br><span style="color:#9A9790;font-size:.68rem;">Keep the action clear</span></div>
+    </div>
+  </div>
+  <p>I had to rethink my usual HUD design instincts: essential information needed to be readable quickly while keeping the play area clear.</p>
+
+  <h3>What I learned</h3>
+  <p>This project gave me a first concrete foundation in mobile development and showed me how strongly a platform’s context influences technical and design decisions.</p>
+  <p>The main lesson is that constraints must be considered from the beginning. The accelerometer, screen size and grip were not problems to solve at the end of the project: they directly defined the player experience.</p>
+</section>

@@ -1,1 +1,50 @@
-<div>This project was built during a 48-hour game jam centered on the theme "two in one." As the team's primary programmer, I was responsible for turning our design decisions into working systems under intense time pressure. From the first hour, it was clear that scope discipline would determine whether we finished or not.</div><div><br></div><img src="assets/projects/shadowlight/devlog-1.png" style="max-width: 100%;"><br>Our first design session focused on finding a mechanic that expressed the theme in a way that was both honest and achievable. We discussed split-screen co-op and dual-character control before settling on dimension-switching. The concept was clean: the player moves through a world inhabited by ghosts from two separate dimensions, and must switch into a ghost's native dimension to attack it. This interpretation mapped directly to the theme, required no additional art pipelines, and could be prototyped quickly. I began with the switch toggle and the vulnerability logic, validating the core feel before writing a single line of upgrade code.<br><br>Once the combat loop worked, we identified replayability as the main weak point. Rather than designing more levels or enemies, we added a soul economy: players collect souls from defeated ghosts and spend them on character upgrades between rounds. This roguelite-adjacent decision gave players meaningful choices without demanding extra assets or design time from the team. The structure also aligned naturally with the Die &amp; Retry loop we were building toward.<br><br>The primary challenge was psychological as much as technical. Every emerging idea had to pass a quick cost-benefit check: does this improve the experience enough to justify the time it costs? Most features were cut or deferred. Holding that line consistently was one of the most valuable things I practiced during the jam. On the technical side, the dimension-switch state required careful management to avoid audio and visual glitches on transition, which pushed me to write cleaner, more modular code than I might have under less pressure. Overall, this jam sharpened my instinct for prioritization and confirmed that a focused mechanic executed well outperforms an ambitious one left unfinished.
+<section class="project-case-study">
+  <h3>Project summary</h3>
+  <p><strong>ShadowLight</strong> is a project created during the 48-hour Winter GameJam around the theme <strong>“Two in One”</strong>, in collaboration with Noah Caux.</p>
+  <p>As <strong>Lead Programmer</strong>, I worked on turning design intentions into playable systems, with a focus on dimension switching, enemy vulnerability and replayability.</p>
+  <img src="assets/projects/shadowlight/devlog-1.png" alt="ShadowLight prototype" loading="lazy" decoding="async" style="max-width:100%;">
+
+  <h3>Design challenge</h3>
+  <p>The theme required us to create a mechanic that genuinely expressed the idea of “two in one” while remaining achievable within the limited time of a game jam.</p>
+  <p>We considered several directions, including split-screen co-op and controlling two characters. We ultimately chose a dimension-switching mechanic, which was more directly connected to the theme and more realistic to prototype quickly.</p>
+
+  <div style="margin:2rem 0;padding:1.5rem;background:#1A1916;border:1px solid #2E2C29;border-radius:3px;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">Combat loop</p>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;text-align:center;font-size:.75rem;line-height:1.35;">
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Observe<br><span style="color:#9A9790;font-size:.65rem;">Identify the dimension</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Switch<br><span style="color:#9A9790;font-size:.65rem;">Activate the right state</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Attack<br><span style="color:#9A9790;font-size:.65rem;">Use the vulnerability window</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Collect<br><span style="color:#9A9790;font-size:.65rem;">Earn souls</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Upgrade<br><span style="color:#9A9790;font-size:.65rem;">Prepare the next round</span></div>
+    </div>
+  </div>
+
+  <h3>Expressing the theme through a mechanic</h3>
+  <p>The world is inhabited by ghosts from two dimensions. The player can only attack a ghost while standing in that ghost’s home dimension.</p>
+  <div style="margin:1.5rem 0;padding:1.4rem;background:#1A1916;border:1px solid #2E2C29;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">State and vulnerability</p>
+    <div style="display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;gap:.5rem;align-items:center;text-align:center;font-size:.76rem;">
+      <div style="padding:.9rem .4rem;background:#252421;color:#9A9790;">Dimension A<br><small>Ghost B is hidden or invulnerable</small></div><div style="color:#D96830;font-size:1.2rem;">→</div><div style="padding:.9rem .4rem;background:#252421;color:#E8E4DE;">Switch dimension<br><small>The player changes state</small></div><div style="color:#D96830;font-size:1.2rem;">→</div><div style="padding:.9rem .4rem;background:#252421;color:#9A9790;">Dimension B<br><small>The target can be attacked</small></div>
+    </div>
+  </div>
+  <p>I started by implementing the state change and vulnerability logic. This let us validate the core feel before adding upgrades or secondary systems.</p>
+
+  <h3>Building a replayable loop</h3>
+  <p>Once the combat loop worked, we identified replayability as its main weakness. We chose to add a soul economy instead of producing more levels or enemies.</p>
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:1.5rem 0;color:#E8E4DE;font-size:.78rem;text-align:center;">
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Combat</strong><span style="color:#9A9790;">Defeat ghosts</span></div><span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Souls</strong><span style="color:#9A9790;">Collect a resource</span></div><span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Choice</strong><span style="color:#9A9790;">Spend between rounds</span></div><span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Upgrade</strong><span style="color:#9A9790;">Return better prepared</span></div>
+  </div>
+  <p>This roguelite-like choice created meaningful decisions without requiring new assets or significant production time. It also fit naturally into the die-and-retry loop.</p>
+
+  <h3>Managing scope</h3>
+  <p>During a 48-hour game jam, every feature had to be assessed by its cost and benefit. We cut or postponed ideas that did not improve the experience enough to justify the required time.</p>
+  <div style="margin:1.5rem 0;padding:1.4rem;background:#1A1916;border-left:2px solid #D96830;color:#9A9790;font-size:.9rem;line-height:1.8;"><strong style="color:#E8E4DE;">Question used during production</strong><br>Does this feature improve the experience enough to justify the time it costs?</div>
+
+  <h3>What I learned</h3>
+  <p>This jam strengthened my instinct for prioritization. A focused, properly executed mechanic is more valuable than an ambitious idea left unfinished.</p>
+  <p>Technically, dimension switching required careful state management to avoid audio and visual issues during transitions. It pushed me to write cleaner, more modular code.</p>
+  <p>The project also taught me to connect a theme constraint more directly to a concrete gameplay loop, then protect that loop from feature creep.</p>
+</section>

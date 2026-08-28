@@ -1,17 +1,50 @@
 <section class="project-case-study">
-  <h3>Design-Herausforderung</h3>
-  <p>Dieses Projekt entstand während einer 48-stündigen Game Jam zum Thema <strong>„Two in One“</strong>. Als Lead Programmer des Teams war ich dafür verantwortlich, unsere Designentscheidungen unter hohem Zeitdruck in spielbare Systeme zu übersetzen. Schon in der ersten Stunde war klar, dass die Kontrolle des Scopes darüber entscheiden würde, ob wir das Spiel fertigstellen.</p>
+  <h3>Projektzusammenfassung</h3>
+  <p><strong>ShadowLight</strong> ist ein Projekt aus der 48-stündigen Winter GameJam zum Thema <strong>„Two in One“</strong>, gemeinsam mit Noah Caux entwickelt.</p>
+  <p>Als <strong>Lead Programmer</strong> arbeitete ich daran, Design-Intentionen in spielbare Systeme zu übersetzen, mit besonderem Fokus auf Dimensionswechsel, Gegnerverwundbarkeit und Wiederspielbarkeit.</p>
   <img src="assets/projects/shadowlight/devlog-1.png" alt="ShadowLight-Prototyp" loading="lazy" decoding="async" style="max-width:100%;">
 
+  <h3>Design-Herausforderung</h3>
+  <p>Das Thema verlangte eine Mechanik, die die Idee „zwei in einem“ wirklich ausdrückt und gleichzeitig in der begrenzten Zeit einer Game Jam umsetzbar bleibt.</p>
+  <p>Wir prüften mehrere Richtungen, darunter Split-Screen-Koop und die Steuerung zweier Figuren. Schließlich entschieden wir uns für einen Dimensionswechsel, der direkter mit dem Thema verbunden und schnell realistischer zu prototypen war.</p>
+
+  <div style="margin:2rem 0;padding:1.5rem;background:#1A1916;border:1px solid #2E2C29;border-radius:3px;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">Kampfschleife</p>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;text-align:center;font-size:.75rem;line-height:1.35;">
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Beobachten<br><span style="color:#9A9790;font-size:.65rem;">Dimension erkennen</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Wechseln<br><span style="color:#9A9790;font-size:.65rem;">Richtigen Zustand aktivieren</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Angreifen<br><span style="color:#9A9790;font-size:.65rem;">Verwundbarkeit nutzen</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Sammeln<br><span style="color:#9A9790;font-size:.65rem;">Seelen verdienen</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Verbessern<br><span style="color:#9A9790;font-size:.65rem;">Nächste Runde vorbereiten</span></div>
+    </div>
+  </div>
+
   <h3>Das Thema durch eine Mechanik ausdrücken</h3>
-  <p>In unserer ersten Design-Session suchten wir nach einer Mechanik, die das Thema ehrlich und umsetzbar ausdrückt. Wir diskutierten Split-Screen-Koop und die Steuerung zweier Figuren, bevor wir uns für einen Dimensionswechsel entschieden.</p>
-  <p>Das Konzept war klar: Der Spieler bewegt sich durch eine Welt mit Geistern aus zwei verschiedenen Dimensionen und muss in die Heimatdimension eines Geistes wechseln, um ihn anzugreifen. Diese Interpretation war direkt mit dem Thema verbunden, benötigte keine zusätzliche Art-Pipeline und ließ sich schnell prototypen. Ich begann mit dem Zustandswechsel und der Verwundbarkeitslogik, um das grundlegende Spielgefühl vor den Upgrades zu validieren.</p>
+  <p>Die Welt wird von Geistern aus zwei Dimensionen bewohnt. Der Spieler kann einen Geist nur angreifen, wenn er sich in dessen Heimatdimension befindet.</p>
+  <div style="margin:1.5rem 0;padding:1.4rem;background:#1A1916;border:1px solid #2E2C29;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">Zustand und Verwundbarkeit</p>
+    <div style="display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;gap:.5rem;align-items:center;text-align:center;font-size:.76rem;">
+      <div style="padding:.9rem .4rem;background:#252421;color:#9A9790;">Dimension A<br><small>Geist B ist verborgen oder unverwundbar</small></div><div style="color:#D96830;font-size:1.2rem;">→</div><div style="padding:.9rem .4rem;background:#252421;color:#E8E4DE;">Dimension wechseln<br><small>Der Spieler ändert seinen Zustand</small></div><div style="color:#D96830;font-size:1.2rem;">→</div><div style="padding:.9rem .4rem;background:#252421;color:#9A9790;">Dimension B<br><small>Das Ziel kann angegriffen werden</small></div>
+    </div>
+  </div>
+  <p>Ich begann mit dem Zustandswechsel und der Verwundbarkeitslogik. So konnten wir das grundlegende Spielgefühl validieren, bevor wir Upgrades oder sekundäre Systeme hinzufügten.</p>
 
   <h3>Eine wiederspielbare Schleife bauen</h3>
-  <p>Nachdem die Kampfschleife funktionierte, erkannten wir die Wiederspielbarkeit als größte Schwäche. Statt mehr Level oder Gegner zu bauen, fügten wir eine Seelenökonomie hinzu: Der Spieler sammelt Seelen von besiegten Geistern und gibt sie zwischen den Runden für Charakter-Upgrades aus.</p>
-  <p>Diese roguelite-nahe Entscheidung brachte bedeutungsvolle Wahlmöglichkeiten, ohne zusätzliche Assets oder Produktionszeit zu verlangen. Sie passte außerdem natürlich zu der Die-and-Retry-Schleife, die wir aufbauten.</p>
+  <p>Nachdem die Kampfschleife funktionierte, erkannten wir die Wiederspielbarkeit als größte Schwäche. Statt mehr Level oder Gegner zu produzieren, entschieden wir uns für eine Seelenökonomie.</p>
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:1.5rem 0;color:#E8E4DE;font-size:.78rem;text-align:center;">
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Kampf</strong><span style="color:#9A9790;">Geister besiegen</span></div><span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Seelen</strong><span style="color:#9A9790;">Ressource sammeln</span></div><span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Entscheidung</strong><span style="color:#9A9790;">Zwischen Runden ausgeben</span></div><span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Upgrade</strong><span style="color:#9A9790;">Besser vorbereitet zurückkehren</span></div>
+  </div>
+  <p>Diese roguelite-nahe Entscheidung brachte bedeutungsvolle Wahlmöglichkeiten, ohne neue Assets oder viel Produktionszeit zu verlangen. Sie passte außerdem natürlich zur Die-and-Retry-Schleife.</p>
+
+  <h3>Den Scope kontrollieren</h3>
+  <p>Während einer 48-stündigen Game Jam musste jedes Feature nach Kosten und Nutzen bewertet werden. Ideen, die die Erfahrung im Verhältnis zum benötigten Aufwand nicht genug verbesserten, wurden gestrichen oder verschoben.</p>
+  <div style="margin:1.5rem 0;padding:1.4rem;background:#1A1916;border-left:2px solid #D96830;color:#9A9790;font-size:.9rem;line-height:1.8;"><strong style="color:#E8E4DE;">Frage während der Produktion</strong><br>Verbessert dieses Feature die Erfahrung genug, um die benötigte Zeit zu rechtfertigen?</div>
 
   <h3>Was ich gelernt habe</h3>
-  <p>Jede Idee musste einen schnellen Kosten-Nutzen-Test bestehen: Verbessert sie die Erfahrung genug, um die benötigte Zeit zu rechtfertigen? Die meisten Features wurden gestrichen oder verschoben. Diese Disziplin beizubehalten war eine der wertvollsten Erfahrungen der Jam.</p>
-  <p>Technisch erforderte der Dimensionswechsel eine sorgfältige Zustandsverwaltung, damit während des Übergangs keine Audio- oder Grafikfehler entstanden. Dadurch schrieb ich saubereren und modulareren Code. Die Jam hat meinen Instinkt für Priorisierung geschärft: Eine fokussierte, gut umgesetzte Mechanik ist besser als eine ambitionierte, unfertige Idee.</p>
+  <p>Diese Jam hat meinen Instinkt für Priorisierung geschärft. Eine fokussierte, sauber umgesetzte Mechanik ist wertvoller als eine ambitionierte, unfertige Idee.</p>
+  <p>Technisch erforderte der Dimensionswechsel eine präzise Zustandsverwaltung, um Audio- und Grafikprobleme während der Übergänge zu vermeiden. Dadurch schrieb ich saubereren und modulareren Code.</p>
+  <p>Das Projekt hat mir außerdem gezeigt, wie man eine thematische Einschränkung direkt mit einer konkreten Gameplay-Schleife verbindet und diese Schleife vor Feature Creep schützt.</p>
 </section>

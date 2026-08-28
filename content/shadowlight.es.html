@@ -1,17 +1,50 @@
 <section class="project-case-study">
-  <h3>Desafío de diseño</h3>
-  <p>Este proyecto se creó durante una game jam de 48 horas alrededor del tema <strong>«Two in One»</strong>. Como programador principal del equipo, era responsable de convertir nuestras decisiones de diseño en sistemas jugables bajo una gran presión de tiempo. Desde la primera hora quedó claro que controlar el alcance determinaría si podíamos terminar el juego.</p>
+  <h3>Resumen del proyecto</h3>
+  <p><strong>ShadowLight</strong> es un proyecto creado durante la Winter GameJam de 48 horas alrededor del tema <strong>«Two in One»</strong>, en colaboración con Noah Caux.</p>
+  <p>Como <strong>programador principal</strong>, trabajé en convertir las intenciones de diseño en sistemas jugables, con especial atención al cambio de dimensión, la vulnerabilidad de los enemigos y la rejugabilidad.</p>
   <img src="assets/projects/shadowlight/devlog-1.png" alt="Prototipo de ShadowLight" loading="lazy" decoding="async" style="max-width:100%;">
 
-  <h3>Expresar el tema mediante una mecánica</h3>
-  <p>Nuestra primera sesión de diseño consistió en encontrar una mecánica que expresara el tema de forma honesta y viable. Hablamos de un modo cooperativo con pantalla dividida y del control de dos personajes, antes de elegir el cambio de dimensión.</p>
-  <p>El concepto era sencillo: el jugador recorre un mundo habitado por fantasmas de dos dimensiones y debe cambiar a la dimensión de origen de cada fantasma para poder atacarlo. Esta interpretación conectaba directamente con el tema, no requería un pipeline artístico adicional y podía prototiparse rápidamente. Empecé por el cambio de estado y la lógica de vulnerabilidad para validar la sensación básica antes de añadir mejoras.</p>
+  <h3>Desafío de diseño</h3>
+  <p>El tema exigía crear una mecánica que expresara realmente la idea de «dos en uno», manteniéndose viable dentro del tiempo limitado de una game jam.</p>
+  <p>Consideramos varias direcciones, incluido un modo cooperativo con pantalla dividida y el control de dos personajes. Finalmente elegimos una mecánica de cambio de dimensión, más directamente relacionada con el tema y más realista de prototipar rápidamente.</p>
 
-  <h3>Construir un ciclo rejugable</h3>
-  <p>Cuando el ciclo de combate funcionó, identificamos la rejugabilidad como su principal debilidad. En lugar de diseñar más niveles o enemigos, añadimos una economía de almas: el jugador recoge almas de los fantasmas derrotados y las gasta entre rondas para mejorar su personaje.</p>
-  <p>Esta decisión cercana al roguelite aportaba elecciones significativas sin exigir más recursos artísticos ni tiempo de producción. También encajaba de forma natural con el ciclo de morir y volver a intentarlo.</p>
+  <div style="margin:2rem 0;padding:1.5rem;background:#1A1916;border:1px solid #2E2C29;border-radius:3px;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">Bucle de combate</p>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;text-align:center;font-size:.75rem;line-height:1.35;">
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Observar<br><span style="color:#9A9790;font-size:.65rem;">Identificar la dimensión</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Cambiar<br><span style="color:#9A9790;font-size:.65rem;">Activar el estado correcto</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Atacar<br><span style="color:#9A9790;font-size:.65rem;">Aprovechar la vulnerabilidad</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Recoger<br><span style="color:#9A9790;font-size:.65rem;">Conseguir almas</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Mejorar<br><span style="color:#9A9790;font-size:.65rem;">Preparar la siguiente ronda</span></div>
+    </div>
+  </div>
+
+  <h3>Expresar el tema mediante una mecánica</h3>
+  <p>El mundo está habitado por fantasmas de dos dimensiones. El jugador solo puede atacar a un fantasma cuando se encuentra en su dimensión de origen.</p>
+  <div style="margin:1.5rem 0;padding:1.4rem;background:#1A1916;border:1px solid #2E2C29;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">Estado y vulnerabilidad</p>
+    <div style="display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;gap:.5rem;align-items:center;text-align:center;font-size:.76rem;">
+      <div style="padding:.9rem .4rem;background:#252421;color:#9A9790;">Dimensión A<br><small>El fantasma B está oculto o es invulnerable</small></div><div style="color:#D96830;font-size:1.2rem;">→</div><div style="padding:.9rem .4rem;background:#252421;color:#E8E4DE;">Cambiar de dimensión<br><small>El jugador cambia de estado</small></div><div style="color:#D96830;font-size:1.2rem;">→</div><div style="padding:.9rem .4rem;background:#252421;color:#9A9790;">Dimensión B<br><small>El objetivo puede ser atacado</small></div>
+    </div>
+  </div>
+  <p>Empecé implementando el cambio de estado y la lógica de vulnerabilidad. Esto nos permitió validar las sensaciones básicas antes de añadir mejoras o sistemas secundarios.</p>
+
+  <h3>Construir un bucle rejugable</h3>
+  <p>Cuando el bucle de combate funcionó, identificamos la rejugabilidad como su principal debilidad. Elegimos añadir una economía de almas en lugar de producir más niveles o enemigos.</p>
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:1.5rem 0;color:#E8E4DE;font-size:.78rem;text-align:center;">
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Combate</strong><span style="color:#9A9790;">Derrotar fantasmas</span></div><span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Almas</strong><span style="color:#9A9790;">Recoger un recurso</span></div><span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Elección</strong><span style="color:#9A9790;">Gastar entre rondas</span></div><span style="color:#D96830;font-size:1.2rem;">→</span>
+    <div style="flex:1;min-width:120px;padding:1rem .6rem;background:#1A1916;border:1px solid #2E2C29;"><strong style="color:#D96830;display:block;margin-bottom:.3rem;">Mejora</strong><span style="color:#9A9790;">Volver mejor preparado</span></div>
+  </div>
+  <p>Esta decisión cercana al roguelite aportaba elecciones significativas sin exigir nuevos recursos artísticos ni mucho tiempo de producción. También encajaba de forma natural con el ciclo de morir y volver a intentarlo.</p>
+
+  <h3>Controlar el alcance</h3>
+  <p>Durante una game jam de 48 horas, cada función debía evaluarse según su coste y beneficio. Eliminamos o aplazamos las ideas que no mejoraban lo suficiente la experiencia en relación con el tiempo necesario.</p>
+  <div style="margin:1.5rem 0;padding:1.4rem;background:#1A1916;border-left:2px solid #D96830;color:#9A9790;font-size:.9rem;line-height:1.8;"><strong style="color:#E8E4DE;">Pregunta utilizada durante la producción</strong><br>¿Esta función mejora la experiencia lo suficiente como para justificar el tiempo que cuesta?</div>
 
   <h3>Lo que aprendí</h3>
-  <p>Cada idea debía superar una comprobación rápida de coste y beneficio: ¿mejora la experiencia lo suficiente como para justificar el tiempo que cuesta? La mayoría de las funciones se eliminaron o se aplazaron. Mantener esta disciplina fue uno de los aprendizajes más valiosos de la jam.</p>
-  <p>En el plano técnico, el estado de cambio de dimensión necesitaba una gestión cuidadosa para evitar errores de audio y vídeo durante la transición. Esto me llevó a escribir un código más limpio y modular. La jam reforzó mi instinto de priorización: una mecánica enfocada y bien ejecutada vale más que una idea ambiciosa sin terminar.</p>
+  <p>Esta jam reforzó mi instinto de priorización. Una mecánica enfocada y bien ejecutada tiene más valor que una idea ambiciosa sin terminar.</p>
+  <p>En el plano técnico, el cambio de dimensión requería una gestión cuidadosa de los estados para evitar problemas de audio y vídeo durante las transiciones. Esto me llevó a escribir un código más limpio y modular.</p>
+  <p>El proyecto también me enseñó a conectar una restricción temática con un bucle de juego concreto y a proteger ese bucle frente al exceso de funcionalidades.</p>
 </section>

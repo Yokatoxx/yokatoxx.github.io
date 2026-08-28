@@ -1,15 +1,46 @@
 <section class="project-case-study">
+  <h3>Projektzusammenfassung</h3>
+  <p><strong>Snouff &amp; Piktty</strong> ist ein mobiles Präzisionsspiel, das während einer einwöchigen Game Jam entstand. Der Spieler sortiert zwei Arten von Kreaturen nach links oder rechts und verwaltet dabei einen globalen Timer, der sich abhängig von richtigen und falschen Aktionen verändert.</p>
+  <p>Als <strong>Lead Programmer</strong> arbeitete ich am Mobile Input, an der Spiellogik und an einem großen Teil des UI/UX-Designs.</p>
+
+  <div style="margin:2rem 0;padding:1.5rem;background:#1A1916;border:1px solid #2E2C29;border-radius:3px;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">Gameplay-Schleife</p>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;text-align:center;font-size:.75rem;line-height:1.35;">
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Beobachten<br><span style="color:#9A9790;font-size:.65rem;">Kreatur erkennen</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Entscheiden<br><span style="color:#9A9790;font-size:.65rem;">Links oder rechts</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Bewegen<br><span style="color:#9A9790;font-size:.65rem;">Mobile Input nutzen</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Sortieren<br><span style="color:#9A9790;font-size:.65rem;">Erfolg oder Fehler</span></div>
+      <div style="padding:.8rem .4rem;background:#252421;border:1px solid #3A3732;">Erneut versuchen<br><span style="color:#9A9790;font-size:.65rem;">Restzeit verwalten</span></div>
+    </div>
+  </div>
+
   <h3>Design-Herausforderung</h3>
-  <p>Bei diesem Projekt war ich während einer einwöchigen Mobile-Game-Jam als Lead Programmer tätig. Von Anfang an hatten wir ein klares Prinzip: Das Konzept sollte einfach bleiben, aber eine echte mobile Identität bekommen. Statt eine klassische Mechanik an einen Touchscreen anzupassen, bauten wir die gesamte Erfahrung um den Beschleunigungssensor herum.</p>
+  <p>Unser Ziel war eine Erfahrung, die wirklich für Mobile entwickelt wirkt, statt eine klassische Spielmechanik auf einen Touchscreen zu übertragen. Deshalb bauten wir das Gameplay um den Beschleunigungssensor herum.</p>
+  <p>Diese Entscheidung brachte eine klare Einschränkung mit sich: Der Spieler musste die Aktion verstehen, das Gerät kontrollieren und wichtige Informationen lesen können, ohne dass die Oberfläche den Spielbereich verdeckt.</p>
 
   <h3>Mobile Input lernen</h3>
-  <p>Meine erste Herausforderung war die Arbeit mit den Mobile-Input-APIs von Unity. Ich hatte noch nie für Mobile entwickelt und musste daher recherchieren, wie man Beschleunigungsdaten ausliest, sie für Geräte mit unterschiedlicher Empfindlichkeit normalisiert und in eine präzise Spielreaktion übersetzt.</p>
-  <p>Das richtige Spielgefühl erforderte mehrere Iterationen. Bei zu hoher Empfindlichkeit wurde das Spiel unkontrollierbar, bei zu geringer verlor es seinen Reiz. Dieses Gleichgewicht zu finden war eines der interessantesten technischen Probleme der Woche.</p>
+  <p>Ich hatte noch nie für Mobile programmiert. Ich musste lernen, die Daten des Beschleunigungssensors auszulesen, sie für Geräte mit unterschiedlicher Empfindlichkeit zu normalisieren und in eine ausreichend präzise Bewegung zu übersetzen.</p>
+  <div style="margin:1.5rem 0;padding:1.4rem;background:#1A1916;border:1px solid #2E2C29;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">Spielgefühl abstimmen</p>
+    <div style="display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;gap:.5rem;align-items:center;text-align:center;font-size:.76rem;">
+      <div style="padding:.9rem .4rem;background:#252421;color:#9A9790;">Zu empfindlich<br><small>Instabile Kontrolle</small></div><div style="color:#D96830;font-size:1.2rem;">→</div><div style="padding:.9rem .4rem;background:#252421;color:#E8E4DE;">Iterationen<br><small>Reaktion anpassen</small></div><div style="color:#D96830;font-size:1.2rem;">→</div><div style="padding:.9rem .4rem;background:#252421;color:#9A9790;">Zu steif<br><small>Weniger interessantes Spiel</small></div>
+    </div>
+  </div>
+  <p>Das richtige Gleichgewicht erforderte mehrere Iterationen. Zu hohe Empfindlichkeit machte das Spiel schwer kontrollierbar; eine zu steife Reaktion nahm das gewünschte Gefühl von Präzision und Direktheit.</p>
 
-  <h3>Interface-Design für Mobile</h3>
-  <p>Neben der Programmierung übernahm ich einen großen Teil des UI/UX-Designs. Ich bin es gewohnt, HUDs für Desktop-Bildschirme zu gestalten, auf denen mehr Platz vorhanden ist und der Spieler eine Maus benutzt. Auf Mobile konkurriert jedes Element um die verfügbare Fläche, und seine Position muss berücksichtigen, wie der Spieler das Gerät hält.</p>
-  <p>Ich musste meine Gewohnheiten daher neu bewerten: Bereiche in Daumenreichweite priorisieren und sicherstellen, dass alle wichtigen Informationen auf einen Blick lesbar bleiben, ohne den Spielbereich zu verdecken.</p>
+  <h3>Die Oberfläche für Mobile gestalten</h3>
+  <p>Außerdem übernahm ich einen großen Teil des UI/UX-Designs. Auf dem Desktop ist mehr Platz vorhanden und der Spieler benutzt eine Maus. Auf Mobile muss jedes Element die Bildschirmgröße und die Art berücksichtigen, wie das Gerät gehalten wird.</p>
+  <div style="margin:1.5rem 0;padding:1.4rem;background:#1A1916;border:1px solid #2E2C29;color:#E8E4DE;">
+    <p style="margin:0 0 1rem;color:#D96830;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;">UI/UX-Prinzipien</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;text-align:center;font-size:.78rem;">
+      <div style="padding:1rem;background:#252421;color:#E8E4DE;">Sichtbare Informationen<br><span style="color:#9A9790;font-size:.68rem;">Spielzustand verstehen</span></div>
+      <div style="padding:1rem;background:#252421;color:#E8E4DE;">Erreichbare Bereiche<br><span style="color:#9A9790;font-size:.68rem;">Die Haltung berücksichtigen</span></div>
+      <div style="padding:1rem;background:#252421;color:#E8E4DE;">Lesbares Spiel<br><span style="color:#9A9790;font-size:.68rem;">Die Aktion nicht verdecken</span></div>
+    </div>
+  </div>
+  <p>Ich musste meine bisherigen HUD-Designgewohnheiten überdenken: Wichtige Informationen sollten schnell lesbar sein, während der Spielbereich frei bleibt.</p>
 
   <h3>Was ich gelernt habe</h3>
-  <p>Dieses Projekt gab mir eine solide Grundlage in der Mobile-Entwicklung und bestätigte, wie stark der Plattformkontext technische und gestalterische Entscheidungen prägt. Einschränkungen können, wenn sie früh berücksichtigt werden, zum kreativsten Teil des Prozesses werden.</p>
+  <p>Dieses Projekt gab mir eine erste konkrete Grundlage in der Mobile-Entwicklung und zeigte mir, wie stark der Plattformkontext technische und gestalterische Entscheidungen beeinflusst.</p>
+  <p>Die wichtigste Erkenntnis ist, dass Einschränkungen von Anfang an berücksichtigt werden müssen. Beschleunigungssensor, Bildschirmgröße und die Haltung des Geräts waren keine Probleme für das Projektende: Sie definierten direkt die Spielerfahrung.</p>
 </section>
